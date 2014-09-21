@@ -10,7 +10,12 @@ gem 'jquery-rails'
 gem 'simple_form'
 gem 'jbuilder', '~> 1.2'
 
-gem 'pg', group: :production
+group :production do
+	gem 'pg'
+	gem 'rails_12factor'
+end
 
-gem 'sqlite3', group: :development
-gem 'debugger', group: :development
+group :development do
+	gem 'sqlite3'
+	gem 'debugger'
+end
