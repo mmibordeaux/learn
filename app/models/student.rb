@@ -6,17 +6,24 @@ class Student < ActiveRecord::Base
 	end
 
 	def codeschool_badges
-		codeschool_results['badges']
+		codeschool_results['badges'] unless codeschool_results.nil?
 	end
 
 	def codeschool_score
-		codeschool_results['user']['total_score']
+		codeschool_results['user']['total_score'] unless codeschool_results.nil?
+	end
+
+	def codeschool_results?
+		not codeschool_results.nil?
 	end
 
 	def codeschool_results
 		require 'open-uri'
 		require 'json'
-		@codeschool_results ||= JSON.parse(open(codeschool_json_url).read)
+		begin
+			@codeschool_results ||= JSON.parse(open(codeschool_json_url).read)
+		rescue
+		end
 	end
 
 	def codeschool_url

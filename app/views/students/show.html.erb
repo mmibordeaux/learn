@@ -7,15 +7,17 @@
 <p><%= link_to @student.promotion, @student.promotion %></p>
 
 
-<h2>Codeschool</h2>
-<%= link_to "Profil", @student.codeschool_url, target: :blank %>
-<p>Score : <%= @student.codeschool_score %></p>
-<ul>
-<% @student.codeschool_badges.each do |badge| %>
-  <li>
-    <a href="<%= badge['course_url'] %>" target="_blank">
-      <img src="<%= badge['badge'] %>" alt="<%= badge['name'] %>" width="50"/>
-    </a>
-  </li>
+<% if @student.codeschool_results? %>
+    <h2>Codeschool</h2>
+    <%= link_to "Profil", @student.codeschool_url, target: :blank %>
+    <p>Score : <%= @student.codeschool_score %></p>
+    <ul>
+    <% @student.codeschool_badges.each do |badge| %>
+      <li>
+        <a href="<%= badge['course_url'] %>" target="_blank">
+          <img src="<%= badge['badge'] %>" alt="<%= badge['name'] %>" width="50"/>
+        </a>
+      </li>
+    <% end %>
+    </ul>
 <% end %>
-</ul>
