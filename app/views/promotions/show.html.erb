@@ -1,0 +1,11 @@
+<h1><%= @promotion %></h1>
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @promotion.name %>
+</p>
+
+<%= link_to 'Edit', edit_promotion_path(@promotion) %> |
+<%= link_to 'Back', promotions_path %>

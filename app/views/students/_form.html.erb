@@ -1,0 +1,8 @@
+<%= simple_form_for @student do |f| %>
+  <%= f.input :firstname %>
+  <%= f.input :lastname %>
+  <%= f.association :promotion %>
+  <%= f.input :codeschool %>
+  <%= f.input :codecademy %>
+  <%= f.button :submit %>
+<% end %>

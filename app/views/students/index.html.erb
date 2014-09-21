@@ -1,0 +1,35 @@
+<h1>Listing students</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Firstname</th>
+      <th>Lastname</th>
+      <th>Codeschool</th>
+      <th>Codecademy</th>
+      <th>Promotion</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @students.each do |student| %>
+      <tr>
+        <td><%= student.firstname %></td>
+        <td><%= student.lastname %></td>
+        <td><%= student.codeschool %></td>
+        <td><%= student.codecademy %></td>
+        <td><%= student.promotion_id %></td>
+        <td><%= link_to 'Show', student %></td>
+        <td><%= link_to 'Edit', edit_student_path(student) %></td>
+        <td><%= link_to 'Destroy', student, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Student', new_student_path %>
