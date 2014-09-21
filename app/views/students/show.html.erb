@@ -1,29 +1,21 @@
+<% title = "#{@student}" %>
+<% content_for :title do title end %>
+<h1><%= title %></h1>
+
+<%= link_to 'Edit', edit_student_path(@student), class: 'btn btn-default' %>
 <p id="notice"><%= notice %></p>
+<p><%= link_to @student.promotion, @student.promotion %></p>
 
-<p>
-  <strong>Firstname:</strong>
-  <%= @student.firstname %>
-</p>
 
-<p>
-  <strong>Lastname:</strong>
-  <%= @student.lastname %>
-</p>
-
-<p>
-  <strong>Codeschool:</strong>
-  <%= @student.codeschool %>
-</p>
-
-<p>
-  <strong>Codecademy:</strong>
-  <%= @student.codecademy %>
-</p>
-
-<p>
-  <strong>Promotion:</strong>
-  <%= @student.promotion_id %>
-</p>
-
-<%= link_to 'Edit', edit_student_path(@student) %> |
-<%= link_to 'Back', students_path %>
+<h2>Codeschool</h2>
+<%= link_to "Profil", @student.codeschool_url, target: :blank %>
+<p>Score : <%= @student.codeschool_score %></p>
+<ul>
+<% @student.codeschool_badges.each do |badge| %>
+  <li>
+    <a href="<%= badge['course_url'] %>" target="_blank">
+      <img src="<%= badge['badge'] %>" alt="<%= badge['name'] %>" width="50"/>
+    </a>
+  </li>
+<% end %>
+</ul>

@@ -1,6 +1,8 @@
-<h1>Editing student</h1>
+<% title = "#{@student} - edit" %>
+<% content_for :title do title end %>
+<h1><%= title %></h1>
+<%= link_to 'Show', @student, class: 'btn btn-default' %>
+<%= link_to 'Destroy', @student, class: 'btn btn-warning' , method: :delete, data: { confirm: 'Are you sure?' } %>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @student %> |
-<%= link_to 'Back', students_path %>

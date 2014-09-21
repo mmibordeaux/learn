@@ -1,27 +1,20 @@
-<h1>Listing promotions</h1>
+<h1>Promotions</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Name</th>
-      <th></th>
-      <th></th>
-      <th></th>
+      <th>Students</th>
     </tr>
   </thead>
-
   <tbody>
     <% @promotions.each do |promotion| %>
       <tr>
-        <td><%= promotion.name %></td>
-        <td><%= link_to 'Show', promotion %></td>
-        <td><%= link_to 'Edit', edit_promotion_path(promotion) %></td>
-        <td><%= link_to 'Destroy', promotion, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to promotion, promotion %></td>
+        <td><%= promotion.students.count %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
 
 <%= link_to 'New Promotion', new_promotion_path %>

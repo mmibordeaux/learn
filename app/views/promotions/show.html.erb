@@ -2,10 +2,23 @@
 
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @promotion.name %>
-</p>
+<%= link_to 'Edit', edit_promotion_path(@promotion), class: 'btn btn-default' %>
 
-<%= link_to 'Edit', edit_promotion_path(@promotion) %> |
-<%= link_to 'Back', promotions_path %>
+<table class="table">
+	<tr>
+		<th>Prénom</th>
+		<th>Nom</th>
+		<th>Codeschool</th>
+		<th>Codecademy</th>
+	</tr>
+<% @promotion.students.each do |student| %>
+	
+	<tr>
+		<td><%= link_to student.firstname, student %></td>
+		<td><%= link_to student.lastname, student %></td>
+		<td><%= student.codeschool_score %></td>
+		<td><%= student.codecademy %></td>
+	</tr>
+
+<% end %>
+</table>

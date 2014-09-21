@@ -1,6 +1,6 @@
-<h1>Listing students</h1>
+<h1>Students</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Firstname</th>
@@ -8,23 +8,17 @@
       <th>Codeschool</th>
       <th>Codecademy</th>
       <th>Promotion</th>
-      <th></th>
-      <th></th>
-      <th></th>
     </tr>
   </thead>
 
   <tbody>
     <% @students.each do |student| %>
       <tr>
-        <td><%= student.firstname %></td>
-        <td><%= student.lastname %></td>
+        <td><%= link_to student.firstname, student %></td>
+        <td><%= link_to student.lastname, student %></td>
         <td><%= student.codeschool %></td>
         <td><%= student.codecademy %></td>
-        <td><%= student.promotion_id %></td>
-        <td><%= link_to 'Show', student %></td>
-        <td><%= link_to 'Edit', edit_student_path(student) %></td>
-        <td><%= link_to 'Destroy', student, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= student.promotion %></td>
       </tr>
     <% end %>
   </tbody>
