@@ -1,4 +1,6 @@
-<h1>Editing promotion</h1>
+<% title = "#{@promotion} - edit" %>
+<% content_for :title do title end %>
+<h1><%= title %></h1>
 <%= link_to 'Show', @promotion, class: 'btn btn-default' %>
 <%= link_to 'Destroy', @promotion, class: 'btn btn-warning', method: :delete, data: { confirm: 'Are you sure?' } %>
 
