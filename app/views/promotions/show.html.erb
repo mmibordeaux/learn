@@ -7,20 +7,32 @@
 <%= link_to 'Edit', edit_promotion_path(@promotion), class: 'btn btn-default' %>
 
 <table class="table">
-	<tr>
-		<th>Prénom</th>
-		<th>Nom</th>
-		<th>Codeschool</th>
-		<th>Codecademy</th>
-	</tr>
+  <tr>
+    <th>Prénom</th>
+    <th>Nom</th>
+    <th>Codeschool score</th>
+    <th>Codeschool badges</th>
+    <th>Codecademy</th>
+  </tr>
 <% @promotion.students.each do |student| %>
-	
-	<tr>
-		<td><%= link_to student.firstname, student %></td>
-		<td><%= link_to student.lastname, student %></td>
-		<td><%= student.codeschool_score %></td>
-		<td><%= student.codecademy %></td>
-	</tr>
+  
+  <tr>
+    <td><%= link_to student.firstname, student %></td>
+    <td><%= link_to student.lastname, student %></td>
+    <td><%= student.codeschool_score %></td>
+    <td>
+      <ul>
+        <% student.codeschool_badges.each do |badge| %>
+          <li>
+            <a href="<%= badge['course_url'] %>" target="_blank">
+              <img src="<%= badge['badge'] %>" alt="<%= badge['name'] %>" width="50"/>
+            </a>
+          </li>
+        <% end %>
+      </ul>
+    </td>
+    <td><%= student.codecademy %></td>
+  </tr>
 
 <% end %>
 </table>
