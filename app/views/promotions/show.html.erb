@@ -28,7 +28,7 @@
               <img src="<%= badge['badge'] %>" alt="<%= badge['name'] %>" width="50"/>
             </a>
           </li>
-        <% end %>
+        <% end unless student.codeschool_badges.nil? %>
       </ul>
     </td>
     <td><%= student.codecademy %></td>
