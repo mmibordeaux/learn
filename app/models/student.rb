@@ -16,6 +16,8 @@
 class Student < ActiveRecord::Base
 	belongs_to :promotion
 
+  	default_scope { order('lastname, firstname') }
+
 	def to_s
 		"#{firstname} #{lastname}"
 	end

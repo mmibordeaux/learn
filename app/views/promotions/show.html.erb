@@ -8,6 +8,7 @@
 
 <table class="table">
   <tr>
+    <th>Sync</th>
     <th>Prénom</th>
     <th>Nom</th>
     <th>Codeschool score</th>
@@ -17,11 +18,11 @@
 <% @promotion.students.each do |student| %>
   
   <tr>
+    <td><%= link_to icon('refresh'), sync_student_path(student) %></td>
     <td><%= link_to student.firstname, student %></td>
     <td><%= link_to student.lastname, student %></td>
     <td><%= student.codeschool_score %></td>
     <td>
-      <p><%= link_to icon('refresh'), sync_student_path(student) %></p>
       <ul>
         <% student.codeschool_badges.each do |badge| %>
           <li>
