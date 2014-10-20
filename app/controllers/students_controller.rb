@@ -1,5 +1,5 @@
 class StudentsController < ApplicationController
-  before_action :set_student, only: [:show, :edit, :update, :destroy]
+  before_action :set_student, only: [:show, :edit, :update, :destroy, :sync]
 
   # GET /students
   # GET /students.json
@@ -59,6 +59,11 @@ class StudentsController < ApplicationController
       format.html { redirect_to students_url }
       format.json { head :no_content }
     end
+  end
+
+  def sync
+    @student.codeschool_sync!
+    redirect_to :back
   end
 
   private

@@ -21,6 +21,7 @@
     <td><%= link_to student.lastname, student %></td>
     <td><%= student.codeschool_score %></td>
     <td>
+      <p><%= link_to icon('refresh'), sync_student_path(student) %></p>
       <ul>
         <% student.codeschool_badges.each do |badge| %>
           <li>
