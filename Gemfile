@@ -10,7 +10,6 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'simple_form'
 gem 'jbuilder', '~> 1.2'
-gem 'annotate'
 gem 'font-awesome-sass'
 
 group :production do
@@ -19,6 +18,7 @@ group :production do
 end
 
 group :development do
+	gem 'annotate'
 	gem 'sqlite3'
 	gem 'debugger'
 end
