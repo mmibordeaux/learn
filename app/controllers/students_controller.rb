@@ -63,7 +63,7 @@ class StudentsController < ApplicationController
 
   def sync
     @student.codeschool_sync!
-    redirect_to :back
+    render text: 'ok' 
   end
 
   private
