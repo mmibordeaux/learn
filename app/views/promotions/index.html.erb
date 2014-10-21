@@ -1,7 +1,8 @@
 <% title = "Promotions" %>
 <% content_for :title do title end %>
-<h1><%= title %></h1>
 
+<h1><%= title %></h1>
+<%= link_to 'New Promotion', new_promotion_path %>
 <table class="table">
   <thead>
     <tr>
@@ -18,5 +19,3 @@
     <% end %>
   </tbody>
 </table>
-
-<%= link_to 'New Promotion', new_promotion_path %>

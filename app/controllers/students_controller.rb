@@ -1,4 +1,5 @@
 class StudentsController < ApplicationController
+  respond_to :html, :json
   before_action :set_student, only: [:show, :edit, :update, :destroy, :sync]
 
   # GET /students
@@ -25,40 +26,22 @@ class StudentsController < ApplicationController
   # POST /students.json
   def create
     @student = Student.new(student_params)
-
-    respond_to do |format|
-      if @student.save
-        format.html { redirect_to @student, notice: 'Student was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @student }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @student.errors, status: :unprocessable_entity }
-      end
-    end
+    flash[:notice] = 'Student was successfully created.' if @student.save
+    respond_with @student
   end
 
   # PATCH/PUT /students/1
   # PATCH/PUT /students/1.json
   def update
-    respond_to do |format|
-      if @student.update(student_params)
-        format.html { redirect_to @student, notice: 'Student was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @student.errors, status: :unprocessable_entity }
-      end
-    end
+    flash[:notice] = 'Student was successfully updated.' if @student.update(student_params)
+    respond_with @student
   end
 
   # DELETE /students/1
   # DELETE /students/1.json
   def destroy
     @student.destroy
-    respond_to do |format|
-      format.html { redirect_to students_url }
-      format.json { head :no_content }
-    end
+    respond_with @student
   end
 
   def sync

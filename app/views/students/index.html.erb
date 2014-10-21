@@ -1,7 +1,8 @@
 <% title = "Students" %>
 <% content_for :title do title end %>
-<h1><%= title %></h1>
 
+<h1><%= title %></h1>
+<%= link_to 'New Student', new_student_path %>
 <table class="table">
   <thead>
     <tr>
@@ -12,7 +13,6 @@
       <th>Promotion</th>
     </tr>
   </thead>
-
   <tbody>
     <% @students.each do |student| %>
       <tr>
@@ -25,7 +25,3 @@
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Student', new_student_path %>
