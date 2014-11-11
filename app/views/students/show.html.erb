@@ -12,7 +12,7 @@
 
   <% if @student.codeschool_results? %>
       <p>Score : <%= @student.codeschool_score %></p>
-      <ul>
+      <ul class="list-inline">
       <% @student.codeschool_badges.each do |badge| %>
         <li>
           <a href="<%= badge['course_url'] %>" target="_blank">
@@ -27,7 +27,19 @@
 <% if @student.codecademy %>
   <h2>Codecademy</h2>
   <%= link_to 'Profil', @student.codecademy_url, target: :blank %>
-  <% if @student.codecademy_results? %>
+  <% unless @student.codecademy_data.nil? %>
     <p>Score : <%= @student.codecademy_score %></p>
+    <h3>Skills</h3>
+    <ul class="list-inline">
+      <% @student.codecademy_skills.each do |skill| %>
+        <li class="btn btn-primary btn-xs"><%= skill.text %></li>
+      <% end %>
+    </ul>
+    <h3>Badges</h3>
+    <ul class="list-inline">
+      <% @student.codecademy_badges_list.each do |badge| %>
+        <li class="btn btn-primary btn-xs"><%= badge.text %></li>
+      <% end %>
+    </ul>
   <% end %>
 <% end %>

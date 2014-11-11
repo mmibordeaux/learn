@@ -13,7 +13,9 @@
     <th>Nom</th>
     <th>Codeschool score</th>
     <th>Codeschool badges</th>
-    <th>Codecademy</th>
+    <th>Codecademy score</th>
+    <th>Codecademy skills</th>
+    <th>Codecademy badges</th>
   </tr>
 <% @promotion.students.each do |student| %>
   
@@ -33,7 +35,21 @@
         <% end unless student.codeschool_badges.nil? %>
       </ul>
     </td>
-    <td><%= student.codecademy %></td>
+    <td><%= student.codecademy_score %></td>
+    <td>
+      <ul class="list-inline">
+        <% student.codecademy_skills.each do |skill| %>
+          <li class="btn btn-primary btn-xs"><%= skill.text %></li>
+        <% end %>
+      </ul>
+    </td>
+    <td>
+      <ul class="list-inline">
+        <% student.codecademy_badges_list.each do |badge| %>
+          <li class="btn btn-primary btn-xs"><%= badge.text %></li>
+        <% end %>
+      </ul>
+    </td>
   </tr>
 
 <% end %>
