@@ -18,7 +18,6 @@
     <th>Codecademy badges</th>
   </tr>
 <% @promotion.students.each do |student| %>
-  
   <tr>
     <td><%= link_to icon('refresh'), sync_student_path(student), :class => 'sync' %></td>
     <td><%= link_to student.firstname, student %></td>
@@ -27,11 +26,13 @@
     <td>
       <ul>
         <% student.codeschool_badges.each do |badge| %>
-          <li>
-            <a href="<%= badge['course_url'] %>" target="_blank">
-              <img src="<%= badge['badge'] %>" alt="<%= badge['name'] %>" width="50"/>
-            </a>
-          </li>
+          <% unless badge.nil? %>
+            <li>
+              <a href="<%= badge['course_url'] %>" target="_blank">
+                <img src="<%= badge['badge'] %>" alt="<%= badge['name'] %>" width="50"/>
+              </a>
+            </li>
+          <% end %>
         <% end unless student.codeschool_badges.nil? %>
       </ul>
     </td>
@@ -39,14 +40,14 @@
     <td>
       <ul class="list-inline">
         <% student.codecademy_skills.each do |skill| %>
-          <li class="btn btn-primary btn-xs"><%= skill.text %></li>
+          <li class="btn btn-primary btn-xs"><%= skill.text unless skill.nil? %></li>
         <% end unless student.codecademy_skills.nil? %>
       </ul>
     </td>
     <td>
       <ul class="list-inline">
         <% student.codecademy_badges_list.each do |badge| %>
-          <li class="btn btn-primary btn-xs"><%= badge.text %></li>
+          <li class="btn btn-primary btn-xs"><%= badge.text unless badge.nil? %></li>
         <% end unless student.codecademy_badges_list.nil? %>
       </ul>
     </td>
