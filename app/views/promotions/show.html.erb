@@ -40,14 +40,14 @@
       <ul class="list-inline">
         <% student.codecademy_skills.each do |skill| %>
           <li class="btn btn-primary btn-xs"><%= skill.text %></li>
-        <% end %>
+        <% end unless student.codecademy_skills.nil? %>
       </ul>
     </td>
     <td>
       <ul class="list-inline">
         <% student.codecademy_badges_list.each do |badge| %>
           <li class="btn btn-primary btn-xs"><%= badge.text %></li>
-        <% end %>
+        <% end unless student.codecademy_badges_list.nil? %>
       </ul>
     </td>
   </tr>

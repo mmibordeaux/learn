@@ -33,13 +33,13 @@
     <ul class="list-inline">
       <% @student.codecademy_skills.each do |skill| %>
         <li class="btn btn-primary btn-xs"><%= skill.text %></li>
-      <% end %>
+      <% end unless @student.codecademy_skills.nil? %>
     </ul>
     <h3>Badges</h3>
     <ul class="list-inline">
       <% @student.codecademy_badges_list.each do |badge| %>
         <li class="btn btn-primary btn-xs"><%= badge.text %></li>
-      <% end %>
+      <% end @student.codecademy_badges_list.nil? %>
     </ul>
   <% end %>
 <% end %>
