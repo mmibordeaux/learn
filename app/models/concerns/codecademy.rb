@@ -2,7 +2,10 @@ module Codecademy
   extend ActiveSupport::Concern
 
   def codecademy_score
-    codecademy_html.css('h3.padding-right--quarter')[0].text unless codecademy_data.nil?
+    unless codecademy_data.nil?
+      score_object = codecademy_html.css('h3.padding-right--quarter')[0]
+      score_object.text unless score_object.nil?
+    end
   end
 
   def codecademy_skills
