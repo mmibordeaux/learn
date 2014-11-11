@@ -11,6 +11,7 @@ gem 'jquery-rails'
 gem 'simple_form'
 gem 'jbuilder', '~> 1.2'
 gem 'font-awesome-sass'
+gem 'nokogiri'
 
 group :production do
 	gem 'pg'

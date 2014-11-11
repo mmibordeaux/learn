@@ -6,18 +6,28 @@
 <p id="notice"><%= notice %></p>
 <p><%= link_to @student.promotion, @student.promotion %></p>
 
+<% if @student.codeschool %>
+  <h2>Codeschool</h2>
+  <%= link_to 'Profil', @student.codeschool_url, target: :blank %>
 
-<% if @student.codeschool_results? %>
-    <h2>Codeschool</h2>
-    <%= link_to "Profil", @student.codeschool_url, target: :blank %>
-    <p>Score : <%= @student.codeschool_score %></p>
-    <ul>
-    <% @student.codeschool_badges.each do |badge| %>
-      <li>
-        <a href="<%= badge['course_url'] %>" target="_blank">
-          <img src="<%= badge['badge'] %>" alt="<%= badge['name'] %>" width="50"/>
-        </a>
-      </li>
-    <% end %>
-    </ul>
+  <% if @student.codeschool_results? %>
+      <p>Score : <%= @student.codeschool_score %></p>
+      <ul>
+      <% @student.codeschool_badges.each do |badge| %>
+        <li>
+          <a href="<%= badge['course_url'] %>" target="_blank">
+            <img src="<%= badge['badge'] %>" alt="<%= badge['name'] %>" width="50"/>
+          </a>
+        </li>
+      <% end %>
+      </ul>
+  <% end %>
+<% end %>
+
+<% if @student.codecademy %>
+  <h2>Codecademy</h2>
+  <%= link_to 'Profil', @student.codecademy_url, target: :blank %>
+  <% if @student.codecademy_results? %>
+    <p>Score : <%= @student.codecademy_score %></p>
+  <% end %>
 <% end %>

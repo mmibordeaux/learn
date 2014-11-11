@@ -45,7 +45,7 @@ class StudentsController < ApplicationController
   end
 
   def sync
-    @student.codeschool_sync!
+    @student.sync!
     render text: 'ok' 
   end
 
