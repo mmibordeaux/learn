@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby '2.1.2'
 
 gem 'rails', '4.0.4'
 gem 'bootstrap-sass', '~> 3.2.0'
@@ -21,5 +22,5 @@ end
 group :development do
 	gem 'annotate'
 	gem 'sqlite3'
-	gem 'debugger'
+	gem 'byebug'
 end
