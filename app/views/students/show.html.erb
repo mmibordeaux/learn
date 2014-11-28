@@ -39,7 +39,7 @@
     <ul class="list-inline">
       <% @student.codecademy_badges_list.each do |badge| %>
         <li class="btn btn-primary btn-xs"><%= badge.text unless badge.nil? %></li>
-      <% end @student.codecademy_badges_list.nil? %>
+      <% end unless @student.codecademy_badges_list.nil? %>
     </ul>
   <% end %>
 <% end %>
