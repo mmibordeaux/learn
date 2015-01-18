@@ -28,7 +28,9 @@ $(document).ready(function () {
 		var currentStudent = students[currentStudentIndex];
 		if (currentStudent) {
 			sync(currentStudent, syncNextStudent);
-		}	
+		} else {
+			$('.promotion-sync .fa').removeClass('fa-spin');
+		}
 	}
 
 	$('.sync').click(function(e){
