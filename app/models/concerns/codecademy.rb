@@ -20,7 +20,7 @@ module Codecademy
   def codecademy_score
     unless codecademy_data.nil?
       score_object = codecademy_html.css('h3.padding-right--quarter').first
-      score_object.text unless score_object.nil?
+      score_object.text.to_i unless score_object.nil?
     end
   end
 
@@ -31,6 +31,14 @@ module Codecademy
   # TODO rename the db field badges_data
   def codecademy_badges_list
     codecademy_badges_html.css('.achievements h5') unless codecademy_data.nil?
+  end
+
+  def codecademy_note
+    if codecademy_score.nil?
+      0
+    else
+      Note.make(codecademy_score, [[50, 8], [150, 12], [250, 15], [500, 17], [1000, 20]])
+    end
   end
 
   def codecademy_sync!
