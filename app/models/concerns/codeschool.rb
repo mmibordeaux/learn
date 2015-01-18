@@ -33,7 +33,7 @@ module Codeschool
     if codeschool_score.nil?
       0
     else
-      Note.make(codeschool_score, [[50, 8], [100, 14], [150, 16], [250, 18], [500, 20]])
+      Note.make(codeschool_score, [[8000, 8], [7000, 14], [20000, 20]])
     end
   end
 

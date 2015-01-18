@@ -27,7 +27,7 @@
     <td><%= link_to icon('refresh'), sync_student_path(student), :class => 'sync' %></td>
     <td><%= link_to student.firstname, student %></td>
     <td><%= link_to student.lastname, student %></td>
-    <td><%= student.codeschool_note %></td>
+    <td><%= student.codeschool_note.to_s.sub('.', ',') %></td>
     <td><%= student.codeschool_score %></td>
     <td>
       <ul>
@@ -42,7 +42,7 @@
         <% end unless student.codeschool_badges.nil? %>
       </ul>
     </td>
-    <td><%= student.codecademy_note %></td>
+    <td><%= student.codecademy_note.to_s.sub('.', ',') %></td>
     <td><%= student.codecademy_score %></td>
     <td>
       <ul class="list-inline">
