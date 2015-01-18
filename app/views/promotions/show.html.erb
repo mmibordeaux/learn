@@ -1,13 +1,19 @@
 <% title = "#{@promotion}" %>
 <% content_for :title do title end %>
-<h1><%= title %></h1>
+<h1><%= link_to icon('refresh'), '', class: 'promotion-sync' %> <%= title %></h1>
+<%= link_to 'Edit', edit_promotion_path(@promotion), class: 'btn btn-default' %>
 
 <p id="notice"><%= notice %></p>
-<p>Codecademy total : <%= @promotion.codecademy_score %></p>
-<p>Codeschool total : <%= @promotion.codeschool_score %></p>
-<p><%= link_to icon('refresh'), '', class: 'promotion-sync' %></p>
-
-<%= link_to 'Edit', edit_promotion_path(@promotion), class: 'btn btn-default' %>
+<div>
+  Codecademy total : <%= @promotion.codecademy_score %><br/>
+  Copy paste the notes below<br/>
+  <textarea><%= raw @promotion.students.map { |s| s.codecademy_note.to_s.sub('.', ',') }.join("\n") %></textarea>
+</div>
+<div>
+  Codeschool total : <%= @promotion.codeschool_score %><br/>
+  Copy paste the notes below<br/>
+  <textarea><%= raw @promotion.students.map { |s| s.codeschool_note.to_s.sub('.', ',') }.join("\n") %></textarea>
+</div>
 
 <table class="table">
   <tr>
@@ -27,7 +33,7 @@
     <td><%= link_to icon('refresh'), sync_student_path(student), :class => 'sync' %></td>
     <td><%= link_to student.firstname, student %></td>
     <td><%= link_to student.lastname, student %></td>
-    <td><%= student.codeschool_note.to_s.sub('.', ',') %></td>
+    <td><%= student.codeschool_note %></td>
     <td><%= student.codeschool_score %></td>
     <td>
       <ul>
@@ -42,7 +48,7 @@
         <% end unless student.codeschool_badges.nil? %>
       </ul>
     </td>
-    <td><%= student.codecademy_note.to_s.sub('.', ',') %></td>
+    <td><%= student.codecademy_note %></td>
     <td><%= student.codecademy_score %></td>
     <td>
       <ul class="list-inline">
