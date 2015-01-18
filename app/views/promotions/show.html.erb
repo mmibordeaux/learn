@@ -5,6 +5,7 @@
 <p id="notice"><%= notice %></p>
 <p>Codecademy total : <%= @promotion.codecademy_score %></p>
 <p>Codeschool total : <%= @promotion.codeschool_score %></p>
+<p><%= link_to icon('refresh'), '', class: 'promotion-sync' %></p>
 
 <%= link_to 'Edit', edit_promotion_path(@promotion), class: 'btn btn-default' %>
 

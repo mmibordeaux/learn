@@ -4,16 +4,44 @@
 //= require_tree .
 
 $(document).ready(function () {
-	$('.sync').click(function(e){
-		e.preventDefault();
-		var url = $(this).attr('href');
-		var spinner = $(this).find('.fa');
+
+	var currentStudentIndex = -1;
+	var students = $('.sync');
+
+	function sync(student, onEnd) {
+		var url = $(student).attr('href');
+		var spinner = $(student).find('.fa');
 		spinner.addClass('fa-spin');
 		$.ajax({
 			url: url,
 			success: function() {
 				spinner.removeClass('fa-spin');
+				if (onEnd) {
+					onEnd();
+				}
 			}
 		});
+	}
+
+	function syncNextStudent() {
+		currentStudentIndex++;
+		var currentStudent = students[currentStudentIndex];
+		if (currentStudent) {
+			sync(currentStudent, syncNextStudent);
+		}	
+	}
+
+	$('.sync').click(function(e){
+		e.preventDefault();
+		sync(this);
 	})
+
+	$('.promotion-sync').click(function(e) {
+		e.preventDefault();
+		var spinner = $(this).find('.fa');
+		spinner.addClass('fa-spin');
+		currentStudentIndex = -1;
+		syncNextStudent();
+	});
+
 });
