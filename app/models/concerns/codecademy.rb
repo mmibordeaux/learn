@@ -18,9 +18,23 @@ module Codecademy
   end
 
   def codecademy_score
-    unless codecademy_data.nil?
-      score_object = codecademy_html.css('h3.padding-right--quarter').first
-      score_object.text.to_i unless score_object.nil?
+    if is_a? Student
+      if codecademy_data.nil?
+        0
+      else
+        score_object = codecademy_html.css('h3.padding-right--quarter').first
+        if score_object.nil?
+          0
+        else
+          score_object.text.to_i
+        end
+      end
+    elsif is_a? Promotion
+      score = 0
+      students.each do |s| 
+        score += s.codecademy_score
+      end
+      score
     end
   end
 

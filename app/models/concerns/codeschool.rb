@@ -6,7 +6,19 @@ module Codeschool
   end
 
   def codeschool_score
-    codeschool_results['user']['total_score'] if codeschool_results?
+    if is_a? Student
+      if codeschool_results?
+        codeschool_results['user']['total_score'].to_i
+      else
+        0
+      end
+    elsif is_a? Promotion
+      score = 0
+      students.each do |s| 
+        score += s.codeschool_score
+      end
+      score
+    end 
   end
 
   def codeschool_results?
@@ -16,6 +28,15 @@ module Codeschool
   def codeschool_results
     @codeschool_results ||= JSON.parse(codeschool_data) unless codeschool_data.nil?
   end
+
+  def codeschool_note
+    if codeschool_score.nil?
+      0
+    else
+      Note.make(codeschool_score, [[50, 8], [100, 14], [150, 16], [250, 18], [500, 20]])
+    end
+  end
+
 
   def codeschool_url
     "https://www.codeschool.com/users/#{codeschool}"

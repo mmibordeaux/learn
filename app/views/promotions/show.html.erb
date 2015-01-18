@@ -3,6 +3,8 @@
 <h1><%= title %></h1>
 
 <p id="notice"><%= notice %></p>
+<p>Codecademy total : <%= @promotion.codecademy_score %></p>
+<p>Codeschool total : <%= @promotion.codeschool_score %></p>
 
 <%= link_to 'Edit', edit_promotion_path(@promotion), class: 'btn btn-default' %>
 
@@ -11,6 +13,7 @@
     <th>Sync</th>
     <th>Prénom</th>
     <th>Nom</th>
+    <th>Codeschool note</th>
     <th>Codeschool score</th>
     <th>Codeschool badges</th>
     <th>Codecademy note</th>
@@ -23,6 +26,7 @@
     <td><%= link_to icon('refresh'), sync_student_path(student), :class => 'sync' %></td>
     <td><%= link_to student.firstname, student %></td>
     <td><%= link_to student.lastname, student %></td>
+    <td><%= student.codeschool_note %></td>
     <td><%= student.codeschool_score %></td>
     <td>
       <ul>

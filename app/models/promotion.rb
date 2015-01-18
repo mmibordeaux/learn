@@ -9,9 +9,12 @@
 #
 
 class Promotion < ActiveRecord::Base
-	has_many :students
+  has_many :students
 
-	def to_s
-		"#{name}"
-	end
+  include Codeschool
+  include Codecademy
+
+  def to_s
+    "#{name}"
+  end
 end
