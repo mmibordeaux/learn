@@ -10,7 +10,7 @@ class Note
       max_note_in_slice = current_slice[1]
       puts "slice #{slice_index} [#{max_score_in_slice}, #{max_note_in_slice}]"
       score_in_slice = [score, max_score_in_slice].min
-      points_in_slice = score_in_slice * (max_note_in_slice-max_note_in_last_slice) / max_score_in_slice
+      points_in_slice = 1.0 * score_in_slice * (max_note_in_slice-max_note_in_last_slice) / max_score_in_slice
       puts "#{score_in_slice} score in slice becomes #{points_in_slice} points in slice"
       note += points_in_slice
       puts "note becomes #{note}"
@@ -22,6 +22,6 @@ class Note
       break if no_more_score
       max_note_in_last_slice = max_note_in_slice
     end
-    note
+    note.round 2
   end
 end

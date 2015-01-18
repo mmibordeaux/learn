@@ -37,7 +37,7 @@ module Codecademy
     if codecademy_score.nil?
       0
     else
-      Note.make(codecademy_score, [[50, 8], [150, 12], [250, 15], [500, 17], [1000, 20]])
+      Note.make(codecademy_score, [[50, 8], [100, 14], [150, 16], [250, 18], [500, 20]])
     end
   end
 
