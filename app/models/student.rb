@@ -17,6 +17,7 @@
 
 class Student < ActiveRecord::Base
   belongs_to :promotion
+    validates :firstname, :lastname, :promotion_id, presence: true
     default_scope { order('lastname, firstname') }
 
     include Codeschool
