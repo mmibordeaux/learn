@@ -10,6 +10,7 @@
 
 class Promotion < ActiveRecord::Base
   has_many :students
+  validates :name, presence: true
 
   include Codeschool
   include Codecademy
