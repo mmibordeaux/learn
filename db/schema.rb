@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141111125836) do
+ActiveRecord::Schema.define(version: 20160821091816) do
 
   create_table "promotions", force: true do |t|
     t.string   "name"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 20141111125836) do
     t.text     "codeschool_data"
     t.text     "codecademy_data"
     t.text     "codecademy_badges"
+    t.float    "note"
   end
 
 end

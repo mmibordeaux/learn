@@ -13,6 +13,7 @@
 #  codeschool_data   :text
 #  codecademy_data   :text
 #  codecademy_badges :text
+#  note              :float
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
