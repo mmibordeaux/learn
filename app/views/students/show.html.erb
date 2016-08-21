@@ -1,37 +1,57 @@
 <% title = "#{@student}" %>
 <% content_for :title do title end %>
 <h1><%= title %></h1>
-
-<%= link_to 'Edit', edit_student_path(@student), class: 'btn btn-default' %>
-<p id="notice"><%= notice %></p>
 <p><%= link_to @student.promotion, @student.promotion %></p>
+<%= link_to 'Edit', edit_student_path(@student), class: 'btn btn-default' %>
 
-<pre>
-Codecademy:
-- Learn the command line (https://www.codecademy.com/fr/learn/learn-the-command-line)         1
-- Apprendre Ruby (https://www.codecademy.com/fr/learn/ruby)                                   2
-- Learn Ruby on Rails (https://www.codecademy.com/fr/learn/learn-rails)                       2
-- Learn git (https://www.codecademy.com/fr/learn/learn-git)                                   1
+<div class="row">
+  <div class="col-md-8">
+    <ul class="items list-unstyled">
+      <%= item_in_li 'J\'apprends à utiliser le terminal', 
+            '<strong>Pourquoi&nbsp;?</strong> Parce qu\'on va utiliser le terminal (on l\'appelle aussi "la console") tout le temps&nbsp;! <strong>Comment&nbsp;?</strong> En suivant ce cours en ligne&nbsp;: <a href="https://www.codecademy.com/fr/learn/learn-the-command-line" target="_blank">Learn the command line</a>', 
+            @student.note_for('codecademy-learn-the-command-line'), 1 %>
+      <%= item_in_li 'J\'apprends Ruby', 
+            '<strong>Pourquoi&nbsp;?</strong> <strong>Comment&nbsp;?</strong> En suivant ce cours en ligne&nbsp;: <a href="https://www.codecademy.com/fr/learn/ruby" target="_blank">Apprendre Ruby</a>', 
+            @student.note_for('codecademy-learn-ruby'), 2 %>
+      <%= item_in_li 'J\'apprends Ruby On Rails', 
+            '<strong>Pourquoi&nbsp;?</strong> <strong>Comment&nbsp;?</strong> En suivant ce cours en ligne&nbsp;: <a href="https://www.codecademy.com/fr/learn/learn-rails" target="_blank">Learn Ruby on Rails</a>', 
+            @student.note_for('codecademy-learn-rails'), 3 %>
+      <%= item_in_li 'Je conforte mes acquis sur Ruby On Rails (avec des zombies)', 
+            '<strong>Pourquoi&nbsp;?</strong> <strong>Comment&nbsp;?</strong> En suivant ce cours en ligne&nbsp;: <a href="https://www.codeschool.com/courses/rails-for-zombies-redux" target="_blank">Rails for Zombies Redux</a>', 
+            @student.note_for('codeschool-rails-for-zombies-redux'), 3 %>
+      <%= item_in_li 'J\'apprends Git', 
+            '<strong>Pourquoi&nbsp;?</strong> <strong>Comment&nbsp;?</strong> En suivant ce cours en ligne&nbsp;: <a href="https://www.codecademy.com/fr/learn/learn-git" target="_blank">Learn git</a>', 
+            @student.note_for('codecademy-learn-git'), 1 %>
+      <%= item_in_li 'Je crée mon compte Github', 
+            '<strong>Pourquoi&nbsp;?</strong> <strong>Comment&nbsp;?</strong> ', 
+            @student.note_for('codecademy-learn-git'), 1 %>
+      <%= item_in_li 'Je crée ma première application Rails', 
+            '<strong>Pourquoi&nbsp;?</strong> <strong>Comment&nbsp;?</strong> ', 
+            @student.note_for('codecademy-learn-git'), 4 %>
+      <%= item_in_li 'Je mets en ligne mon app Rails sur heroku', 
+            '<strong>Pourquoi&nbsp;?</strong> <strong>Comment&nbsp;?</strong> ', 
+            @student.note_for('codecademy-learn-git'), 5 %>
+    </ul>
+  </div>
+  <div class="col-md-4">
+    <div class="big-note"><%= @student.note %>/20</div>
+  </div>
+</div>
 
-Codeschool:
-- Rails for Zombies Redux (https://www.codeschool.com/courses/rails-for-zombies-redux)        4
+<h2>Pour aller plus loin...</h2>
+<h3>... en front</h3>
+<ul>
+  <li><a href="https://www.codecademy.com/fr/learn/web" target="_blank">HTML &amp; CSS</a></li>
+  <li><a href="https://www.codecademy.com/fr/learn/make-a-website" target="_blank">Make a Website</a></li>
+  <li><a href="https://openclassrooms.com/courses/apprenez-a-creer-votre-site-web-avec-html5-et-css3" target="_blank">Apprenez à créer votre site web avec HTML5 et CSS3</a></li>
+  <li><a href="https://openclassrooms.com/courses/prenez-en-main-bootstrap" target="_blank">Prenez en main Bootstrap</a></li>
+</ul>
 
-Votre compte github:                                                                          1
-
-Le repository github de votre application Ruby on Rails:                                      4
-
-L'url sur Heroku de votre application Ruby on Rails:                                          5
-
-
-Pour aller plus loin...
-... en front
-- HTML & CSS (https://www.codecademy.com/fr/learn/web)
-- Make a Website (https://www.codecademy.com/fr/learn/make-a-website)
-- Apprenez à créer votre site web avec HTML5 et CSS3 (https://openclassrooms.com/courses/apprenez-a-creer-votre-site-web-avec-html5-et-css3)
-- Prenez en main Bootstrap (https://openclassrooms.com/courses/prenez-en-main-bootstrap)
-... en back
-- Participer à un Apéro Ruby (http://www.meetup.com/fr-FR/Ruby-Bordeaux/)
-- Participer à un hackaton ou un startup weekend
-- Utiliser Code Climate pour devenir un meilleur développeur
-- Lire Clean Code (http://ricardogeek.com/docs/clean_code.pdf)
-Programme et approche pédagogique en dialogue avec <a href="https://www.lewagon.com/programme" target="_blank">Le Wagon</a>
+<h3>... en back</h3>
+<ul>
+  <li><a href="http://www.meetup.com/fr-FR/Ruby-Bordeaux" target="_blank">Participer à un Apéro Ruby</a></li>
+  <li>Participer à un hackaton ou un startup weekend</li>
+  <li><a href="https://codeclimate.com/" target="_blank">Utiliser Code Climate pour devenir un meilleur développeur</a></li>
+  <li><a href="http://ricardogeek.com/docs/clean_code.pdf" target="_blank">Lire Clean Code</a></li>
+</ul>
+Programme et approche pédagogique con en dialogue avec <a href="https://www.lewagon.com/programme" target="_blank">Le Wagon</a>

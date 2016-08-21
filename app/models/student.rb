@@ -13,6 +13,7 @@
 #  codeschool_data   :text
 #  codecademy_data   :text
 #  codecademy_badges :text
+#  note              :float
 #
 
 class Student < ActiveRecord::Base
@@ -32,6 +33,10 @@ class Student < ActiveRecord::Base
   def sync!
     codecademy_sync!
     codeschool_sync!
+  end
+
+  def note_for(identifier)
+    0
   end
 
   def to_s

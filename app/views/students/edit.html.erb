@@ -2,7 +2,7 @@
 <% content_for :title do title end %>
 <h1><%= title %></h1>
 <%= link_to 'Show', @student, class: 'btn btn-default' %>
-<%= link_to 'Destroy', @student, class: 'btn btn-warning' , method: :delete, data: { confirm: 'Are you sure?' } %>
+<%= link_to 'Destroy', @student, class: 'btn btn-danger' , method: :delete, data: { confirm: 'Are you sure?' } %>
 
 <%= render 'form' %>
 
