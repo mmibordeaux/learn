@@ -22,6 +22,5 @@ end
 
 group :development do
 	gem 'annotate'
-	gem 'sqlite3'
 	gem 'byebug'
 end
