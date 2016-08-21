@@ -17,15 +17,18 @@
 
 class Student < ActiveRecord::Base
   belongs_to :promotion
-    default_scope { order('lastname, firstname') }
 
-    include Codeschool
-    include Codecademy
+  validates :firstname, :lastname, :promotion_id, presence: true
+  
+  default_scope { order('lastname, firstname') }
 
-    def sync!
-      codecademy_sync!
-      codeschool_sync!
-    end
+  include Codeschool
+  include Codecademy
+
+  def sync!
+    codecademy_sync!
+    codeschool_sync!
+  end
 
   def to_s
     "#{firstname} #{lastname}"

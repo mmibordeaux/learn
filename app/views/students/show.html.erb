@@ -6,40 +6,32 @@
 <p id="notice"><%= notice %></p>
 <p><%= link_to @student.promotion, @student.promotion %></p>
 
-<% if @student.codeschool %>
-  <h2>Codeschool</h2>
-  <%= link_to 'Profil', @student.codeschool_url, target: :blank %>
+<pre>
+Codecademy:
+- Learn the command line (https://www.codecademy.com/fr/learn/learn-the-command-line)         1
+- Apprendre Ruby (https://www.codecademy.com/fr/learn/ruby)                                   2
+- Learn Ruby on Rails (https://www.codecademy.com/fr/learn/learn-rails)                       2
+- Learn git (https://www.codecademy.com/fr/learn/learn-git)                                   1
 
-  <% if @student.codeschool_results? %>
-      <p>Score : <%= @student.codeschool_score %></p>
-      <ul class="list-inline">
-      <% @student.codeschool_badges.each do |badge| %>
-        <li>
-          <a href="<%= badge['course_url'] %>" target="_blank">
-            <img src="<%= badge['badge'] %>" alt="<%= badge['name'] %>" width="50"/>
-          </a>
-        </li>
-      <% end %>
-      </ul>
-  <% end %>
-<% end %>
+Codeschool:
+- Rails for Zombies Redux (https://www.codeschool.com/courses/rails-for-zombies-redux)        4
 
-<% if @student.codecademy %>
-  <h2>Codecademy</h2>
-  <%= link_to 'Profil', @student.codecademy_url, target: :blank %>
-  <% unless @student.codecademy_data.nil? %>
-    <p>Score : <%= @student.codecademy_score %></p>
-    <h3>Skills</h3>
-    <ul class="list-inline">
-      <% @student.codecademy_skills.each do |skill| %>
-        <li class="btn btn-primary btn-xs"><%= skill.text unless skill.nil? %></li>
-      <% end unless @student.codecademy_skills.nil? %>
-    </ul>
-    <h3>Badges</h3>
-    <ul class="list-inline">
-      <% @student.codecademy_badges_list.each do |badge| %>
-        <li class="btn btn-primary btn-xs"><%= badge.text unless badge.nil? %></li>
-      <% end unless @student.codecademy_badges_list.nil? %>
-    </ul>
-  <% end %>
-<% end %>
+Votre compte github:                                                                          1
+
+Le repository github de votre application Ruby on Rails:                                      4
+
+L'url sur Heroku de votre application Ruby on Rails:                                          5
+
+
+Pour aller plus loin...
+... en front
+- HTML & CSS (https://www.codecademy.com/fr/learn/web)
+- Make a Website (https://www.codecademy.com/fr/learn/make-a-website)
+- Apprenez à créer votre site web avec HTML5 et CSS3 (https://openclassrooms.com/courses/apprenez-a-creer-votre-site-web-avec-html5-et-css3)
+- Prenez en main Bootstrap (https://openclassrooms.com/courses/prenez-en-main-bootstrap)
+... en back
+- Participer à un Apéro Ruby (http://www.meetup.com/fr-FR/Ruby-Bordeaux/)
+- Participer à un hackaton ou un startup weekend
+- Utiliser Code Climate pour devenir un meilleur développeur
+- Lire Clean Code (http://ricardogeek.com/docs/clean_code.pdf)
+Programme et approche pédagogique en dialogue avec <a href="https://www.lewagon.com/programme" target="_blank">Le Wagon</a>
