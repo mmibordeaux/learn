@@ -17,9 +17,13 @@
 #
 
 class Student < ActiveRecord::Base
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable
   belongs_to :promotion
 
-  validates :firstname, :lastname, :promotion_id, presence: true
+  # validates :firstname, :lastname, :promotion_id, presence: true
   
   default_scope { order('lastname, firstname') }
 
