@@ -1,6 +1,7 @@
 development:
   adapter: postgresql
   database: mystudents
+  encoding: unicode
   host: localhost
   username: postgres
   pool: 5
