@@ -4,54 +4,42 @@
 <p><%= link_to @student.promotion, @student.promotion %></p>
 <%= link_to 'Edit', edit_student_path(@student), class: 'btn btn-default' %>
 
-<div class="row">
-  <div class="col-md-8">
-    <ul class="items list-unstyled">
-      <%= item_in_li 'J\'apprends à utiliser le terminal', 
-            '<strong>Pourquoi&nbsp;?</strong> Parce qu\'on va utiliser le terminal (on l\'appelle aussi "la console") tout le temps&nbsp;! <strong>Comment&nbsp;?</strong> En suivant ce cours en ligne&nbsp;: <a href="https://www.codecademy.com/fr/learn/learn-the-command-line" target="_blank">Learn the command line</a>', 
-            @student.note_for('codecademy-learn-the-command-line'), 1 %>
-      <%= item_in_li 'J\'apprends Ruby', 
-            '<strong>Pourquoi&nbsp;?</strong> <strong>Comment&nbsp;?</strong> En suivant ce cours en ligne&nbsp;: <a href="https://www.codecademy.com/fr/learn/ruby" target="_blank">Apprendre Ruby</a>', 
-            @student.note_for('codecademy-learn-ruby'), 2 %>
-      <%= item_in_li 'J\'apprends Ruby On Rails', 
-            '<strong>Pourquoi&nbsp;?</strong> <strong>Comment&nbsp;?</strong> En suivant ce cours en ligne&nbsp;: <a href="https://www.codecademy.com/fr/learn/learn-rails" target="_blank">Learn Ruby on Rails</a>', 
-            @student.note_for('codecademy-learn-rails'), 3 %>
-      <%= item_in_li 'Je conforte mes acquis sur Ruby On Rails (avec des zombies)', 
-            '<strong>Pourquoi&nbsp;?</strong> <strong>Comment&nbsp;?</strong> En suivant ce cours en ligne&nbsp;: <a href="https://www.codeschool.com/courses/rails-for-zombies-redux" target="_blank">Rails for Zombies Redux</a>', 
-            @student.note_for('codeschool-rails-for-zombies-redux'), 3 %>
-      <%= item_in_li 'J\'apprends Git', 
-            '<strong>Pourquoi&nbsp;?</strong> <strong>Comment&nbsp;?</strong> En suivant ce cours en ligne&nbsp;: <a href="https://www.codecademy.com/fr/learn/learn-git" target="_blank">Learn git</a>', 
-            @student.note_for('codecademy-learn-git'), 1 %>
-      <%= item_in_li 'Je crée mon compte Github', 
-            '<strong>Pourquoi&nbsp;?</strong> <strong>Comment&nbsp;?</strong> ', 
-            @student.note_for('codecademy-learn-git'), 1 %>
-      <%= item_in_li 'Je crée ma première application Rails', 
-            '<strong>Pourquoi&nbsp;?</strong> <strong>Comment&nbsp;?</strong> ', 
-            @student.note_for('codecademy-learn-git'), 4 %>
-      <%= item_in_li 'Je mets en ligne mon app Rails sur heroku', 
-            '<strong>Pourquoi&nbsp;?</strong> <strong>Comment&nbsp;?</strong> ', 
-            @student.note_for('codecademy-learn-git'), 5 %>
+<%= render 'notes', student: @student %>
+
+<% if @student.codeschool %>
+  <h2>Codeschool</h2>
+  <%= link_to 'Profil', @student.codeschool_url, target: :blank %>
+
+  <% if @student.codeschool_results? %>
+      <p>Score : <%= @student.codeschool_score %></p>
+      <ul class="list-inline">
+      <% @student.codeschool_badges.each do |badge| %>
+        <li>
+          <a href="<%= badge['course_url'] %>" target="_blank">
+            <img src="<%= badge['badge'] %>" alt="<%= badge['name'] %>" width="50"/>
+          </a>
+        </li>
+      <% end %>
+      </ul>
+  <% end %>
+<% end %>
+
+<% if @student.codecademy %>
+  <h2>Codecademy</h2>
+  <%= link_to 'Profil', @student.codecademy_url, target: :blank %>
+  <% unless @student.codecademy_data.nil? %>
+    <p>Score : <%= @student.codecademy_score %></p>
+    <h3>Skills</h3>
+    <ul class="list-inline">
+      <% @student.codecademy_skills.each do |skill| %>
+        <li class="btn btn-primary btn-xs"><%= skill.text unless skill.nil? %></li>
+      <% end unless @student.codecademy_skills.nil? %>
     </ul>
-  </div>
-  <div class="col-md-4">
-    <div class="big-note"><%= @student.note %>/20</div>
-  </div>
-</div>
-
-<h2>Pour aller plus loin...</h2>
-<h3>... en front</h3>
-<ul>
-  <li><a href="https://www.codecademy.com/fr/learn/web" target="_blank">HTML &amp; CSS</a></li>
-  <li><a href="https://www.codecademy.com/fr/learn/make-a-website" target="_blank">Make a Website</a></li>
-  <li><a href="https://openclassrooms.com/courses/apprenez-a-creer-votre-site-web-avec-html5-et-css3" target="_blank">Apprenez à créer votre site web avec HTML5 et CSS3</a></li>
-  <li><a href="https://openclassrooms.com/courses/prenez-en-main-bootstrap" target="_blank">Prenez en main Bootstrap</a></li>
-</ul>
-
-<h3>... en back</h3>
-<ul>
-  <li><a href="http://www.meetup.com/fr-FR/Ruby-Bordeaux" target="_blank">Participer à un Apéro Ruby</a></li>
-  <li>Participer à un hackaton ou un startup weekend</li>
-  <li><a href="https://codeclimate.com/" target="_blank">Utiliser Code Climate pour devenir un meilleur développeur</a></li>
-  <li><a href="http://ricardogeek.com/docs/clean_code.pdf" target="_blank">Lire Clean Code</a></li>
-</ul>
-Programme et approche pédagogique con en dialogue avec <a href="https://www.lewagon.com/programme" target="_blank">Le Wagon</a>
+    <h3>Badges</h3>
+    <ul class="list-inline">
+      <% @student.codecademy_badges_list.each do |badge| %>
+        <li class="btn btn-primary btn-xs"><%= badge.text unless badge.nil? %></li>
+      <% end unless @student.codecademy_badges_list.nil? %>
+    </ul>
+  <% end %>
+<% end %>

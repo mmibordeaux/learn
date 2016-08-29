@@ -33,10 +33,20 @@ class Student < ActiveRecord::Base
   def sync!
     codecademy_sync!
     codeschool_sync!
+    check_repository
   end
 
   def note_for(identifier)
     0
+  end
+
+  def check_repository
+    username = 'fivethirtyeight'
+    repository = 'data'
+    url = "https://api.github.com/repos/#{username}/#{repository}/languages"
+    string = open(url).read
+    hash = JSON.parse string
+    valid = hash.include? 'Ruby'
   end
 
   def to_s

@@ -1,0 +1,35 @@
+<% title = "#{@student}" %>
+<% content_for :title do title end %>
+<h1><%= title %></h1>
+<p><%= link_to @student.promotion, @student.promotion %></p>
+
+<%= render 'students/notes', student: @student %>
+
+<h2>Pour aller plus loin...</h2>
+<h3>... en front</h3>
+<ul>
+  <li><a href="https://www.codecademy.com/fr/learn/web" target="_blank">HTML &amp; CSS</a></li>
+  <li><a href="https://www.codecademy.com/fr/learn/make-a-website" target="_blank">Make a Website</a></li>
+  <li><a href="https://openclassrooms.com/courses/apprenez-a-creer-votre-site-web-avec-html5-et-css3" target="_blank">Apprenez à créer votre site web avec HTML5 et CSS3</a></li>
+  <li><a href="https://openclassrooms.com/courses/prenez-en-main-bootstrap" target="_blank">Prenez en main Bootstrap</a></li>
+</ul>
+
+<h3>... en back</h3>
+<ul>
+  <li><a href="http://www.meetup.com/fr-FR/Ruby-Bordeaux" target="_blank">Participer à un Apéro Ruby</a></li>
+  <li>Participer à un hackaton ou un startup weekend</li>
+  <li><a href="https://codeclimate.com/" target="_blank">Utiliser Code Climate pour devenir un meilleur développeur</a></li>
+  <li><a href="http://ricardogeek.com/docs/clean_code.pdf" target="_blank">Lire Clean Code</a></li>
+</ul>
+Programme et approche pédagogique con en dialogue avec <a href="https://www.lewagon.com/programme" target="_blank">Le Wagon</a>
+
+<h2>Rendez-vous</h2>
+<p>Vendredi 23 septembre : MMI 1A</p>
+<p>Vendredi 7 octobre : MMI 1A</p>
+<p>Vendredi 21 octobre : MMI 1A</p>
+<p>Vendredi 3 novembre après-midi : MMI 2A</p>
+<p>Vendredi 4 novembre : MMI 1A & 2A</p>
+<p>Vendredi 17 novembre : MMI 1A & 2A</p>
+<p>Vendredi 18 novembre : MMI 1A & 2A</p>
+<p>Vendredi 16 décembre : MMI 1A & 2A</p>
+<p>Vendredi 13 janvier : MMI 1A</p>

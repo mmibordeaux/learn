@@ -2,69 +2,25 @@
 <% content_for :title do title end %>
 <h1><%= link_to icon('refresh'), '', class: 'promotion-sync' %> <%= title %></h1>
 <%= link_to 'Edit', edit_promotion_path(@promotion), class: 'btn btn-default' %>
-
-<p id="notice"><%= notice %></p>
-<div>
-  Codecademy total : <%= @promotion.codecademy_score %><br/>
-  Copy paste the notes below<br/>
-  <textarea><%= raw @promotion.students.map { |s| s.codecademy_note.to_s.sub('.', ',') }.join("\n") %></textarea>
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Nom</th>
+        <th>Prénom</th>
+        <th>Note</th>
+        <th>Sync</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @promotion.students.each do |student| %>
+        <tr>
+          <td><%= link_to student.lastname, student %></td>
+          <td><%= link_to student.firstname, student %></td>
+          <td><%= student.note %></td>
+          <td><%= link_to icon('refresh'), sync_student_path(student), :class => 'sync' %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>
-<div>
-  Codeschool total : <%= @promotion.codeschool_score %><br/>
-  Copy paste the notes below<br/>
-  <textarea><%= raw @promotion.students.map { |s| s.codeschool_note.to_s.sub('.', ',') }.join("\n") %></textarea>
-</div>
-
-<table class="table">
-  <tr>
-    <th>Sync</th>
-    <th>Prénom</th>
-    <th>Nom</th>
-    <th>Codeschool note</th>
-    <th>Codeschool score</th>
-    <th>Codeschool badges</th>
-    <th>Codecademy note</th>
-    <th>Codecademy score</th>
-    <th>Codecademy skills</th>
-    <th>Codecademy badges</th>
-  </tr>
-<% @promotion.students.each do |student| %>
-  <tr>
-    <td><%= link_to icon('refresh'), sync_student_path(student), :class => 'sync' %></td>
-    <td><%= link_to student.firstname, student %></td>
-    <td><%= link_to student.lastname, student %></td>
-    <td><%= student.codeschool_note %></td>
-    <td><%= student.codeschool_score %></td>
-    <td>
-      <ul>
-        <% student.codeschool_badges.each do |badge| %>
-          <% unless badge.nil? %>
-            <li>
-              <a href="<%= badge['course_url'] %>" target="_blank">
-                <img src="<%= badge['badge'] %>" alt="<%= badge['name'] %>" width="50"/>
-              </a>
-            </li>
-          <% end %>
-        <% end unless student.codeschool_badges.nil? %>
-      </ul>
-    </td>
-    <td><%= student.codecademy_note %></td>
-    <td><%= student.codecademy_score %></td>
-    <td>
-      <ul class="list-inline">
-        <% student.codecademy_skills.each do |skill| %>
-          <li class="btn btn-primary btn-xs"><%= skill.text unless skill.nil? %></li>
-        <% end unless student.codecademy_skills.nil? %>
-      </ul>
-    </td>
-    <td>
-      <ul class="list-inline">
-        <% student.codecademy_badges_list.each do |badge| %>
-          <li class="btn btn-primary btn-xs"><%= badge.text unless badge.nil? %></li>
-        <% end unless student.codecademy_badges_list.nil? %>
-      </ul>
-    </td>
-  </tr>
-
-<% end %>
-</table>

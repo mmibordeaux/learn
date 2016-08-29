@@ -1,0 +1,33 @@
+<div class="row">
+  <div class="col-md-8">
+    <ul class="items list-unstyled">
+      <%= item_in_li 'J\'apprends à utiliser le terminal', 
+            '<strong>Pourquoi&nbsp;?</strong> Parce qu\'on va utiliser le terminal (on l\'appelle aussi "la console") tout le temps&nbsp;! <strong>Comment&nbsp;?</strong> En suivant ce cours en ligne&nbsp;: <a href="https://www.codecademy.com/fr/learn/learn-the-command-line" target="_blank">Learn the command line</a>', 
+            student.note_for('codecademy-learn-the-command-line'), 1 %>
+      <%= item_in_li 'J\'apprends Ruby', 
+            '<strong>Pourquoi&nbsp;?</strong> <strong>Comment&nbsp;?</strong> En suivant ce cours en ligne&nbsp;: <a href="https://www.codecademy.com/fr/learn/ruby" target="_blank">Apprendre Ruby</a>', 
+            student.note_for('codecademy-learn-ruby'), 2 %>
+      <%= item_in_li 'J\'apprends Ruby On Rails', 
+            '<strong>Pourquoi&nbsp;?</strong> <strong>Comment&nbsp;?</strong> En suivant ce cours en ligne&nbsp;: <a href="https://www.codecademy.com/fr/learn/learn-rails" target="_blank">Learn Ruby on Rails</a>', 
+            student.note_for('codecademy-learn-rails'), 3 %>
+      <%= item_in_li 'Je conforte mes acquis sur Ruby On Rails (avec des zombies)', 
+            '<strong>Pourquoi&nbsp;?</strong> <strong>Comment&nbsp;?</strong> En suivant ce cours en ligne&nbsp;: <a href="https://www.codeschool.com/courses/rails-for-zombies-redux" target="_blank">Rails for Zombies Redux</a>', 
+            student.note_for('codeschool-rails-for-zombies-redux'), 3 %>
+      <%= item_in_li 'J\'apprends Git', 
+            '<strong>Pourquoi&nbsp;?</strong> <strong>Comment&nbsp;?</strong> En suivant ce cours en ligne&nbsp;: <a href="https://www.codecademy.com/fr/learn/learn-git" target="_blank">Learn git</a>', 
+            student.note_for('codecademy-learn-git'), 1 %>
+      <%= item_in_li 'Je crée mon compte Github', 
+            '<strong>Pourquoi&nbsp;?</strong> <strong>Comment&nbsp;?</strong> ', 
+            student.note_for('codecademy-learn-git'), 1 %>
+      <%= item_in_li 'Je crée ma première application Rails', 
+            '<strong>Pourquoi&nbsp;?</strong> <strong>Comment&nbsp;?</strong> ', 
+            student.note_for('codecademy-learn-git'), 4 %>
+      <%= item_in_li 'Je mets en ligne mon app Rails sur heroku', 
+            '<strong>Pourquoi&nbsp;?</strong> <strong>Comment&nbsp;?</strong> ', 
+            student.note_for('codecademy-learn-git'), 5 %>
+    </ul>
+  </div>
+  <div class="col-md-4">
+    <div class="big-note"><%= student.note %>/20</div>
+  </div>
+</div>

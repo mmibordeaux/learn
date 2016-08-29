@@ -25,5 +25,5 @@ Mystudents::Application.routes.draw do
   resources :promotions
   resources :students
   get 'students/:id/sync' => 'students#sync', as: :sync_student
-  root 'promotions#index'
+  root 'dashboard#index'
 end

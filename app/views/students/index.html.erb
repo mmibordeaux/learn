@@ -2,8 +2,8 @@
 <% content_for :title do title end %>
 
 <h1><%= title %></h1>
-<%= link_to 'New Student', new_student_path %>
-<table class="table">
+<%= link_to 'New Student', new_student_path, class: 'btn btn-default' %>
+<table class="table table-striped">
   <thead>
     <tr>
       <th>Firstname</th>
