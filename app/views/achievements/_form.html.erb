@@ -1,4 +1,4 @@
-<%= simple_form_for @achievement, html: { class: 'form-vertical' } do |f| %>
+<%= simple_form_for @achievement do |f| %>
   <%= f.error_notification %>
   <%= f.input :title %>
   <%= f.input :text %>
@@ -7,6 +7,5 @@
   <%= f.input :identifier %>
   <%= f.input :why %>
   <%= f.input :how %>
-
-  <%= f.button :submit %>
+  <%= f.button :submit, 'Enregistrer' %>
 <% end %>

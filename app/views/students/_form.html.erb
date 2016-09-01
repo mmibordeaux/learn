@@ -1,10 +1,9 @@
-<%= simple_form_for @student, html: {class: 'form-vertical' } do |f| %>
+<%= simple_form_for @student do |f| %>
   <%= f.error_notification %>
   <%= f.input :firstname %>
   <%= f.input :lastname %>
   <%= f.association :promotion %>
   <%= f.input :codeschool %>
   <%= f.input :codecademy %>
-  <br/>
-  <%= f.button :submit %>
+  <%= f.button :submit, 'Enregistrer' %>
 <% end %>
