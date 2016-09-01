@@ -43,6 +43,8 @@ class Student < ActiveRecord::Base
 
   include Codeschool
   include Codecademy
+  include Github
+  include Heroku
 
   def sync!
     codecademy_sync!
@@ -60,15 +62,8 @@ class Student < ActiveRecord::Base
   end
 
   def note_for(achievement)
-    if achievement.identifier.start_with? 'codeschool://'
-      title = achievement.identifier.gsub 'codeschool://', ''
-      codeschool_validated?(title) ? achievement.points : 0
-    elsif achievement.identifier.start_with? 'codecademy://'
-      title = achievement.identifier.gsub 'codecademy://', ''
-      codecademy_validated?(title) ? achievement.points : 0
-    else
-      0
-    end
+    service, title = achievement.identifier.split('://')
+    send("#{service}_validated?", title) ? achievement.points : 0
   end
 
   def check_repository

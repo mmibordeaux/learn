@@ -5,5 +5,8 @@
   <%= f.association :promotion %>
   <%= f.input :codeschool %>
   <%= f.input :codecademy %>
+  <%= f.input :github_identifier, label: 'Entrez votre identifiant Github. Par exemple, si votre page sur Github est "https://github.com/arnaudlevy", entrez l\'identifiant "arnaudlevy"' %>
+  <%= f.input :github_repository, label: 'Entrez le nom de votre application Rails sur Github. Par exemple, si votre référentiel sur Github est "https://github.com/arnaudlevy/mystudents", entrez l\'identifiant "mystudents"' %>
+  <%= f.input :heroku_app, label: 'Entrez l\'identifiant de votre application Rails sur Heroku. Par exemple, si votre page sur Github est "https://mystudents.herokapp.com", entrez l\'identifiant "mystudents"' %>
   <%= f.button :submit, 'Enregistrer' %>
 <% end %>
