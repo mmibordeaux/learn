@@ -15,4 +15,8 @@ class ApplicationController < ActionController::Base
       username == ENV['HTTP_USER'] && password == ENV['HTTP_PASS']
     end if Rails.env.production?
   end
+
+  def admin_only
+    raise ActionController::RoutingError, 'Forbidden' #unless current_student.admin
+  end
 end

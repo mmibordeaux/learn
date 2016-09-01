@@ -18,6 +18,7 @@ class AchievementsController < ApplicationController
   end
 
   def edit
+    admin_only
   end
 
   def create
