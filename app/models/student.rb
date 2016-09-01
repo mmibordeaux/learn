@@ -2,18 +2,32 @@
 #
 # Table name: students
 #
-#  id                :integer          not null, primary key
-#  firstname         :string(255)
-#  lastname          :string(255)
-#  codeschool        :string(255)
-#  codecademy        :string(255)
-#  promotion_id      :integer
-#  created_at        :datetime
-#  updated_at        :datetime
-#  codeschool_data   :text
-#  codecademy_data   :text
-#  codecademy_badges :text
-#  note              :float
+#  id                     :integer          not null, primary key
+#  firstname              :string(255)
+#  lastname               :string(255)
+#  codeschool             :string(255)
+#  codecademy             :string(255)
+#  promotion_id           :integer
+#  created_at             :datetime
+#  updated_at             :datetime
+#  codeschool_data        :text
+#  codecademy_data        :text
+#  codecademy_badges      :text
+#  note                   :float
+#  email                  :string(255)      default(""), not null
+#  encrypted_password     :string(255)      default(""), not null
+#  reset_password_token   :string(255)
+#  reset_password_sent_at :datetime
+#  remember_created_at    :datetime
+#  sign_in_count          :integer          default(0), not null
+#  current_sign_in_at     :datetime
+#  last_sign_in_at        :datetime
+#  current_sign_in_ip     :string(255)
+#  last_sign_in_ip        :string(255)
+#  github_identifier      :string(255)
+#  github_repository      :string(255)
+#  heroku_app             :string(255)
+#  admin                  :boolean          default(FALSE)
 #
 
 class Student < ActiveRecord::Base
@@ -23,8 +37,8 @@ class Student < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   belongs_to :promotion
 
-  # validates :firstname, :lastname, :promotion_id, presence: true
-  
+  validates_uniqueness_of :codeschool, :codecademy
+
   default_scope { order('lastname, firstname') }
 
   include Codeschool
@@ -34,10 +48,27 @@ class Student < ActiveRecord::Base
     codecademy_sync!
     codeschool_sync!
     check_repository
+    compute_note
   end
 
-  def note_for(identifier)
-    0
+  def compute_note
+    note = 0
+    Achievement.all.each do |achievement|
+      note += note_for achievement
+    end
+    self.update_column :note, note
+  end
+
+  def note_for(achievement)
+    if achievement.identifier.start_with? 'codeschool://'
+      title = achievement.identifier.gsub 'codeschool://', ''
+      codeschool_validated?(title) ? achievement.points : 0
+    elsif achievement.identifier.start_with? 'codecademy://'
+      title = achievement.identifier.gsub 'codecademy://', ''
+      codecademy_validated?(title) ? achievement.points : 0
+    else
+      0
+    end
   end
 
   def check_repository

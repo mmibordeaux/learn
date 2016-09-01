@@ -1,0 +1,35 @@
+# == Schema Information
+#
+# Table name: achievements
+#
+#  id         :integer          not null, primary key
+#  title      :string(255)
+#  text       :text
+#  position   :integer
+#  points     :integer
+#  identifier :string(255)
+#  why        :text
+#  how        :text
+#  created_at :datetime
+#  updated_at :datetime
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  text: MyText
+  position: 1
+  points: 1
+  identifier: MyString
+  why: MyText
+  how: MyText
+
+two:
+  title: MyString
+  text: MyText
+  position: 1
+  points: 1
+  identifier: MyString
+  why: MyText
+  how: MyText

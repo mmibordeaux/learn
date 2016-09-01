@@ -46,7 +46,10 @@ class StudentsController < ApplicationController
 
   def sync
     @student.sync!
-    render text: 'ok' 
+    respond_to do |format|
+      format.html { redirect_to :back }
+      format.json { render text: 'ok' }
+    end
   end
 
   private
@@ -57,6 +60,6 @@ class StudentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def student_params
-      params.require(:student).permit(:firstname, :lastname, :codeschool, :codecademy, :promotion_id)
+      params.require(:student).permit(:firstname, :lastname, :codeschool, :codecademy, :promotion_id, :github_identifier, :github_repository, :heroku_app)
     end
 end

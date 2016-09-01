@@ -1,0 +1,12 @@
+<%= simple_form_for @achievement, html: { class: 'form-vertical' } do |f| %>
+  <%= f.error_notification %>
+  <%= f.input :title %>
+  <%= f.input :text %>
+  <%= f.input :position %>
+  <%= f.input :points %>
+  <%= f.input :identifier %>
+  <%= f.input :why %>
+  <%= f.input :how %>
+
+  <%= f.button :submit %>
+<% end %>

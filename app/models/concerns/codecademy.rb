@@ -2,11 +2,11 @@ module Codecademy
   extend ActiveSupport::Concern
 
   def codecademy_url
-    "http://www.codecademy.com/fr/#{codecademy}"
+    "https://www.codecademy.com/fr/#{codecademy}"
   end
 
   def codecademy_badges_url
-    "http://www.codecademy.com/fr/users/#{codecademy}/achievements"
+    "https://www.codecademy.com/fr/users/#{codecademy}/achievements"
   end
 
   def codecademy_html
@@ -14,7 +14,15 @@ module Codecademy
   end
 
   def codecademy_badges_html
-    Nokogiri::HTML(self.codecademy_badges) # TODO codecademy_badges_data
+    Nokogiri::HTML(self.codecademy_badges)
+  end
+
+  def codecademy_validated?(title)
+    return false if codecademy_skills.empty?
+    codecademy_skills.each do |node|
+      return true if node.content == title
+    end
+    return false
   end
 
   def codecademy_score
@@ -45,14 +53,6 @@ module Codecademy
   # TODO rename the db field badges_data
   def codecademy_badges_list
     codecademy_badges_html.css('.achievements h5') unless codecademy_data.nil?
-  end
-
-  def codecademy_note
-    if codecademy_score.nil?
-      0
-    else
-      Note.make(codecademy_score, [[50, 8], [100, 14], [150, 16], [250, 18], [500, 20]])
-    end
   end
 
   def codecademy_sync!

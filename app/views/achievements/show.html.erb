@@ -1,0 +1,7 @@
+<h1><%= @achievement.title %></h1>
+<%= link_to 'Edit', edit_achievement_path(@achievement), class: 'btn btn-default' %>
+<p><%= @achievement.text %></p>
+<h2>Pourquoi ?</h2>
+<p><%= simple_format@achievement.why %></p>
+<h2>Comment ?</h2>
+<p><%= simple_format @achievement.how %></p>

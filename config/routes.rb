@@ -21,6 +21,8 @@
 #
 
 Mystudents::Application.routes.draw do
+  resources :achievements
+
   devise_for :students
   resources :promotions
   resources :students

@@ -1,33 +1,60 @@
+<%= link_to 'Rafraîchir les données', sync_student_path(student), class: 'btn btn-default' %>
 <div class="row">
-  <div class="col-md-8">
+  <div class="col-md-9">
     <ul class="items list-unstyled">
-      <%= item_in_li 'J\'apprends à utiliser le terminal', 
+      <% Achievement.all.each do |achievement| %>
+        <% points = @student.note_for achievement %>
+        <li>
+          <div class="row">
+            <div class="col-md-1 is-done">
+              <p>
+                <% if achievement.done_by? @student %>
+                  <i class="fa fa-check-circle-o correct"></i>
+                <% else %>
+                  <i class="fa fa-circle-o"></i>
+                <% end %>
+              </p>
+            </div>
+            <div class="col-md-9">
+              <h2><%= link_to achievement.title, achievement %></h2>
+              <p>
+                <strong>Pourquoi ?</strong>
+                <%= raw achievement.why %>
+                <strong>Comment ?</strong>
+                <%= raw achievement.how %>
+              </p>
+            </div>
+            <div class="col-md-2 note"><%= achievement.points_by(@student) %>/<%= achievement.points %></div>
+          </div>
+        </li>
+      <% end %>
+      J'apprends à utiliser le terminal', 
             '<strong>Pourquoi&nbsp;?</strong> Parce qu\'on va utiliser le terminal (on l\'appelle aussi "la console") tout le temps&nbsp;! <strong>Comment&nbsp;?</strong> En suivant ce cours en ligne&nbsp;: <a href="https://www.codecademy.com/fr/learn/learn-the-command-line" target="_blank">Learn the command line</a>', 
             student.note_for('codecademy-learn-the-command-line'), 1 %>
-      <%= item_in_li 'J\'apprends Ruby', 
-            '<strong>Pourquoi&nbsp;?</strong> <strong>Comment&nbsp;?</strong> En suivant ce cours en ligne&nbsp;: <a href="https://www.codecademy.com/fr/learn/ruby" target="_blank">Apprendre Ruby</a>', 
+      J'apprends Ruby', 
+            '<strong>Pourquoi&nbsp;?</strong> Parce que c\'est un beau langage élégant.<strong>Comment&nbsp;?</strong> En suivant ce cours en ligne&nbsp;: <a href="https://www.codecademy.com/fr/learn/ruby" target="_blank">Apprendre Ruby</a>', 
             student.note_for('codecademy-learn-ruby'), 2 %>
-      <%= item_in_li 'J\'apprends Ruby On Rails', 
-            '<strong>Pourquoi&nbsp;?</strong> <strong>Comment&nbsp;?</strong> En suivant ce cours en ligne&nbsp;: <a href="https://www.codecademy.com/fr/learn/learn-rails" target="_blank">Learn Ruby on Rails</a>', 
+      J'apprends Ruby On Rails', 
+            '<strong>Pourquoi&nbsp;?</strong>Parce que c\'est un excellent framework pour faire des applications web orientées data, très utilisé par les startups (<a href="https://skillcrush.com/2015/02/02/37-rails-sites/">Airbnb, 500px...</a>).<strong>Comment&nbsp;?</strong> En suivant ce cours en ligne&nbsp;: <a href="https://www.codecademy.com/fr/learn/learn-rails" target="_blank">Learn Ruby on Rails</a>', 
             student.note_for('codecademy-learn-rails'), 3 %>
-      <%= item_in_li 'Je conforte mes acquis sur Ruby On Rails (avec des zombies)', 
+      Je conforte mes acquis sur Ruby On Rails (avec des zombies)', 
             '<strong>Pourquoi&nbsp;?</strong> <strong>Comment&nbsp;?</strong> En suivant ce cours en ligne&nbsp;: <a href="https://www.codeschool.com/courses/rails-for-zombies-redux" target="_blank">Rails for Zombies Redux</a>', 
             student.note_for('codeschool-rails-for-zombies-redux'), 3 %>
-      <%= item_in_li 'J\'apprends Git', 
-            '<strong>Pourquoi&nbsp;?</strong> <strong>Comment&nbsp;?</strong> En suivant ce cours en ligne&nbsp;: <a href="https://www.codecademy.com/fr/learn/learn-git" target="_blank">Learn git</a>', 
+      J'apprends Git', 
+            '<strong>Pourquoi&nbsp;?</strong> Parce qu\'un développeur digne de ce nom versionne son code, et que Git est l\'état de l\'art en ce domaine.<strong>Comment&nbsp;?</strong> En suivant ce cours en ligne&nbsp;: <a href="https://www.codecademy.com/fr/learn/learn-git" target="_blank">Learn git</a>', 
             student.note_for('codecademy-learn-git'), 1 %>
-      <%= item_in_li 'Je crée mon compte Github', 
+      Je crée mon compte Github', 
             '<strong>Pourquoi&nbsp;?</strong> <strong>Comment&nbsp;?</strong> ', 
             student.note_for('codecademy-learn-git'), 1 %>
-      <%= item_in_li 'Je crée ma première application Rails', 
+      Je crée ma première application Rails', 
             '<strong>Pourquoi&nbsp;?</strong> <strong>Comment&nbsp;?</strong> ', 
             student.note_for('codecademy-learn-git'), 4 %>
-      <%= item_in_li 'Je mets en ligne mon app Rails sur heroku', 
+      Je mets en ligne mon app Rails sur heroku', 
             '<strong>Pourquoi&nbsp;?</strong> <strong>Comment&nbsp;?</strong> ', 
             student.note_for('codecademy-learn-git'), 5 %>
     </ul>
   </div>
-  <div class="col-md-4">
+  <div class="col-md-3">
     <div class="big-note"><%= student.note %>/20</div>
   </div>
 </div>
