@@ -63,7 +63,12 @@ class Student < ActiveRecord::Base
 
   def note_for(achievement)
     service, title = achievement.identifier.split('://')
-    send("#{service}_validated?", title) ? achievement.points : 0
+    command = "#{service}_validated?"
+    if respond_to? command
+      send(command, title) ? achievement.points : 0
+    else
+      0
+    end
   end
 
   def check_repository
