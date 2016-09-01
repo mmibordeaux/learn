@@ -4,6 +4,7 @@ class AchievementsController < ApplicationController
   respond_to :html
 
   def index
+    admin_only
     @achievements = Achievement.all
     respond_with(@achievements)
   end

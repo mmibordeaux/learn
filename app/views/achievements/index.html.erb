@@ -11,8 +11,6 @@
       <th>Why</th>
       <th>How</th>
       <th></th>
-      <th></th>
-      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -25,9 +23,10 @@
         <td><%= achievement.identifier %></td>
         <td><%= achievement.why %></td>
         <td><%= achievement.how %></td>
-        <td><%= link_to 'Show', achievement %></td>
-        <td><%= link_to 'Edit', edit_achievement_path(achievement) if current_student.admin %></td>
-        <td><%= link_to 'Destroy', achievement, method: :delete, data: { confirm: 'Are you sure?' } if current_student.admin %> %></td>
+        <td>
+          <%= link_to 'Edit', edit_achievement_path(achievement) if current_student.admin %>
+          <%= link_to 'Destroy', achievement, method: :delete, data: { confirm: 'Are you sure?' } if current_student.admin %>
+        </td>
       </tr>
     <% end %>
   </tbody>
