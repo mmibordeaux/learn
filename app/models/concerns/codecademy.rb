@@ -18,7 +18,7 @@ module Codecademy
   end
 
   def codecademy_validated?(title)
-    return false if codecademy_skills.empty?
+    return false if codecademy_skills.nil? or codecademy_skills.empty?
     codecademy_skills.each do |node|
       return true if node.content == title
     end
