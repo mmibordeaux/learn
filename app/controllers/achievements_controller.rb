@@ -13,6 +13,7 @@ class AchievementsController < ApplicationController
   end
 
   def new
+    admin_only
     @achievement = Achievement.new
     respond_with(@achievement)
   end
@@ -22,17 +23,20 @@ class AchievementsController < ApplicationController
   end
 
   def create
+    admin_only
     @achievement = Achievement.new(achievement_params)
     @achievement.save
     respond_with(@achievement)
   end
 
   def update
+    admin_only
     @achievement.update(achievement_params)
     respond_with(@achievement)
   end
 
   def destroy
+    admin_only
     @achievement.destroy
     respond_with(@achievement)
   end

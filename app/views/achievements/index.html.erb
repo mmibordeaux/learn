@@ -18,7 +18,7 @@
   <tbody>
     <% @achievements.each do |achievement| %>
       <tr>
-        <td><%= achievement.title %></td>
+        <td><%= link_to achievement.title, achievement %></td>
         <td><%= achievement.text %></td>
         <td><%= achievement.position %></td>
         <td><%= achievement.points %></td>
@@ -26,8 +26,8 @@
         <td><%= achievement.why %></td>
         <td><%= achievement.how %></td>
         <td><%= link_to 'Show', achievement %></td>
-        <td><%= link_to 'Edit', edit_achievement_path(achievement) %></td>
-        <td><%= link_to 'Destroy', achievement, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Edit', edit_achievement_path(achievement) if current_student.admin %></td>
+        <td><%= link_to 'Destroy', achievement, method: :delete, data: { confirm: 'Are you sure?' } if current_student.admin %> %></td>
       </tr>
     <% end %>
   </tbody>

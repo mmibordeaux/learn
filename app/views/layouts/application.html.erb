@@ -32,9 +32,9 @@
               <li>
                 <%= link_to 'Etudiants', students_path %>
               </li>
-              <li>
-                <%= link_to 'Réalisations', achievements_path %>
-              </li>
+              <% if current_student.admin %>
+                <li><%= link_to 'Réalisations', achievements_path %></li>
+              <% end %>
             <% end %>
           </ul>
         </div><!--/.nav-collapse -->
