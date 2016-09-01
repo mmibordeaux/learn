@@ -49,7 +49,6 @@ class Student < ActiveRecord::Base
   def sync!
     codecademy_sync!
     codeschool_sync!
-    check_repository
     compute_note
   end
 
@@ -69,15 +68,6 @@ class Student < ActiveRecord::Base
     else
       0
     end
-  end
-
-  def check_repository
-    username = 'fivethirtyeight'
-    repository = 'data'
-    url = "https://api.github.com/repos/#{username}/#{repository}/languages"
-    string = open(url).read
-    hash = JSON.parse string
-    valid = hash.include? 'Ruby'
   end
 
   def to_s
