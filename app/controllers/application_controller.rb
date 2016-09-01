@@ -17,6 +17,6 @@ class ApplicationController < ActionController::Base
   end
 
   def admin_only
-    raise ActionController::RoutingError, 'Forbidden' #unless current_student.admin
+    raise ActionController::RoutingError, 'Forbidden' unless current_student.admin
   end
 end
