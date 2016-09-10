@@ -2,7 +2,7 @@
 <% content_for :title do title end %>
 <h1><%= title %></h1>
 <p><%= link_to @student.promotion, @student.promotion %></p>
-<%= link_to 'Mettre à jour mon profil', edit_student_path(@student), class: 'btn btn-default' %>
+<%= link_to 'Mettre à jour mon profil', me_path, class: 'btn btn-default' %>
 
 <%= render 'students/notes', student: @student %>
 
