@@ -24,7 +24,7 @@
                 <%= raw achievement.how %>
               </p>
             </div>
-            <div class="col-md-2 note"><%= achievement.points_by(@student) %>/<%= achievement.points %></div>
+            <div class="col-md-2 note <%= achievement.done_by?(@student) ? 'correct' : 'incorrect' %> "><%= achievement.points_by(@student) %>/<%= achievement.points %></div>
           </div>
         </li>
       <% end %>
