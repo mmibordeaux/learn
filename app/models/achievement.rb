@@ -18,7 +18,7 @@ class Achievement < ActiveRecord::Base
 
   default_scope { order(:position) }
 
-	def done_by?(student)
+  def done_by?(student)
     points_by(student) > 0
   end
 
