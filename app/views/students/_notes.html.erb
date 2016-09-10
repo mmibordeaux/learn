@@ -1,4 +1,4 @@
-<%= link_to 'Rafraîchir les données', sync_student_path(student), class: 'btn btn-default' %>
+<%= link_to 'Rafraîchir les données', sync_student_path(student), class: 'btn btn-default' if current_student.admin %>
 <div class="row">
   <div class="col-md-9">
     <ul class="items list-unstyled">
@@ -11,7 +11,7 @@
                 <% if achievement.done_by? @student %>
                   <i class="fa fa-check-circle-o correct"></i>
                 <% else %>
-                  <i class="fa fa-circle-o"></i>
+                  <i class="fa fa-circle-o incorrect"></i>
                 <% end %>
               </p>
             </div>

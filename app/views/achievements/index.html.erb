@@ -1,5 +1,5 @@
 <h1>Réalisations</h1>
-<%= link_to 'Nouvelle réalisation', new_achievement_path, class: 'btn btn-default' %>
+<%= link_to 'Nouvelle réalisation', new_achievement_path, class: 'btn btn-default' if current_student.admin %>
 <table class="table table-striped">
   <thead>
     <tr>

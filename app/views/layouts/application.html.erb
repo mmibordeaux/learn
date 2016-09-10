@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%= content_for?(:title) ? yield(:title) : "My Students" %></title>
+    <title><%= content_for?(:title) ? yield(:title) : "Learn" %></title>
     <%= stylesheet_link_tag "application" %>
     <%= csrf_meta_tags %>
   </head>
@@ -17,7 +17,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="<%= root_path %>">My Students</a>
+          <a class="navbar-brand" href="<%= root_path %>"><%= icon :bolt %> Learn</a>
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav pull-right">

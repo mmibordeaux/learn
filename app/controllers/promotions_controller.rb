@@ -1,5 +1,4 @@
 class PromotionsController < ApplicationController
-  respond_to :html, :json
   before_action :set_promotion, only: [:show, :edit, :update, :destroy]
 
   # GET /promotions
@@ -15,16 +14,19 @@ class PromotionsController < ApplicationController
 
   # GET /promotions/new
   def new
+    admin_only
     @promotion = Promotion.new
   end
 
   # GET /promotions/1/edit
   def edit
+    admin_only
   end
 
   # POST /promotions
   # POST /promotions.json
   def create
+    admin_only
     @promotion = Promotion.new(promotion_params)
     flash[:notice] = 'Promotion was successfully created.' if @promotion.save
     respond_with @promotion
@@ -33,6 +35,7 @@ class PromotionsController < ApplicationController
   # PATCH/PUT /promotions/1
   # PATCH/PUT /promotions/1.json
   def update
+    admin_only
     flash[:notice] = 'Promotion was successfully updated.' if @promotion.update(promotion_params)
     respond_with @promotion
   end
@@ -40,6 +43,7 @@ class PromotionsController < ApplicationController
   # DELETE /promotions/1
   # DELETE /promotions/1.json
   def destroy
+    admin_only
     @promotion.destroy
     respond_with @promotion
   end

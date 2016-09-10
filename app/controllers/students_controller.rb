@@ -15,16 +15,19 @@ class StudentsController < ApplicationController
 
   # GET /students/new
   def new
+    admin_only
     @student = Student.new
   end
 
   # GET /students/1/edit
   def edit
+    admin_only
   end
 
   # POST /students
   # POST /students.json
   def create
+    admin_only
     @student = Student.new(student_params)
     flash[:notice] = 'Student was successfully created.' if @student.save
     respond_with @student
@@ -33,6 +36,7 @@ class StudentsController < ApplicationController
   # PATCH/PUT /students/1
   # PATCH/PUT /students/1.json
   def update
+    admin_only
     flash[:notice] = 'Student was successfully updated.' if @student.update(student_params)
     respond_with @student
   end
@@ -40,11 +44,13 @@ class StudentsController < ApplicationController
   # DELETE /students/1
   # DELETE /students/1.json
   def destroy
+    admin_only
     @student.destroy
     respond_with @student
   end
 
   def sync
+    admin_only
     @student.sync!
     respond_to do |format|
       format.html { redirect_to :back }

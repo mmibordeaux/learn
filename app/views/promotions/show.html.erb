@@ -1,7 +1,7 @@
 <% title = "#{@promotion}" %>
 <% content_for :title do title end %>
-<h1><%= link_to icon('refresh'), '', class: 'promotion-sync' %> <%= title %></h1>
-<%= link_to 'Edit', edit_promotion_path(@promotion), class: 'btn btn-default' %>
+<h1><%= link_to icon('refresh'), '', class: 'promotion-sync' if current_student.admin %> <%= title %></h1>
+<%= link_to 'Edit', edit_promotion_path(@promotion), class: 'btn btn-default' if current_student.admin %>
 <div class="table-responsive">
   <table class="table table-striped">
     <thead>
@@ -9,7 +9,7 @@
         <th>Nom</th>
         <th>Prénom</th>
         <th>Note</th>
-        <th>Sync</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -18,7 +18,7 @@
           <td><%= link_to student.lastname, student %></td>
           <td><%= link_to student.firstname, student %></td>
           <td><%= student.note %></td>
-          <td><%= link_to icon('refresh'), sync_student_path(student), :class => 'sync' %></td>
+          <td><%= link_to icon('refresh'), sync_student_path(student), :class => 'sync' if current_student.admin %></td>
         </tr>
       <% end %>
     </tbody>

@@ -1,5 +1,5 @@
 <h1><%= @achievement.title %></h1>
-<%= link_to 'Edit', edit_achievement_path(@achievement), class: 'btn btn-default' %>
+<%= link_to 'Edit', edit_achievement_path(@achievement), class: 'btn btn-default' if current_student.admin %>
 <p><%= @achievement.text %></p>
 <h2>Pourquoi ?</h2>
 <p><%= simple_format@achievement.why %></p>

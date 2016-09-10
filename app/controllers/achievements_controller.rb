@@ -1,10 +1,8 @@
 class AchievementsController < ApplicationController
   before_action :set_achievement, only: [:show, :edit, :update, :destroy]
-
-  respond_to :html
+  before_action :admin_only, except: :show
 
   def index
-    admin_only
     @achievements = Achievement.all
     respond_with(@achievements)
   end
@@ -14,30 +12,25 @@ class AchievementsController < ApplicationController
   end
 
   def new
-    admin_only
     @achievement = Achievement.new
     respond_with(@achievement)
   end
 
   def edit
-    admin_only
   end
 
   def create
-    admin_only
     @achievement = Achievement.new(achievement_params)
     @achievement.save
     respond_with(@achievement)
   end
 
   def update
-    admin_only
     @achievement.update(achievement_params)
     respond_with(@achievement)
   end
 
   def destroy
-    admin_only
     @achievement.destroy
     respond_with(@achievement)
   end

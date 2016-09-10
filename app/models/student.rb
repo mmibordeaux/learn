@@ -52,6 +52,10 @@ class Student < ActiveRecord::Base
     compute_note
   end
 
+  def admin
+    false
+  end
+
   def compute_note
     note = 0
     Achievement.all.each do |achievement|
