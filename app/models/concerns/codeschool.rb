@@ -22,6 +22,7 @@ module Codeschool
   end
 
   def codeschool_validated?(title)
+    return false if codeschool_data.nil? or codeschool_data.empty?
     codeschool_data.include? title
   end
 
