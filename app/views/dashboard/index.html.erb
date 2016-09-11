@@ -10,17 +10,12 @@
       <% Achievement.all.each do |achievement| %>
         <% points = @student.note_for achievement %>
         <li>
-          <div class="row">
-            <div class="col-md-1 is-done">
-              <p>
-                <% if achievement.done_by? @student %>
-                  <i class="fa fa-check-circle-o correct"></i>
-                <% else %>
-                  <i class="fa fa-circle-o incorrect"></i>
-                <% end %>
-              </p>
+          <div class="row achievement">
+            <div class="col-md-2 col-xs-12 is-done">
+              <div class="checkmark"><i class="fa <%= achievement.done_by?(@student) ? 'fa-check-circle-o correct' : 'fa-circle-o incorrect' %>"></i></div>
+              <div class="note"><%= achievement.points_by(@student) %>/<%= achievement.points %></div>
             </div>
-            <div class="col-md-9">
+            <div class="col-md-10 col-xs-12 text">
               <h2><%= link_to achievement.title, achievement %></h2>
               <p>
                 <strong>Pourquoi ?</strong>
@@ -29,7 +24,6 @@
                 <%= raw achievement.how %>
               </p>
             </div>
-            <div class="col-md-2 note"><%= achievement.points_by(@student) %>/<%= achievement.points %></div>
           </div>
         </li>
       <% end %>

@@ -1,33 +1,27 @@
 <h1>Réalisations</h1>
 <%= link_to 'Nouvelle réalisation', new_achievement_path, class: 'btn btn-default' if current_student.admin %>
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Text</th>
-      <th>Position</th>
-      <th>Points</th>
-      <th>Identifier</th>
-      <th>Why</th>
-      <th>How</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @achievements.each do |achievement| %>
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
       <tr>
-        <td><%= link_to achievement.title, achievement %></td>
-        <td><%= achievement.text %></td>
-        <td><%= achievement.position %></td>
-        <td><%= achievement.points %></td>
-        <td><%= achievement.identifier %></td>
-        <td><%= achievement.why %></td>
-        <td><%= achievement.how %></td>
-        <td>
-          <%= link_to 'Edit', edit_achievement_path(achievement) if current_student.admin %>
-          <%= link_to 'Destroy', achievement, method: :delete, data: { confirm: 'Are you sure?' } if current_student.admin %>
-        </td>
+        <th>Title</th>
+        <th>Why</th>
+        <th>How</th>
+        <th></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @achievements.each do |achievement| %>
+        <tr>
+          <td><%= link_to achievement.title, achievement %></td>
+          <td><%= achievement.why %></td>
+          <td><%= achievement.how %></td>
+          <td>
+            <%= link_to 'Edit', edit_achievement_path(achievement), class: 'btn btn-default btn-xs' if current_student.admin %>
+            <%= link_to 'Destroy', achievement, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-xs' if current_student.admin %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

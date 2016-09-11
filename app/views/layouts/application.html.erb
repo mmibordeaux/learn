@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%= content_for?(:title) ? yield(:title) : "Learn" %></title>
     <%= stylesheet_link_tag "application" %>
+    <%= favicon_link_tag 'favicon-bolt.ico' %>
     <%= csrf_meta_tags %>
   </head>
   <body>
@@ -35,8 +36,18 @@
       </div>
     </div>
     <div class="container">
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
+      <% unless notice.nil? %>
+        <p class="alert alert-success">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+          <%= notice %>
+        </p>
+      <% end %>
+      <% unless alert.nil? %>
+        <p class="alert alert-warning">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+          <%= alert %>
+        </p>
+      <% end %>
       <div>
         <%= yield %>
       </div>

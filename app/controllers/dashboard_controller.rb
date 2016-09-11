@@ -9,7 +9,7 @@ class DashboardController < ApplicationController
 
   def update_me
     @student = current_student
-    flash[:notice] = 'Student was successfully updated.' if @student.update(student_params)
+    flash[:notice] = 'Profil mis à jour' if @student.update(student_params)
     redirect_to :root
   end
 

@@ -1,16 +1,21 @@
-<% title = "#{@student} - edit" %>
+<% title = "Mon profil" %>
 <% content_for :title do title end %>
 <h1><%= title %></h1>
 <%= simple_form_for @student, url: update_me_path do |f| %>
   <%= f.error_notification %>
-  <%= f.input :firstname %>
-  <%= f.input :lastname %>
-  <%= f.association :promotion %>
-  <%= f.input :codeschool %>
-  <%= f.input :codecademy %>
-  <%= f.input :github_identifier, label: 'Entrez votre identifiant Github. Par exemple, si votre page sur Github est "https://github.com/arnaudlevy", entrez l\'identifiant "arnaudlevy"' %>
-  <%= f.input :github_repository, label: 'Entrez le nom de votre application Rails sur Github. Par exemple, si votre référentiel sur Github est "https://github.com/arnaudlevy/mystudents", entrez l\'identifiant "mystudents"' %>
-  <%= f.input :heroku_app, label: 'Entrez l\'identifiant de votre application Rails sur Heroku. Par exemple, si votre page sur Github est "https://mystudents.herokapp.com", entrez l\'identifiant "mystudents"' %>
-  <%= f.button :submit, 'Enregistrer' %>
+  <div class="row">
+    <div class="col-md-6">
+      <%= f.input :firstname, label: 'Prénom' %>
+      <%= f.input :lastname, label: 'Nom' %>
+      <%= f.association :promotion %>
+      <%= f.button :submit, 'Enregistrer' %>
+    </div>
+    <div class="col-md-6">
+      <%= f.input :codeschool, label: 'Entrez votre identifiant Codecademy', hint: 'Par exemple, si votre page sur Codecademy est "https://www.codecademy.com/fr/arnaudlevy", entrez l\'identifiant "arnaudlevy".' %>
+      <%= f.input :codecademy, label: 'Entrez votre identifiant Codeschool', hint: 'Par exemple, si votre page sur Codeschool est "https://www.codeschool.com/users/arnaudlevy", entrez l\'identifiant "arnaudlevy". Attention, dans "My report card" il faut rendre le profil public ("Make Public")' %>
+      <%= f.input :github_identifier, label: 'Entrez votre identifiant Github', hint: 'Par exemple, si votre page sur Github est "https://github.com/arnaudlevy", entrez l\'identifiant "arnaudlevy"' %>
+      <%= f.input :github_repository, label: 'Entrez le nom de votre application Rails sur Github', hint: 'Par exemple, si votre référentiel sur Github est "https://github.com/arnaudlevy/mystudents", entrez l\'identifiant "mystudents"' %>
+      <%= f.input :heroku_app, label: 'Entrez l\'identifiant de votre application Rails sur Heroku', hint: 'Par exemple, si votre page sur Github est "https://mystudents.herokapp.com", entrez l\'identifiant "mystudents"' %>
+    </div>
+  </div>
 <% end %>
-
