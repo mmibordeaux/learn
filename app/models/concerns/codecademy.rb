@@ -58,9 +58,9 @@ module Codecademy
   def codecademy_sync!
     begin
       require 'open-uri'
-      self.codecademy_data = open(codecademy_url).read.html_safe
-      self.codecademy_badges = open(codecademy_badges_url).read.html_safe
-      self.save
+      codecademy_data = open(codecademy_url).read.html_safe
+      codecademy_badges = open(codecademy_badges_url).read.html_safe
+      update_columns codecademy_data: codecademy_data, codecademy_badges: codecademy_badges
     rescue
     end
   end

@@ -45,8 +45,8 @@ module Codeschool
     begin
       require 'open-uri'
       require 'json'
-      self.codeschool_data = open(codeschool_json_url).read
-      self.save
+      data = open(codeschool_json_url).read
+      update_column :codeschool_data, data
     rescue
     end
   end

@@ -7,8 +7,8 @@ module Github
       # TODO check if exists
       return false if github_identifier.nil? 
       return false if github_identifier.empty?
-      return false unless account_exists?
-      true
+      return true if account_exists?
+      false
     when 'rails_repository_created'
       # TODO check if exists, and is Ruby app
       return false if github_repository.nil? 
