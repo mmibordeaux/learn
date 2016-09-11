@@ -4,17 +4,15 @@ module Github
   def github_validated?(title)
     case title 
     when 'account_created'
-      # TODO check if exists
       return false if github_identifier.nil? 
       return false if github_identifier.empty?
-      return true if account_exists?
+      # return true if account_exists?
       false
     when 'rails_repository_created'
-      # TODO check if exists, and is Ruby app
       return false if github_repository.nil? 
       return false if github_repository.empty?
-      return false unless repository_exists?
-      return false unless repository_is_ruby?
+      # return false unless repository_exists?
+      # return false unless repository_is_ruby?
       true
     end
   end
