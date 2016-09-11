@@ -6,8 +6,8 @@ module Github
     when 'account_created'
       return false if github_identifier.nil? 
       return false if github_identifier.empty?
-      # return true if account_exists?
-      false
+      # return false unless account_exists?
+      true
     when 'rails_repository_created'
       return false if github_repository.nil? 
       return false if github_repository.empty?
