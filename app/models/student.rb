@@ -37,7 +37,7 @@ class Student < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   belongs_to :promotion
 
-  validates_uniqueness_of :codeschool, :codecademy, :github_identifier, :heroku_app
+  # validates_uniqueness_of :codeschool, :codecademy, :github_identifier, :heroku_app
 
   after_save :sync!
 
