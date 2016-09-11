@@ -24,8 +24,8 @@
             <% if student_signed_in? %>
               <li><%= link_to 'Accueil', root_path %></li>
               <li><%= link_to 'Promotions', promotions_path %></li>
-              <li><%= link_to 'Etudiants', students_path %></li>
               <% if current_student.admin %>
+                <li><%= link_to 'Etudiants', students_path %></li>
                 <li><%= link_to 'Réalisations', achievements_path %></li>
               <% end %>
               <li><%= link_to 'Déconnexion', destroy_student_session_path, :method => :delete %></li>

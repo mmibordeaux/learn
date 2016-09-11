@@ -1,6 +1,6 @@
 class StudentsController < ApplicationController
   before_action :set_student, only: [:show, :edit, :update, :destroy, :sync]
-  before_action :admin_only, except: [:index, :show]
+  before_action :admin_only, except: :show
 
   def index
     @students = Student.all
