@@ -31,7 +31,8 @@ module Codeschool
   end
 
   def codeschool_results
-    @codeschool_results ||= JSON.parse(codeschool_data) unless codeschool_data.nil?
+    begin
+      @codeschool_results ||= JSON.parse(codeschool_data) unless codeschool_data.nil?
     rescue
       nil
     end
@@ -53,6 +54,5 @@ module Codeschool
       update_column :codeschool_data, data
     rescue
     end
-  end
-  
+  end  
 end
