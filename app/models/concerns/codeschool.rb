@@ -32,6 +32,9 @@ module Codeschool
 
   def codeschool_results
     @codeschool_results ||= JSON.parse(codeschool_data) unless codeschool_data.nil?
+    rescue
+      nil
+    end
   end
 
   def codeschool_url
