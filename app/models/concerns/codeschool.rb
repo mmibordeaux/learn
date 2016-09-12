@@ -21,6 +21,11 @@ module Codeschool
     end 
   end
 
+  def codeschool_validated?(title)
+    return false if codeschool_data.nil? or codeschool_data.empty?
+    codeschool_data.include? title
+  end
+
   def codeschool_results?
     not codeschool_results.nil?
   end
@@ -28,15 +33,6 @@ module Codeschool
   def codeschool_results
     @codeschool_results ||= JSON.parse(codeschool_data) unless codeschool_data.nil?
   end
-
-  def codeschool_note
-    if codeschool_score.nil?
-      0
-    else
-      Note.make(codeschool_score, [[8000, 8], [7000, 14], [20000, 20]])
-    end
-  end
-
 
   def codeschool_url
     "https://www.codeschool.com/users/#{codeschool}"
@@ -50,8 +46,8 @@ module Codeschool
     begin
       require 'open-uri'
       require 'json'
-      self.codeschool_data = open(codeschool_json_url).read
-      self.save
+      data = open(codeschool_json_url).read
+      update_column :codeschool_data, data
     rescue
     end
   end

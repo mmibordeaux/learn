@@ -1,16 +1,18 @@
-<% title = "Students" %>
+<% title = "Etudiants" %>
 <% content_for :title do title end %>
-
 <h1><%= title %></h1>
-<%= link_to 'New Student', new_student_path %>
-<table class="table">
+<%= link_to 'New Student', new_student_path, class: 'btn btn-default' if current_student.admin %>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>Firstname</th>
-      <th>Lastname</th>
+      <th>Prénom</th>
+      <th>Nom</th>
+      <th>Promotion</th>
       <th>Codeschool</th>
       <th>Codecademy</th>
-      <th>Promotion</th>
+      <th>Github identifier</th>
+      <th>Github repository</th>
+      <th>Heroku app</th>
     </tr>
   </thead>
   <tbody>
@@ -18,9 +20,12 @@
       <tr>
         <td><%= link_to student.firstname, student %></td>
         <td><%= link_to student.lastname, student %></td>
+        <td><%= link_to student.promotion, student.promotion %></td>
         <td><%= student.codeschool %></td>
         <td><%= student.codecademy %></td>
-        <td><%= student.promotion %></td>
+        <td><%= student.github_identifier %></td>
+        <td><%= student.github_repository %></td>
+        <td><%= student.heroku_app %></td>
       </tr>
     <% end %>
   </tbody>

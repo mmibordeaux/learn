@@ -22,8 +22,11 @@
 
 Mystudents::Application.routes.draw do
   devise_for :students
+  resources :achievements
   resources :promotions
   resources :students
   get 'students/:id/sync' => 'students#sync', as: :sync_student
-  root 'promotions#index'
+  get 'me' => 'dashboard#me', as: :me
+  patch 'me' => 'dashboard#update_me', as: :update_me
+  root 'dashboard#index'
 end

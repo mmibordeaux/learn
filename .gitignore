@@ -28,3 +28,6 @@ config/secrets.yml
 /vendor/assets/bower_components
 *.bowerrc
 bower.json
+
+.byebug_history
+.DS_Store

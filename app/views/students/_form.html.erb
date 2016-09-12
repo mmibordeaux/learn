@@ -1,10 +1,12 @@
-<%= simple_form_for @student, html: {class: 'form-vertical' } do |f| %>
+<%= simple_form_for @student do |f| %>
   <%= f.error_notification %>
   <%= f.input :firstname %>
   <%= f.input :lastname %>
   <%= f.association :promotion %>
   <%= f.input :codeschool %>
   <%= f.input :codecademy %>
-  <br/>
-  <%= f.button :submit %>
+  <%= f.input :github_identifier %>
+  <%= f.input :github_repository %>
+  <%= f.input :heroku_app %>
+  <%= f.button :submit, 'Enregistrer' %>
 <% end %>

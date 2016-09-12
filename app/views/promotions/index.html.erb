@@ -1,13 +1,12 @@
 <% title = "Promotions" %>
 <% content_for :title do title end %>
-
 <h1><%= title %></h1>
-<%= link_to 'New Promotion', new_promotion_path %>
-<table class="table">
+<%= link_to 'New Promotion', new_promotion_path, class: 'btn btn-default' if current_student.admin %>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Students</th>
+      <th>Nom</th>
+      <th>Etudiants</th>
     </tr>
   </thead>
   <tbody>

@@ -2,11 +2,11 @@ module Codecademy
   extend ActiveSupport::Concern
 
   def codecademy_url
-    "http://www.codecademy.com/fr/#{codecademy}"
+    "https://www.codecademy.com/fr/#{codecademy}"
   end
 
   def codecademy_badges_url
-    "http://www.codecademy.com/fr/users/#{codecademy}/achievements"
+    "https://www.codecademy.com/fr/users/#{codecademy}/achievements"
   end
 
   def codecademy_html
@@ -14,7 +14,15 @@ module Codecademy
   end
 
   def codecademy_badges_html
-    Nokogiri::HTML(self.codecademy_badges) # TODO codecademy_badges_data
+    Nokogiri::HTML(self.codecademy_badges)
+  end
+
+  def codecademy_validated?(title)
+    return false if codecademy_skills.nil? or codecademy_skills.empty?
+    codecademy_skills.each do |node|
+      return true if node.content == title
+    end
+    return false
   end
 
   def codecademy_score
@@ -47,20 +55,12 @@ module Codecademy
     codecademy_badges_html.css('.achievements h5') unless codecademy_data.nil?
   end
 
-  def codecademy_note
-    if codecademy_score.nil?
-      0
-    else
-      Note.make(codecademy_score, [[50, 8], [100, 14], [150, 16], [250, 18], [500, 20]])
-    end
-  end
-
   def codecademy_sync!
     begin
       require 'open-uri'
-      self.codecademy_data = open(codecademy_url).read.html_safe
-      self.codecademy_badges = open(codecademy_badges_url).read.html_safe
-      self.save
+      codecademy_data = open(codecademy_url).read.html_safe
+      codecademy_badges = open(codecademy_badges_url).read.html_safe
+      update_columns codecademy_data: codecademy_data, codecademy_badges: codecademy_badges
     rescue
     end
   end

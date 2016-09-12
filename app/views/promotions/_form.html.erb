@@ -1,6 +1,5 @@
-<%= simple_form_for @promotion, html: {class: 'form-vertical' } do |f| %>
+<%= simple_form_for @promotion do |f| %>
   <%= f.error_notification %>
   <%= f.input :name %>
-  <br/>
-  <%= f.button :submit %>
+  <%= f.button :submit, 'Enregistrer' %>
 <% end %>
