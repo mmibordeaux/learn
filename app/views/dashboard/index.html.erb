@@ -13,7 +13,7 @@
           <div class="row achievement">
             <div class="col-md-2 col-xs-12 is-done">
               <div class="checkmark"><i class="fa <%= achievement.done_by?(@student) ? 'fa-check-circle-o correct' : 'fa-circle-o incorrect' %>"></i></div>
-              <div class="note"><%= achievement.points_by(@student) %>/<%= achievement.points %></div>
+              <div class="note"><%= achievement.points_by @student %>/<%= achievement.points %></div>
             </div>
             <div class="col-md-10 col-xs-12 text">
               <h2><%= link_to achievement.title, achievement %></h2>
@@ -35,15 +35,42 @@
 </div>
 
 <h2>Sessions</h2>
-<p>Vendredi 23 septembre : MMI 1A</p>
-<p>Vendredi 7 octobre : MMI 1A</p>
-<p>Vendredi 21 octobre : MMI 1A</p>
-<p>Vendredi 3 novembre après-midi : MMI 2A</p>
-<p>Vendredi 4 novembre : MMI 1A & 2A</p>
-<p>Vendredi 17 novembre : MMI 1A & 2A</p>
-<p>Vendredi 18 novembre : MMI 1A & 2A</p>
-<p>Vendredi 16 décembre : MMI 1A & 2A</p>
-<p>Vendredi 13 janvier : MMI 1A</p>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Promotion</th>
+      <th>Intervenant</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Vendredi 23 septembre matin</td>
+      <td>MMI 2A</td>
+      <td>Charles</td>
+    </tr>
+  </tbody>
+</table>
+<p>Vendredi 23 septembre matin : MMI 2A avec Charles</p>
+<p>Vendredi 23 septembre matin : MMI 1A avec Arnaud</p>
+<p>Vendredi 23 septembre après-midi : MMI 1A avec Charles & Arnaud</p>
+<p>Vendredi 7 octobre : MMI 1A avec Arnaud</p>
+<p>Lundi 10 octobre après-midi : MMI 1A avec Charles (de 14h à 16h tout le monde, de 16h à 18h 1 seul groupe TD)</p> 
+<p>Vendredi 21 octobre : MMI 1A avec Arnaud</p>
+<p>Vendredi 3 novembre après-midi : MMI 2A avec Arnaud</p>
+<p>Vendredi 4 novembre : MMI 1A & 2A avec Arnaud</p>
+<p>Mardi 8 novembre : MMI 2A avec Charles</p>
+<p>Jeudi 17 novembre : MMI 2A avec Arnaud</p>
+<p>Vendredi 18 novembre : MMI 1A & 2A avec Charles & Arnaud</p>
+<p>Lundi 25 novembre : MMI 2A avec Charles</p>
+<p>Mercredi 30 novembre : MMI 1A avec Charles</p>
+<p>Vendredi 2 décembre matin : MMI 1A avec Charles</p>
+<p>Vendredi 2 décembre : MMI 2A avec Arnaud</p>
+<p>Mercredi 14 décembre après-midi : MMI 1A avec Charles</p>
+<p>Vendredi 16 décembre : MMI 1A & 2A avec Arnaud</p>
+<p>Mardi 3 janvier après-midi : MMI 2A avec Charles</p>
+<p>Mercredi 4 janvier après-midi : MMI 1A avec Charles</p>
+<p>Vendredi 13 janvier : MMI 1A avec Arnaud</p>
 
 <h2>Pour aller plus loin...</h2>
 <h3>... en front</h3>
