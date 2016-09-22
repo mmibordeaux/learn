@@ -22,7 +22,7 @@ module Github
   end
 
   def github_repository_url
-    "#{github_identifier_url}/#{github_repository}" unless github_identifier.nil?
+    "#{github_identifier_url}/#{github_repository}" unless github_repository.nil?
   end
 
   protected

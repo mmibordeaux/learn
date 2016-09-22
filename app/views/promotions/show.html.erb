@@ -9,6 +9,11 @@
         <th>Nom</th>
         <th>Prénom</th>
         <th>Note</th>
+        <th>Codeschool</th>
+        <th>Codecademy</th>
+        <th>Github identifier</th>
+        <th>Github repository</th>
+        <th>Heroku app</th>
         <th></th>
       </tr>
     </thead>
@@ -18,6 +23,11 @@
           <td><%= link_to student.lastname, student %></td>
           <td><%= link_to student.firstname, student %></td>
           <td><%= student.note %></td>
+          <td><%= link_to student.codeschool, student.codeschool_url, target: :blank %></td>
+          <td><%= link_to student.codecademy, student.codecademy_url, target: :blank %></td>
+          <td><%= link_to student.github_identifier, student.github_identifier_url, target: :blank %></td>
+          <td><%= link_to student.github_repository, student.github_repository_url, target: :blank %></td>
+          <td><%= link_to student.heroku_app, student.heroku_app_url, target: :blank %></td>
           <td><%= link_to icon('refresh'), sync_student_path(student), :class => 'sync' if current_student.admin %></td>
         </tr>
       <% end %>
