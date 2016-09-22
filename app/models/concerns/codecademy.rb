@@ -2,7 +2,7 @@ module Codecademy
   extend ActiveSupport::Concern
 
   def codecademy_url
-    "https://www.codecademy.com/fr/#{codecademy}"
+    "https://www.codecademy.com/fr/#{codecademy}" unless codecademy.nil?
   end
 
   def codecademy_badges_url

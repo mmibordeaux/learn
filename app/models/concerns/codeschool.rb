@@ -39,7 +39,7 @@ module Codeschool
   end
 
   def codeschool_url
-    "https://www.codeschool.com/users/#{codeschool}"
+    "https://www.codeschool.com/users/#{codeschool}" unless codeschool.nil?
   end
 
   def codeschool_json_url

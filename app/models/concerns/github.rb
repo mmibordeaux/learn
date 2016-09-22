@@ -18,11 +18,11 @@ module Github
   end
 
   def github_identifier_url
-    "https://github.com/#{github_identifier}"
+    "https://github.com/#{github_identifier}" unless github_identifier.nil?
   end
 
   def github_repository_url
-    "#{github_identifier_url}/#{github_repository}"
+    "#{github_identifier_url}/#{github_repository}" unless github_identifier.nil?
   end
 
   protected

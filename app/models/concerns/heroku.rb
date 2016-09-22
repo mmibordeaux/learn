@@ -12,7 +12,7 @@ module Heroku
   end
 
   def heroku_app_url
-    "https://#{heroku_app}.herokuapp.com"
+    "https://#{heroku_app}.herokuapp.com" unless heroku_app.nil?
   end
 
   protected
