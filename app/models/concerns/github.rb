@@ -17,14 +17,22 @@ module Github
     end
   end
 
+  def github_identifier_url
+    "https://github.com/#{github_identifier}"
+  end
+
+  def github_repository_url
+    "#{github_identifier_url}/#{github_repository}"
+  end
+
   protected
 
   def account_exists?
-    url_exists? "https://github.com/#{github_identifier}"
+    url_exists? github_identifier_url
   end
 
   def repository_exists?
-    url_exists? "https://github.com/#{github_identifier}/#{github_repository}"
+    url_exists? github_repository_url
   end
 
   def url_exists?(url)

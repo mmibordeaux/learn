@@ -11,6 +11,10 @@ module Heroku
     end
   end
 
+  def heroku_app_url
+    "https://#{heroku_app}.herokuapp.com"
+  end
+
   protected
 
   def app_runs?
