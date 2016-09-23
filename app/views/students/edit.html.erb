@@ -2,4 +2,6 @@
 <% content_for :title do title end %>
 <h1><%= title %></h1>
 <%= render 'form' %>
+<%= link_to 'Destroy', @student, class: 'btn btn-warning', method: :delete, data: { confirm: 'Are you sure?' } %>
+
 
