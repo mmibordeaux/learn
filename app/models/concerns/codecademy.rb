@@ -51,16 +51,16 @@ module Codecademy
   end
 
   # TODO rename the db field badges_data
-  def codecademy_badges_list
-    codecademy_badges_html.css('.achievements h5') unless codecademy_data.nil?
-  end
+  # def codecademy_badges_list
+  #   codecademy_badges_html.css('.achievements h5') unless codecademy_data.nil?
+  # end
 
   def codecademy_sync!
     begin
       require 'open-uri'
       codecademy_data = open(codecademy_url).read.html_safe
-      codecademy_badges = open(codecademy_badges_url).read.html_safe
-      update_columns codecademy_data: codecademy_data, codecademy_badges: codecademy_badges
+      # codecademy_badges = open(codecademy_badges_url).read.html_safe
+      update_column :codecademy_data, codecademy_data
     rescue
     end
   end
