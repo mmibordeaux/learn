@@ -2,6 +2,7 @@
   <%= f.error_notification %>
   <%= f.input :firstname %>
   <%= f.input :lastname %>
+  <%= f.input :admin if current_student.admin %>
   <%= f.association :promotion %>
   <%= f.input :codeschool %>
   <%= f.input :codecademy %>

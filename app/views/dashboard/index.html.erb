@@ -45,6 +45,14 @@
     </tr>
   </thead>
   <tbody>
+    <% Event.all.each do |event| %>
+      <tr>
+        <td><%= l event.date, format: "%A %e %B" %></td>
+        <td><%= event.promotions.collect(&:name).join(', ') %></td>
+        <td><%= event.teachers.collect(&:firstname).join(' & ') %></td>
+        <td><b><%= event.name %></b> <%= event.description %></td>
+      </tr>
+    <% end %>
     <%= line 'Vendredi 23 septembre', 'MMI 1A', 'Charles & Arnaud', 'Setup' %>
     <%= line 'Vendredi 7 octobre', 'MMI 1A & 2A', 'Arnaud', 'POO' %>
     <%= line 'Lundi 10 octobre', 'MMI 1A', 'Charles', 'POO' %>

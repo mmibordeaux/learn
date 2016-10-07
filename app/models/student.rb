@@ -37,10 +37,13 @@ class Student < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   belongs_to :promotion
 
+  has_many :events
+
   validates_uniqueness_of :codeschool, :codecademy, :github_identifier, :heroku_app, allow_blank: true, allow_nil: true
 
   after_save :sync!
 
+  scope :admin, -> { where(admin: true) }
   default_scope { order('lastname, firstname') }
 
   include Codeschool

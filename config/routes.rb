@@ -24,6 +24,7 @@ Mystudents::Application.routes.draw do
   devise_for :students
   resources :achievements
   resources :promotions
+  resources :events
   resources :students
   get 'students/:id/sync' => 'students#sync', as: :sync_student
   get 'me' => 'dashboard#me', as: :me
