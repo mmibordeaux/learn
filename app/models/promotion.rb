@@ -16,6 +16,10 @@ class Promotion < ActiveRecord::Base
   include Codeschool
   include Codecademy
 
+  def average_note
+    students.average(:note)
+  end
+
   def to_s
     "#{name}"
   end

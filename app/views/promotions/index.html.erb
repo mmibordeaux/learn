@@ -7,6 +7,7 @@
     <tr>
       <th>Nom</th>
       <th>Etudiants</th>
+      <th>Moyenne</th>
     </tr>
   </thead>
   <tbody>
@@ -14,6 +15,7 @@
       <tr>
         <td><%= link_to promotion, promotion %></td>
         <td><%= promotion.students.count %></td>
+        <td><%= promotion.average_note %></td>
       </tr>
     <% end %>
   </tbody>
