@@ -16,6 +16,10 @@ class Event < ActiveRecord::Base
 
   default_scope { order(:date) }
 
+  def past?
+    date < Date.today
+  end
+
   def to_s
     "#{name}"
   end

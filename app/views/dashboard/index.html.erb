@@ -46,17 +46,13 @@
   </thead>
   <tbody>
     <% Event.all.each do |event| %>
-      <tr class="<%= event.date < Date.today ? 'past' : 'future' %>">
+      <tr<% if event.past? %> class="past"<% end %>>
         <td><%= l event.date, format: "%A %e %B" %></td>
         <td><%= event.promotions.collect(&:name).join(', ') %></td>
         <td><%= event.teachers.collect(&:firstname).join(' & ') %></td>
         <td><b><%= event.name %></b> <%= event.description %></td>
       </tr>
     <% end %>
-    <%= line 'Vendredi 16 décembre', 'MMI 1A', 'Arnaud', '' %>
-    <%= line 'Mardi 3 janvier', 'MMI 2A', 'Charles', 'Middleman + Github pages' %>
-    <%= line 'Mercredi 4 janvier', 'MMI 1A', 'Charles', '' %>
-    <%= line 'Vendredi 13 janvier', 'MMI 1A & 2A', 'Arnaud', '' %>
   </tbody>
 </table>
 
