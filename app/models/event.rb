@@ -14,6 +14,8 @@ class Event < ActiveRecord::Base
   has_and_belongs_to_many :promotions
   has_and_belongs_to_many :teachers, class_name: 'Student'
 
+  default_scope { order(:date) }
+
   def to_s
     "#{name}"
   end

@@ -46,22 +46,13 @@
   </thead>
   <tbody>
     <% Event.all.each do |event| %>
-      <tr>
+      <tr class="<%= event.date < Date.today ? 'past' : 'future' %>">
         <td><%= l event.date, format: "%A %e %B" %></td>
         <td><%= event.promotions.collect(&:name).join(', ') %></td>
         <td><%= event.teachers.collect(&:firstname).join(' & ') %></td>
         <td><b><%= event.name %></b> <%= event.description %></td>
       </tr>
     <% end %>
-    <%= line 'Vendredi 23 septembre', 'MMI 1A', 'Charles & Arnaud', 'Setup' %>
-    <%= line 'Vendredi 7 octobre', 'MMI 1A & 2A', 'Arnaud', 'POO' %>
-    <%= line 'Lundi 10 octobre', 'MMI 1A', 'Charles', 'POO' %>
-    <%= line 'Vendredi 21 octobre', 'MMI 1A', 'Arnaud', 'MVC' %>
-    <%= line 'Jeudi 3 novembre', 'MMI 2A', 'Arnaud', 'MVC' %>
-    <%= line 'Vendredi 4 novembre', 'MMI 1A & 2A', 'Arnaud', 'Front: Bootstrap, Sass, Fontawesome, Glyphicon, Placehold.it' %>
-    <%= line 'Mardi 8 novembre', 'MMI 1A', 'Charles', 'Front: Bootstrap, Sass, Fontawesome, Glyphicon, Placehold.it' %>
-    <%= line 'Jeudi 17 novembre', 'MMI 2A', 'Arnaud', 'Back: Simple form, Paperclip + AWS S3, Devise' %>
-    <%= line 'Vendredi 18 novembre', 'MMI 1A & 2A', 'Arnaud', 'Heroku' %>
     <%= line 'Vendredi 25 novembre', 'MMI 2A', 'Charles', 'Middleman + Github pages' %>
     <%= line 'Mercredi 30 novembre', 'MMI 1A', 'Charles', 'Back: Simple form, Paperclip + AWS S3, Devise' %>
     <%= line 'Vendredi 2 décembre', 'MMI 1A', 'Charles', 'Middleman + Github pages' %>
