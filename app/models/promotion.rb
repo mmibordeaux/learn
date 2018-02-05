@@ -8,10 +8,12 @@
 #  updated_at :datetime
 #
 
-class Promotion < ActiveRecord::Base
+class Promotion < ApplicationRecord
   has_many :students
   validates :name, presence: true
   has_and_belongs_to_many :events
+
+  default_scope { order :name }
 
   include Codeschool
   include Codecademy

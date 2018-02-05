@@ -9,9 +9,7 @@ class ApplicationController < ActionController::Base
   protected
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.for(:sign_up) << :firstname
-    devise_parameter_sanitizer.for(:sign_up) << :lastname
-    devise_parameter_sanitizer.for(:sign_up) << :promotion_id
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:firstname, :lastname, :promotion_id])
   end
 
   def admin_only

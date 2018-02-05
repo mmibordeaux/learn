@@ -5,9 +5,9 @@
 
   <div class="form-inputs">
     <%= f.input :email, required: true, autofocus: true %>
-    <%= f.input :firstname, required: true %>
-    <%= f.input :lastname, required: true %>
-    <%= f.association :promotion, required: true, include_blank: false %>
+    <%= f.input :firstname, required: true, label: 'Prénom' %>
+    <%= f.input :lastname, required: true, label: 'Nom' %>
+    <%= f.association :promotion, include_blank: false %>
     <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
     <%= f.input :password_confirmation, required: true %>
   </div>

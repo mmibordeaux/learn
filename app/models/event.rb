@@ -10,7 +10,7 @@
 #  updated_at  :datetime
 #
 
-class Event < ActiveRecord::Base
+class Event < ApplicationRecord
   has_and_belongs_to_many :promotions
   has_and_belongs_to_many :teachers, class_name: 'Student'
 

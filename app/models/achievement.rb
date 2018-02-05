@@ -14,7 +14,7 @@
 #  updated_at :datetime
 #
 
-class Achievement < ActiveRecord::Base
+class Achievement < ApplicationRecord
 
   default_scope { order(:position) }
 

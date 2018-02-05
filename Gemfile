@@ -1,8 +1,9 @@
 source 'https://rubygems.org'
-ruby '2.3.1'
+ruby '2.4.2'
 
-gem 'rails', '4.0.4'
+gem 'rails', '~> 5.1'
 gem 'rails-i18n'
+gem 'pg', '0.21.0'
 gem 'bootstrap-sass'
 gem 'sass-rails'
 gem 'autoprefixer-rails'
@@ -15,7 +16,6 @@ gem 'jbuilder'
 gem 'nokogiri'
 gem 'devise'
 gem 'devise-i18n'
-gem 'pg'
 
 group :production do
 	gem 'rails_12factor'
