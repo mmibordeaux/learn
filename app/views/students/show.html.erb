@@ -6,29 +6,7 @@
 
 <%= link_to 'Rafraîchir les données', sync_student_path(@student), class: 'btn btn-default' if current_student.admin %>
 
-<div class="row">
-  <div class="col-md-9">
-    <ul class="items list-unstyled">
-      <% Achievement.all.each do |achievement| %>
-        <% points = @student.note_for achievement %>
-        <li>
-          <div class="row achievement">
-            <div class="col-md-2 col-xs-12 is-done">
-              <div class="checkmark"><i class="fa <%= achievement.done_by?(@student) ? 'fa-check-circle-o correct' : 'fa-circle-o incorrect' %>"></i></div>
-              <div class="note"><%= achievement.points_by(@student) %>/<%= achievement.points %></div>
-            </div>
-            <div class="col-md-10 col-xs-12 text">
-              <h2><%= link_to achievement.title, achievement %></h2>
-            </div>
-          </div>
-        </li>
-      <% end %>
-    </ul>
-  </div>
-  <div class="col-md-3">
-    <div class="big-note"><%= @student.note %>/20</div>
-  </div>
-</div>
+<%= render 'achievements', student: @student %>
 
 <% if @student.codeschool %>
   <h2>Codeschool</h2>
