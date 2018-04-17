@@ -4,6 +4,12 @@
 <p><%= link_to @student.promotion, @student.promotion %></p>
 <%= link_to 'Mettre à jour mon profil', me_path, class: 'btn btn-default' %>
 
+<h2>Mes cours</h2>
+
+<% @student.promotion.courses.each do |course| %>
+  <%= link_to course, course %>
+<% end %>
+
 <%= render 'students/achievements', student: @student, show_details: true %>
 
 <h2>Sessions</h2>
