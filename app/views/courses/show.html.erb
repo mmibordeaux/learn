@@ -1,0 +1,9 @@
+<% content_for :title, @course %>
+<h1><%= @course %></h1>
+<p><%= link_to @course.promotion, @course.promotion %></p>
+
+<%= link_to 'Edit', edit_course_path(@course), class: 'btn btn-default' if current_student.admin %>
+
+<%= raw @course.description %>
+
+

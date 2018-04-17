@@ -1,0 +1,21 @@
+# == Schema Information
+#
+# Table name: courses
+#
+#  id           :integer          not null, primary key
+#  name         :string
+#  promotion_id :integer
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#  description  :text
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  promotion: one
+
+two:
+  title: MyString
+  promotion: two
