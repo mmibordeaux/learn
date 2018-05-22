@@ -1,0 +1,27 @@
+<%= title 'Réalisations' %>
+<%= link_to 'Nouvelle réalisation', new_admin_achievement_path, class: 'btn btn-default' %>
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Why</th>
+        <th>How</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @achievements.each do |achievement| %>
+        <tr>
+          <td><%= link_to achievement.title, [:admin, achievement] %></td>
+          <td><%= achievement.why %></td>
+          <td><%= achievement.how %></td>
+          <td>
+            <%= link_to 'Edit', edit_admin_achievement_path(achievement), class: 'btn btn-default btn-xs' if current_student.admin %>
+            <%= link_to 'Destroy', [:admin, achievement], method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-xs' %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

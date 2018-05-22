@@ -1,0 +1,19 @@
+<%= simple_form_for [:admin, @student] do |f| %>
+  <%= f.error_notification %>
+  <div class="row">
+    <div class="col-md-6">
+      <%= f.input :firstname %>
+      <%= f.input :lastname %>
+      <%= f.input :admin if current_student.admin %>
+      <%= f.association :promotion %>
+    </div>
+    <div class="col-md-6">
+      <%= f.input :codeschool %>
+      <%= f.input :codecademy %>
+      <%= f.input :github_identifier %>
+      <%= f.input :github_repository %>
+      <%= f.input :heroku_app %>
+    </div>
+  </div>
+  <%= f.button :submit, 'Enregistrer' %>
+<% end %>

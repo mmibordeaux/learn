@@ -1,0 +1,31 @@
+<%= title @event %>
+<%= link_to 'Modifier', edit_admin_event_path(@event), class: 'btn btn-default' %>
+
+<p>
+  <strong>Name:</strong>
+  <%= @event.name %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @event.date %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @event.description %>
+</p>
+
+<h2>Promotions</h2>
+<ul>
+  <% @event.promotions.each do |promotion| %>
+    <li><%= link_to promotion, [:admin, promotion] %></li>
+  <% end %>
+</ul>
+
+<h2>Teachers</h2>
+<ul>
+  <% @event.teachers.each do |teacher| %>
+    <li><%= link_to teacher, [:admin, teacher] %></li>
+  <% end %>
+</ul>

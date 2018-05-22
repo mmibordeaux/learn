@@ -1,9 +1,54 @@
 <% content_for :title, @course %>
-<h1><%= @course %></h1>
-<p><%= link_to @course.promotion, @course.promotion %></p>
 
-<%= link_to 'Edit', edit_course_path(@course), class: 'btn btn-default' if current_student.admin %>
+<h1><%= @course %></h1>
+
+<%= render 'achievements', student: current_student, show_details: true %>
 
 <%= raw @course.description %>
 
+<h2>Sessions</h2>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Promotion</th>
+      <th>Intervenant</th>
+      <th>Sujet</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @course.events.each do |event| %>
+      <tr<% if event.past? %> class="past"<% end %>>
+        <td><%= l event.date, format: "%A %e %B" %></td>
+        <td><%= event.promotions.collect(&:name).join(', ') %></td>
+        <td><%= event.teachers.collect(&:firstname).join(' & ') %></td>
+        <td><b><%= event.name %></b> <%= event.description %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
+<!--
+<h2>Pour configurer sa machine</h2>
+<p>Sur un Mac : <a href="https://github.com/thoughtbot/laptop" target="_blank">thoughtbot/laptop</a></p>
+<p>Sur un Linux : <a href="https://github.com/lewagon/setup" target="_blank">lewagon/setup</a></p>
+
+<h2>Pour aller plus loin...</h2>
+<h3>... en front</h3>
+<ul>
+  <li><a href="https://www.codecademy.com/fr/learn/web" target="_blank">HTML &amp; CSS</a></li>
+  <li><a href="https://www.codecademy.com/fr/learn/make-a-website" target="_blank">Make a Website</a></li>
+  <li><a href="https://openclassrooms.com/courses/apprenez-a-creer-votre-site-web-avec-html5-et-css3" target="_blank">Apprenez à créer votre site web avec HTML5 et CSS3</a></li>
+  <li><a href="https://openclassrooms.com/courses/prenez-en-main-bootstrap" target="_blank">Prenez en main Bootstrap</a></li>
+</ul>
+
+<h3>... en back</h3>
+<ul>
+  <li><a href="http://www.meetup.com/fr-FR/Ruby-Bordeaux" target="_blank">Participer à un Apéro Ruby</a></li>
+  <li>Participer à un hackaton ou un startup weekend</li>
+  <li><a href="https://codeclimate.com/" target="_blank">Utiliser Code Climate pour devenir un meilleur développeur</a></li>
+  <li><a href="http://ricardogeek.com/docs/clean_code.pdf" target="_blank">Lire Clean Code</a></li>
+  <li><a href="https://www.manning.com/books/the-well-grounded-rubyist" target="_blank">Lire The Well Grounded Rubyist</a></li>
+</ul>
+Programme et approche pédagogique construits en dialogue avec <a href="https://www.lewagon.com/programme" target="_blank">Le Wagon</a>
+-->

@@ -1,0 +1,11 @@
+<%= simple_form_for [:admin, @achievement] do |f| %>
+  <%= f.error_notification %>
+  <%= f.input :title %>
+  <%= f.input :text %>
+  <%= f.input :position %>
+  <%= f.input :points %>
+  <%= f.input :identifier %>
+  <%= f.input :why %>
+  <%= f.input :how %>
+  <%= f.button :submit, 'Enregistrer' %>
+<% end %>

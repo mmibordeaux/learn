@@ -25,11 +25,16 @@
             <% if student_signed_in? %>
               <li><%= link_to 'Accueil', root_path %></li>
               <% if current_student.admin %>
-                <li><%= link_to 'Promotions', promotions_path %></li>
-                <li><%= link_to 'Cours', courses_path %></li>
-                <li><%= link_to 'Etudiants', students_path %></li>
-                <li><%= link_to 'Réalisations', achievements_path %></li>
-                <li><%= link_to 'Evénements', events_path %></li>
+              <li class="dropdown">
+                <a data-toggle="dropdown">Admin <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><%= link_to 'Cours', admin_courses_path %></li>
+                  <li><%= link_to 'Réalisations', admin_achievements_path %></li>
+                  <li><%= link_to 'Evénements', admin_events_path %></li>
+                  <li><%= link_to 'Promotions', admin_promotions_path %></li>
+                  <li><%= link_to 'Etudiants', admin_students_path %></li>
+                </ul>
+              </li>
               <% end %>
               <li><%= link_to 'Déconnexion', destroy_student_session_path, method: :delete %></li>
             <% end %>

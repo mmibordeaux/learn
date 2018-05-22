@@ -12,6 +12,7 @@
 #  how        :text
 #  created_at :datetime
 #  updated_at :datetime
+#  course_id  :integer
 #
 
 require 'test_helper'

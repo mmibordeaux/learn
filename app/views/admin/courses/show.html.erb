@@ -1,0 +1,3 @@
+<%= title @course %>
+<p><%= link_to @course.promotion, [:admin, @course.promotion] %></p>
+<%= link_to 'Modifier', edit_admin_course_path(@course), class: 'btn btn-default' %>

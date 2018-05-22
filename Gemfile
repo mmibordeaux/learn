@@ -23,6 +23,7 @@ gem 'uglifier'
 gem 'coffee-rails'
 gem 'jquery-rails'
 gem 'jbuilder'
+# gem 'summernote-rails'
 
 group :production do
 	gem 'rails_12factor'

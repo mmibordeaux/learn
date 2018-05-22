@@ -8,9 +8,11 @@
 #  description :text
 #  created_at  :datetime
 #  updated_at  :datetime
+#  course_id   :integer
 #
 
 class Event < ApplicationRecord
+  belongs_to :course
   has_and_belongs_to_many :promotions
   has_and_belongs_to_many :teachers, class_name: 'Student'
 

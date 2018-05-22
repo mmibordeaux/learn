@@ -12,9 +12,12 @@
 #  how        :text
 #  created_at :datetime
 #  updated_at :datetime
+#  course_id  :integer
 #
 
 class Achievement < ApplicationRecord
+
+  belongs_to :course
 
   default_scope { order(:position) }
 
@@ -24,5 +27,9 @@ class Achievement < ApplicationRecord
 
   def points_by(student)
     student.note_for self
+  end
+
+  def to_s
+    "#{title}"
   end
 end
