@@ -23,7 +23,10 @@
 Mystudents::Application.routes.draw do
   devise_for :students
   namespace :admin do
-    resources :achievements, :courses, :events, :students, :promotions
+    resources :achievements, :courses, :events, :students
+    resources :promotions do 
+      post :sync
+    end
   end
   resources :courses, only: :show
   get 'students/:id/sync' => 'students#sync', as: :sync_student

@@ -6,6 +6,7 @@
 #  name       :string(255)
 #  created_at :datetime
 #  updated_at :datetime
+#  year       :integer
 #
 
 class Promotion < ApplicationRecord
@@ -23,7 +24,26 @@ class Promotion < ApplicationRecord
     students.average(:note)
   end
 
+  def sync_projects
+    uri = URI teach_api_url
+    response = Net::HTTP.get uri
+    data = JSON.parse response
+    data['projects'].each do |project|
+      project_id = project['id'].to_i
+      course = Course.where(teach_project_id: project_id, promotion_id: id).first_or_initialize
+      course.name = project['label']
+      course.description = project['description']
+      course.save
+    end
+  end
+
   def to_s
     "#{name}"
+  end
+
+  protected
+
+  def teach_api_url
+    "http://teach.mmibordeaux.com/api/promotions/#{year}"
   end
 end

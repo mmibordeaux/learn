@@ -1,6 +1,9 @@
 <%= title @promotion %>
 <%= link_to 'Modifier', edit_admin_promotion_path(@promotion), class: 'btn btn-default' %>
 <%= link_to 'Actualiser les résultats', '', class: 'btn btn-default promotion-sync' %>
+<%= link_to 'Synchroniser les projets', admin_promotion_sync_path(@promotion), method: :post, class: 'btn btn-default' %>
+
+<h2>Etudiants</h2>
 <div class="table-responsive">
   <table class="table table-striped">
     <thead>
@@ -28,6 +31,24 @@
           <td><%= link_to student.github_repository, student.github_repository_url, target: :blank unless student.github_repository_url.nil? %></td>
           <td><%= link_to student.heroku_app, student.heroku_app_url, target: :blank unless student.heroku_app_url.nil? %></td>
           <td><%= link_to fa_icon('refresh'), sync_student_path(student), :class => 'sync' if current_student.admin %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<h2>Cours</h2>
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Nom</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @promotion.courses.each do |course| %>
+        <tr>
+          <td><%= course %></td>
         </tr>
       <% end %>
     </tbody>

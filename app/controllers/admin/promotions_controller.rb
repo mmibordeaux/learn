@@ -1,5 +1,5 @@
 class Admin::PromotionsController < Admin::ApplicationController
-  before_action :set_promotion, only: [:show, :edit, :update, :destroy]
+  before_action :set_promotion, only: [:show, :edit, :update, :destroy, :sync]
 
   respond_to :html
 
@@ -15,6 +15,11 @@ class Admin::PromotionsController < Admin::ApplicationController
   end
 
   def edit
+  end
+
+  def sync
+    @promotion.sync_projects
+    redirect_to admin_promotion_path(@promotion)
   end
 
   def create
@@ -35,10 +40,11 @@ class Admin::PromotionsController < Admin::ApplicationController
   private
   
   def set_promotion
-    @promotion = Promotion.find(params[:id])
+    @promotion = Promotion.find(params[:id]) if params.include? :id
+    @promotion = Promotion.find(params[:promotion_id]) if params.include? :promotion_id
   end
 
   def promotion_params
-    params.require(:promotion).permit(:name)
+    params.require(:promotion).permit(:name, :year)
   end
 end

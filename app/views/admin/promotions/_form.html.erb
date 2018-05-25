@@ -1,5 +1,6 @@
 <%= simple_form_for [:admin, @promotion] do |f| %>
   <%= f.error_notification %>
   <%= f.input :name %>
+  <%= f.input :year %>
   <%= f.button :submit, 'Enregistrer' %>
 <% end %>
