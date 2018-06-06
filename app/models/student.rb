@@ -46,7 +46,7 @@ class Student < ApplicationRecord
 
   validates_uniqueness_of :codeschool, :codecademy, :github_identifier, :heroku_app, allow_blank: true, allow_nil: true
 
-  after_save :sync!
+  after_save :sync_profile!
 
   scope :admin, -> { where(admin: true) }
 
