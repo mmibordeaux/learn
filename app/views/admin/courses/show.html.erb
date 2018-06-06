@@ -3,35 +3,43 @@
 <%= link_to 'Modifier', edit_admin_course_path(@course), class: 'btn btn-default' %>
 
 <h2>Evaluations</h2>
-<p><%= @course.evaluations.count %> evaluations</p>
+<p class="text-center"><%= @course.evaluations.count %> evaluations</p>
 <div class="row">
   <div class="col-md-4">
-    <p>
-      Qualité globale du projet: 
-      <%= number_with_precision @course.evaluations.average(:quality), precision: 1 %>
-    </p>
-    <p>
-      Connaissances acquises: 
-      <%= number_with_precision @course.evaluations.average(:knowledge_acquired) %>    
-    </p>
-    <p>
-      Compétences techniques acquises:
-      <%= number_with_precision @course.evaluations.average(:technical_skills_acquired) %>
-    </p>
-    <p>
-      Compétences relationnelles acquises (soft skills): 
-      <%= number_with_precision @course.evaluations.average(:soft_skills_acquired) %>
-    </p>
+    <%= render 'evaluations_integer', 
+          title: 'Qualité globale du projet', 
+          course: @course, 
+          kind: :quality %>
+    <%= render 'evaluations_integer', 
+          title: 'Connaissances acquises', 
+          course: @course, 
+          kind: :knowledge_acquired %>
+    <%= render 'evaluations_integer', 
+          title: 'Compétences techniques acquises', 
+          course: @course, 
+          kind: :technical_skills_acquired %>
+    <%= render 'evaluations_integer', 
+          title: 'Compétences relationnelles acquises (soft skills)', 
+          course: @course, 
+          kind: :soft_skills_acquired %>
   </div>
   <div class="col-md-8">
-    <h3>Contenus pertinents</h3>
-    <%= render 'evaluations', course: @course, kind: :relevant_content %>
-    <h3>Contenus à ajouter</h3>
-    <%= render 'evaluations', course: @course, kind: :content_to_add %>
-    <h3>Contenus à supprimer</h3>
-    <%= render 'evaluations', course: @course, kind: :content_to_remove %>
-    <h3>Commentaire</h3>
-    <%= render 'evaluations', course: @course, kind: :comment %>
+    <%= render 'evaluations_text', 
+          title: 'Contenus pertinents', 
+          course: @course, 
+          kind: :relevant_content %>
+    <%= render 'evaluations_text', 
+          title: 'Contenus à ajouter', 
+          course: @course, 
+          kind: :content_to_add %>
+    <%= render 'evaluations_text', 
+          title: 'Contenus à supprimer', 
+          course: @course, 
+          kind: :content_to_remove %>
+    <%= render 'evaluations_text', 
+          title: 'Commentaire', 
+          course: @course, 
+          kind: :comment %>
   </div>
 </div>
 

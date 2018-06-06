@@ -1,7 +1,0 @@
-<ul>
-  <% course.evaluations.each do |evaluation| %>
-    <% text = evaluation.send kind %>
-    <% next if text.blank? %>
-    <li><p><%= simple_format text %></p></li>
-  <% end %>
-</ul>
