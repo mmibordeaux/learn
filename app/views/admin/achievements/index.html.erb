@@ -4,18 +4,18 @@
   <table class="table table-striped">
     <thead>
       <tr>
+        <th>Course</th>
         <th>Title</th>
-        <th>Why</th>
-        <th>How</th>
+        <th>Identifier</th>
         <th></th>
       </tr>
     </thead>
     <tbody>
       <% @achievements.each do |achievement| %>
         <tr>
+          <td><%= link_to achievement.course, [:admin, achievement.course] if achievement.course %></td>
           <td><%= link_to achievement.title, [:admin, achievement] %></td>
-          <td><%= achievement.why %></td>
-          <td><%= achievement.how %></td>
+          <td><%= achievement.identifier %></td>
           <td>
             <%= link_to 'Edit', edit_admin_achievement_path(achievement), class: 'btn btn-default btn-xs' if current_student.admin %>
             <%= link_to 'Destroy', [:admin, achievement], method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-xs' %>

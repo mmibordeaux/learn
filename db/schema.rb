@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_25_062835) do
+ActiveRecord::Schema.define(version: 2018_06_06_050535) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 2018_05_25_062835) do
     t.datetime "updated_at", null: false
     t.text "description"
     t.integer "teach_project_id"
+    t.date "starting_at"
     t.index ["promotion_id"], name: "index_courses_on_promotion_id"
   end
 
@@ -90,6 +91,10 @@ ActiveRecord::Schema.define(version: 2018_05_25_062835) do
     t.string "github_repository", limit: 255
     t.string "heroku_app", limit: 255
     t.boolean "admin", default: false
+    t.string "pluralsight"
+    t.text "pluralsight_data"
+    t.string "pluralsight_uuid"
+    t.text "pluralsight_data_completedcourses"
     t.index ["reset_password_token"], name: "index_students_on_reset_password_token", unique: true
   end
 

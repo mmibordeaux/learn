@@ -5,7 +5,6 @@
     <tr>
       <th>Nom</th>
       <th>Etudiants</th>
-      <th>Moyenne</th>
     </tr>
   </thead>
   <tbody>
@@ -13,7 +12,6 @@
       <tr>
         <td><%= link_to promotion, [:admin, promotion] %></td>
         <td><%= promotion.students.count %></td>
-        <td><%= '%.2f' % promotion.average_note.to_f %></td>
       </tr>
     <% end %>
   </tbody>

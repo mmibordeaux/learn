@@ -1,3 +1,26 @@
 <%= title @course %>
-<p><%= link_to @course.promotion, [:admin, @course.promotion] %></p>
+<p class="text-center"><%= link_to @course.promotion, [:admin, @course.promotion] %></p>
 <%= link_to 'Modifier', edit_admin_course_path(@course), class: 'btn btn-default' %>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th width="200">Etudiant</th>
+      <% @course.achievements.each do |achievement| %>
+        <th><%= achievement %></th>
+      <% end %>
+      <th>Note</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @course.students.each do |student| %>
+      <tr>
+        <td><%= student %></td>
+        <% @course.achievements.each do |achievement| %>
+          <td><%= student.note_for_achievement achievement %></td>
+        <% end %>
+        <td><%= student.note_for_course @course %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

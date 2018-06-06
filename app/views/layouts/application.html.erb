@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%= content_for?(:title) ? yield(:title) : "Learn" %></title>
     <%= stylesheet_link_tag "application" %>
-    <%= favicon_link_tag 'favicon-bolt.ico' %>
+    <%= favicon_link_tag 'favicon.png' %>
     <%= csrf_meta_tags %>
   </head>
   <body>
@@ -18,23 +18,27 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="<%= root_path %>"><%= fa_icon :bolt %> Learn</a>
+          <%= link_to root_path, class:'navbar-brand logo logo-black' do %>
+            <%= image_tag 'mmi-bordeaux.png' %>
+            <p>Learn</p>
+          <% end %>
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav pull-right">
             <% if student_signed_in? %>
               <li><%= link_to 'Accueil', root_path %></li>
+              <li><%= link_to 'Mon profil', me_path %></li>
               <% if current_student.admin %>
-              <li class="dropdown">
-                <a data-toggle="dropdown">Admin <span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                  <li><%= link_to 'Cours', admin_courses_path %></li>
-                  <li><%= link_to 'Réalisations', admin_achievements_path %></li>
-                  <li><%= link_to 'Evénements', admin_events_path %></li>
-                  <li><%= link_to 'Promotions', admin_promotions_path %></li>
-                  <li><%= link_to 'Etudiants', admin_students_path %></li>
-                </ul>
-              </li>
+                <li class="dropdown">
+                  <a data-toggle="dropdown">Admin <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <li><%= link_to 'Cours', admin_courses_path %></li>
+                    <li><%= link_to 'Réalisations', admin_achievements_path %></li>
+                    <li><%= link_to 'Evénements', admin_events_path %></li>
+                    <li><%= link_to 'Promotions', admin_promotions_path %></li>
+                    <li><%= link_to 'Etudiants', admin_students_path %></li>
+                  </ul>
+                </li>
               <% end %>
               <li><%= link_to 'Déconnexion', destroy_student_session_path, method: :delete %></li>
             <% end %>
@@ -58,9 +62,13 @@
       <div>
         <%= yield %>
       </div>
+      <footer>
+        <p class="pull-right"><small>
+            Ce projet est open source, le code est disponible sur <a href="https://github.com/arnaudlevy/mmibordeaux-learn">Github</a>
+        </small></p>
+        <p><small><a href="https://www.mmibordeaux.com/">MMI Bordeaux</a></small></p>
+      </footer>
     </div><!-- /.container -->
-    <footer></footer>
     <%= javascript_include_tag "application" %>
-    <a href="https://github.com/arnaudlevy/mystudents"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/a6677b08c955af8400f44c6298f40e7d19cc5b2d/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677261795f3664366436642e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png"></a>
   </body>
 </html>

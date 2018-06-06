@@ -1,18 +1,27 @@
 <% title = "#{@student}" %>
 <% content_for :title do title end %>
+
+<%= image_tag @student.gravatar_url, class: 'img-circle img-responsive center-block' %><br/>
+
 <h1><%= title %></h1>
-<p><%= @student.promotion %></p>
-<%= link_to 'Mettre à jour mon profil', me_path, class: 'btn btn-default btn-xs' %>
+<p class="text-center"><%= @student.promotion %></p>
 
-<h2>Mes cours</h2>
+<h2>Projets</h2>
 
-<div class="row">
+<table class="table">
+  <thead>
+    <tr>
+      <th>Projet</th>
+      <th>Début</th>
+    </tr>
+  </thead>
+  <tbody>
   <% @student.promotion.courses.each do |course| %>
-    <%= link_to course do %>
-      <div class="col-md-3">
-        <h3><%= course %></h3>
-      </div>
-    <% end %>
+    <tr class="<%= 'done' if course.done? %><%= 'current' if course.current? %>">
+      <td><%= link_to course, course %></td>
+      <td><%= course.starting_at.strftime '%d/%m/%Y' %></td>
+    </tr>
   <% end %>
-</div>
+  </tbody>
+</table>
 

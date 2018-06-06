@@ -1,54 +1,50 @@
 <%= title @promotion %>
 <%= link_to 'Modifier', edit_admin_promotion_path(@promotion), class: 'btn btn-default' %>
-<%= link_to 'Actualiser les résultats', '', class: 'btn btn-default promotion-sync' %>
-<%= link_to 'Synchroniser les projets', admin_promotion_sync_path(@promotion), method: :post, class: 'btn btn-default' %>
+<%= link_to 'Actualiser les profils des étudiants', '', class: 'btn btn-default promotion-sync' %>
+<%= link_to 'Synchroniser les cours avec Teach', admin_promotion_sync_courses_path(@promotion), method: :post, class: 'btn btn-default' %>
 
 <h2>Etudiants</h2>
 <div class="table-responsive">
   <table class="table table-striped">
     <thead>
       <tr>
+        <th></th>
         <th>Nom</th>
         <th>Prénom</th>
-        <th>Note</th>
-        <th>Codeschool</th>
+        <th>Pluralsight</th>
         <th>Codecademy</th>
-        <th>Github identifier</th>
-        <th>Github repository</th>
-        <th>Heroku app</th>
-        <th></th>
+        <th>Github</th>
       </tr>
     </thead>
     <tbody>
       <% @promotion.students.each do |student| %>
         <tr>
+          <td><%= link_to fa_icon('refresh'), admin_student_sync_profile_path(student), class: 'sync' %></td>
           <td><%= link_to student.lastname, [:admin, student] %></td>
           <td><%= link_to student.firstname, [:admin, student] %></td>
-          <td><%= student.note.to_i %></td>
-          <td><%= link_to student.codeschool, student.codeschool_url, target: :blank unless student.codeschool_url.nil? %></td>
+          <td><%= link_to student.pluralsight, student.pluralsight_url, target: :blank unless student.pluralsight_url.nil? %></td>
           <td><%= link_to student.codecademy, student.codecademy_url, target: :blank unless student.codecademy_url.nil? %></td>
           <td><%= link_to student.github_identifier, student.github_identifier_url, target: :blank unless student.github_identifier_url.nil? %></td>
-          <td><%= link_to student.github_repository, student.github_repository_url, target: :blank unless student.github_repository_url.nil? %></td>
-          <td><%= link_to student.heroku_app, student.heroku_app_url, target: :blank unless student.heroku_app_url.nil? %></td>
-          <td><%= link_to fa_icon('refresh'), sync_student_path(student), :class => 'sync' if current_student.admin %></td>
         </tr>
       <% end %>
     </tbody>
   </table>
 </div>
 
-<h2>Cours</h2>
+<h2>Projets</h2>
 <div class="table-responsive">
   <table class="table table-striped">
     <thead>
       <tr>
-        <th>Nom</th>
+      <th>Projet</th>
+      <th>Début</th>
       </tr>
     </thead>
     <tbody>
       <% @promotion.courses.each do |course| %>
-        <tr>
-          <td><%= course %></td>
+        <tr class="<%= 'done' if course.done? %><%= 'current' if course.current? %>">
+          <td><%= link_to course, [:admin, course] %></td>
+          <td><%= course.starting_at.strftime '%d/%m/%Y' %></td>
         </tr>
       <% end %>
     </tbody>

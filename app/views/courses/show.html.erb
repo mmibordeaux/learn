@@ -2,10 +2,39 @@
 
 <h1><%= @course %></h1>
 
-<%= render 'achievements', student: current_student, show_details: true %>
-
 <%= raw @course.description %>
 
+<div class="row">
+  <div class="col-md-9">
+    <ul class="items list-unstyled">
+      <% @course.achievements.each do |achievement| %>
+        <% points = current_student.note_for_achievement achievement %>
+        <li>
+          <div class="row achievement">
+            <div class="col-md-2 col-xs-12 is-done">
+              <div class="checkmark"><i class="fa <%= achievement.done_by?(current_student) ? 'fa-check-circle-o correct' : 'fa-circle-o incorrect' %>"></i></div>
+              <div class="note"><%= achievement.points_by current_student %>/<%= achievement.points %></div>
+            </div>
+            <div class="col-md-10 col-xs-12 text">
+              <h2><%= achievement.title %></h2>
+              <p>
+                <strong>Pourquoi&nbsp;?</strong>
+                <%= raw achievement.why %>
+                <strong>Comment&nbsp;?</strong>
+                <%= raw achievement.how %>
+              </p>
+            </div>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+  <div class="col-md-3">
+    <div class="big-note"><%= current_student.note_for_course @course %>/<%= Achievement.sum :points %></div>
+  </div>
+</div>
+
+<!--
 <h2>Sessions</h2>
 <table class="table table-striped">
   <thead>
@@ -28,7 +57,6 @@
   </tbody>
 </table>
 
-<!--
 <h2>Pour configurer sa machine</h2>
 <p>Sur un Mac : <a href="https://github.com/thoughtbot/laptop" target="_blank">thoughtbot/laptop</a></p>
 <p>Sur un Linux : <a href="https://github.com/lewagon/setup" target="_blank">lewagon/setup</a></p>

@@ -24,7 +24,7 @@ class Promotion < ApplicationRecord
     students.average(:note)
   end
 
-  def sync_projects
+  def sync_courses!
     uri = URI teach_api_url
     response = Net::HTTP.get uri
     data = JSON.parse response
@@ -33,6 +33,7 @@ class Promotion < ApplicationRecord
       course = Course.where(teach_project_id: project_id, promotion_id: id).first_or_initialize
       course.name = project['label']
       course.description = project['description']
+      course.starting_at = project['start_date']
       course.save
     end
   end

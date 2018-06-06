@@ -14,6 +14,7 @@ $(document).ready(function () {
 		spinner.addClass('fa-spin');
 		$.ajax({
 			url: url,
+            method: 'post',
 			success: function() {
 				spinner.removeClass('fa-spin');
 				if (onEnd) {

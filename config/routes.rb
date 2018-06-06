@@ -23,13 +23,15 @@
 Mystudents::Application.routes.draw do
   devise_for :students
   namespace :admin do
-    resources :achievements, :courses, :events, :students
+    resources :achievements, :courses, :events
+    resources :students do
+      post :sync_profile
+    end
     resources :promotions do 
-      post :sync
+      post :sync_courses
     end
   end
   resources :courses, only: :show
-  get 'students/:id/sync' => 'students#sync', as: :sync_student
   get 'me' => 'dashboard#me', as: :me
   patch 'me' => 'dashboard#update_me', as: :update_me
   root 'dashboard#index'

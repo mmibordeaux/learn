@@ -1,12 +1,44 @@
-@import 'bootstrap'
-@import 'font-awesome'
-@import 'https://fonts.googleapis.com/css?family=Work+Sans:300,600'
+@import bootstrap
+@import font-awesome
 
 *
-  font-family: 'Work Sans', sans-serif
+  font-family: sans-serif
+  font-weight: 300
+  text-rendering: optimizeLegibility
 
 a
   color: #004b4c
+
+h1, h2
+  font-weight: 300
+  text-align: center
+  
+p
+  line-height: 170%
+
+.logo 
+  display: block
+  height: 80px
+  width: 200px
+  padding: 15px
+  line-height: 20px
+  img
+    margin-top: -30px
+    margin-left: -25px
+    margin-right: -25px
+    height: 90px
+    float: left
+  p
+    color: white
+    float: right
+    letter-spacing: 2px
+    font-weight: 200
+    line-height: 100%
+    font-size: 23px
+    margin-top: 4px
+    text-transform: uppercase
+  &.logo-black
+    filter: brightness(0)
 
 .navbar-toggle .icon-bar
   background: #004b4c
@@ -22,6 +54,13 @@ a
 .big-note
   font-size: 60px
   text-align: right
+
+tr.done, tr.done a
+  color: #ccc
+  text-decoration: line-through
+tr.current
+  background: black
+  color: white
 
 .achievement
   margin-top: 40px
@@ -44,4 +83,6 @@ a
   opacity: 0.5
 
 footer
-  margin-top: 50px
+  border-top: 1px solid #ccc
+  margin: 50px 0
+  padding: 20px 0

@@ -9,6 +9,7 @@
 #  updated_at       :datetime         not null
 #  description      :text
 #  teach_project_id :integer
+#  starting_at      :date
 #
 
 require 'test_helper'

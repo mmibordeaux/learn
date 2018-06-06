@@ -1,5 +1,5 @@
 class Admin::StudentsController < Admin::ApplicationController
-  before_action :set_student, only: [:show, :edit, :update, :destroy, :sync]
+  before_action :set_student
 
   respond_to :html
 
@@ -32,8 +32,8 @@ class Admin::StudentsController < Admin::ApplicationController
     respond_with :admin, @student
   end
 
-  def sync
-    @student.sync!
+  def sync_profile
+    @student.sync_profile!
     respond_to do |format|
       format.html { redirect_back(fallback_location: @student) }
       format.json { render text: 'ok' }
@@ -43,7 +43,8 @@ class Admin::StudentsController < Admin::ApplicationController
   private
 
   def set_student
-    @student = Student.find(params[:id])
+    @student = Student.find params[:id] if params.include? :id
+    @student = Student.find params[:student_id] if params.include? :student_id
   end
 
   def student_params

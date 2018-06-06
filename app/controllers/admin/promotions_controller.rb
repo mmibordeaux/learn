@@ -17,8 +17,8 @@ class Admin::PromotionsController < Admin::ApplicationController
   def edit
   end
 
-  def sync
-    @promotion.sync_projects
+  def sync_courses
+    @promotion.sync_courses!
     redirect_to admin_promotion_path(@promotion)
   end
 

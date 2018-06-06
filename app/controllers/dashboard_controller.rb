@@ -16,7 +16,7 @@ class DashboardController < ApplicationController
   private
   
   def student_params
-    params.require(:student).permit(:firstname, :lastname, :codeschool, :codecademy, :promotion_id, :github_identifier, :github_repository, :heroku_app)
+    params.require(:student).permit(:firstname, :lastname, :codeschool, :codecademy, :pluralsight, :promotion_id, :github_identifier, :github_repository, :heroku_app)
   end
 
 end
