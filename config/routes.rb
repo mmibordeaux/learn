@@ -37,5 +37,6 @@ Mystudents::Application.routes.draw do
   end
   get 'me' => 'dashboard#me', as: :me
   patch 'me' => 'dashboard#update_me', as: :update_me
+  get 'api/projects/:id' => 'api/projects#show'
   root 'dashboard#index'
 end
