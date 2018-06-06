@@ -1,11 +1,11 @@
 <%= title @student%>
-<p><%= link_to @student.promotion, [:admin, @student.promotion] %></p>
+<p class="text-center"><%= link_to @student.promotion, [:admin, @student.promotion] %></p>
 <%= link_to 'Modifier', edit_admin_student_path(@student), class: 'btn btn-default' %>
 
-<%= link_to 'Rafraîchir les données', sync_student_path(@student), class: 'btn btn-default' %>
+<%= link_to 'Rafraîchir les données', admin_student_sync_profile_path(@student), method: :post, class: 'btn btn-default' %>
 
+<h2>Codeschool</h2>
 <% if @student.codeschool %>
-  <h2>Codeschool</h2>
   <%= link_to 'Profil', @student.codeschool_url, target: :blank %>
 
   <% if @student.codeschool_results? %>
@@ -20,10 +20,12 @@
       <% end %>
       </ul>
   <% end %>
+<% else %>
+  <p>Pas de profil</p>
 <% end %>
 
+<h2>Codecademy</h2>
 <% if @student.codecademy %>
-  <h2>Codecademy</h2>
   <%= link_to 'Profil', @student.codecademy_url, target: :blank %>
   <% unless @student.codecademy_data.nil? %>
     <p>Score : <%= @student.codecademy_score %></p>
@@ -34,4 +36,13 @@
       <% end unless @student.codecademy_skills.nil? %>
     </ul>
   <% end %>
+<% else %>
+  <p>Pas de profil</p>
+<% end %>
+
+<h2>Pluralsight</h2>
+<% if @student.pluralsight %>
+  <%= link_to 'Profil', @student.pluralsight_url, target: :blank %>
+<% else %>
+  <p>Pas de profil</p>
 <% end %>
