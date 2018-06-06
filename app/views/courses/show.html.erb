@@ -4,6 +4,10 @@
 
 <%= raw @course.description %>
 
+<div>
+  <%= link_to 'Evaluer ce projet', course_evaluate_path(course_id: @course.id), class: 'btn btn-default' %>
+</div>
+
 <div class="row">
   <div class="col-md-9">
     <ul class="items list-unstyled">

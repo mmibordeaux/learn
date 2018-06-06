@@ -16,6 +16,7 @@ class Course < ApplicationRecord
   belongs_to :promotion
   has_many :achievements
   has_many :events
+  has_many :evaluations
 
   default_scope { order(:starting_at) }
 
@@ -26,6 +27,7 @@ class Course < ApplicationRecord
   end
 
   def current?
+    # TODO avant le cours suivant
     Date.today >= starting_at && Date.today < starting_at + 7.days
   end
 

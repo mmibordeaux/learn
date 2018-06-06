@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_06_050535) do
+ActiveRecord::Schema.define(version: 2018_06_06_081151) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,23 @@ ActiveRecord::Schema.define(version: 2018_06_06_050535) do
     t.integer "teach_project_id"
     t.date "starting_at"
     t.index ["promotion_id"], name: "index_courses_on_promotion_id"
+  end
+
+  create_table "evaluations", force: :cascade do |t|
+    t.text "comment"
+    t.text "relevant_content"
+    t.text "content_to_add"
+    t.text "content_to_remove"
+    t.integer "quality"
+    t.integer "technical_skills_acquired"
+    t.integer "soft_skills_acquired"
+    t.integer "knowledge_acquired"
+    t.bigint "student_id"
+    t.bigint "course_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["course_id"], name: "index_evaluations_on_course_id"
+    t.index ["student_id"], name: "index_evaluations_on_student_id"
   end
 
   create_table "events", id: :serial, force: :cascade do |t|
@@ -99,4 +116,6 @@ ActiveRecord::Schema.define(version: 2018_06_06_050535) do
   end
 
   add_foreign_key "courses", "promotions"
+  add_foreign_key "evaluations", "courses"
+  add_foreign_key "evaluations", "students"
 end

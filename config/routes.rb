@@ -31,7 +31,10 @@ Mystudents::Application.routes.draw do
       post :sync_courses
     end
   end
-  resources :courses, only: :show
+  resources :courses, only: :show do
+    get :evaluate
+    patch 'evaluate' => 'courses#update_evaluation'
+  end
   get 'me' => 'dashboard#me', as: :me
   patch 'me' => 'dashboard#update_me', as: :update_me
   root 'dashboard#index'

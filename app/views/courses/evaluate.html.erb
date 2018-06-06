@@ -1,0 +1,19 @@
+<%= title "Evaluation du projet \"#{@course}\"" %>
+
+<%= simple_form_for @evaluation, url: course_evaluate_path(course_id: @course.id) do |f| %>
+  <div class="row">
+    <div class="col-md-8">
+      <%= f.input :relevant_content, label: 'Contenus pertinents' %>
+      <%= f.input :content_to_add, label: 'Contenus à ajouter' %>
+      <%= f.input :content_to_remove, label: 'Contenus à supprimer' %>
+      <%= f.input :comment, label: 'Commentaire' %>
+    </div>
+    <div class="col-md-4">
+      <%= f.input :knowledge_acquired, label: 'Connaissances acquises', input_html: { min: 0, step: 1, max: 10 } %>
+      <%= f.input :technical_skills_acquired, label: 'Compétences techniques acquises', input_html: { min: 0, step: 1, max: 10 } %>
+      <%= f.input :soft_skills_acquired, label: 'Compétences relationnelles acquises (soft skills)', input_html: { min: 0, step: 1, max: 10 } %>
+      <%= f.input :quality, label: 'Qualité globale du projet', input_html: { min: 0, step: 1, max: 10 } %>
+      <%= f.button :submit, 'Enregistrer' %>
+    </div>
+  </div>
+<% end %>

@@ -42,6 +42,7 @@ class Student < ApplicationRecord
   belongs_to :promotion
 
   has_many :events
+  has_many :evaluations
 
   validates_uniqueness_of :codeschool, :codecademy, :github_identifier, :heroku_app, allow_blank: true, allow_nil: true
 
