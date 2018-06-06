@@ -2,6 +2,27 @@
 <p class="text-center"><%= link_to @course.promotion, [:admin, @course.promotion] %></p>
 <%= link_to 'Modifier', edit_admin_course_path(@course), class: 'btn btn-default' %>
 
+<h2>Evaluations</h2>
+
+<p><%= @course.evaluations.count %> evaluations</p>
+<p>
+  Qualité globale du projet: 
+  <%= @course.evaluations.average :quality %>
+</p>
+<p>
+  Connaissances acquises: 
+  <%= @course.evaluations.average :knowledge_acquired %>    
+</p>
+<p>
+  Compétences techniques acquises:
+  <%= @course.evaluations.average :technical_skills_acquired %>
+</p>
+<p>
+  Compétences relationnelles acquises (soft skills): 
+  <%= @course.evaluations.average :soft_skills_acquired %>
+</p> 
+
+<h2>Etudiants</h2>
 <table class="table table-striped">
   <thead>
     <tr>
