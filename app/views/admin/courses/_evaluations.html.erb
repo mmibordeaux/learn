@@ -1,0 +1,5 @@
+<ul>
+  <% course.evaluations.each do |evaluation| %>
+    <li><p><%= evaluation.send kind %></p></li>
+  <% end %>
+</ul>
