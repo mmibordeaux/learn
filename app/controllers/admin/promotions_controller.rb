@@ -1,5 +1,5 @@
 class Admin::PromotionsController < Admin::ApplicationController
-  before_action :set_promotion, only: [:show, :edit, :update, :destroy, :sync]
+  before_action :set_promotion
 
   respond_to :html
 
