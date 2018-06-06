@@ -15,7 +15,7 @@
   <tbody>
     <% @course.students.each do |student| %>
       <tr>
-        <td><%= student %></td>
+        <td><%= link_to student, [:admin, student] %></td>
         <% @course.achievements.each do |achievement| %>
           <td><%= student.note_for_achievement achievement %></td>
         <% end %>

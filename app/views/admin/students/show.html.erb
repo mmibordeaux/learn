@@ -1,48 +1,60 @@
+<%= image_tag @student.gravatar_url, class: 'img-circle img-responsive center-block' %><br/>
+
 <%= title @student%>
 <p class="text-center"><%= link_to @student.promotion, [:admin, @student.promotion] %></p>
 <%= link_to 'Modifier', edit_admin_student_path(@student), class: 'btn btn-default' %>
 
 <%= link_to 'Rafraîchir les données', admin_student_sync_profile_path(@student), method: :post, class: 'btn btn-default' %>
 
-<h2>Codeschool</h2>
-<% if @student.codeschool %>
-  <%= link_to 'Profil', @student.codeschool_url, target: :blank %>
+<div class="row">
+  <div class="col-md-3">
+    <h3>Codeschool</h3>
+    <% if @student.codeschool %>
+      <%= link_to @student.codeschool_url, @student.codeschool_url, target: :blank %>
 
-  <% if @student.codeschool_results? %>
-      <p>Score : <%= @student.codeschool_score %></p>
-      <ul class="list-inline">
-      <% @student.codeschool_badges.each do |badge| %>
-        <li>
-          <a href="<%= badge['course_url'] %>" target="_blank">
-            <img src="<%= badge['badge'] %>" alt="<%= badge['name'] %>" width="50"/>
-          </a>
-        </li>
+      <% if @student.codeschool_results? %>
+          <p>Score : <%= @student.codeschool_score %></p>
+          <ul class="list-unstyled">
+          <% @student.codeschool_badges.each do |badge| %>
+            <li>
+              <a href="<%= badge['course_url'] %>" target="_blank">
+                <img src="<%= badge['badge'] %>" alt="<%= badge['name'] %>" width="50"/>
+              </a>
+            </li>
+          <% end %>
+          </ul>
       <% end %>
-      </ul>
-  <% end %>
-<% else %>
-  <p>Pas de profil</p>
-<% end %>
-
-<h2>Codecademy</h2>
-<% if @student.codecademy %>
-  <%= link_to 'Profil', @student.codecademy_url, target: :blank %>
-  <% unless @student.codecademy_data.nil? %>
-    <p>Score : <%= @student.codecademy_score %></p>
-    <h3>Skills</h3>
-    <ul class="list-inline">
-      <% @student.codecademy_skills.each do |skill| %>
-        <li class="btn btn-primary btn-xs"><%= skill.text unless skill.nil? %></li>
-      <% end unless @student.codecademy_skills.nil? %>
-    </ul>
-  <% end %>
-<% else %>
-  <p>Pas de profil</p>
-<% end %>
-
-<h2>Pluralsight</h2>
-<% if @student.pluralsight %>
-  <%= link_to 'Profil', @student.pluralsight_url, target: :blank %>
-<% else %>
-  <p>Pas de profil</p>
-<% end %>
+    <% else %>
+      <p>Pas de profil</p>
+    <% end %>
+  </div>
+  <div class="col-md-3">
+    <h3>Codecademy</h3>
+    <% if @student.codecademy %>
+      <%= link_to @student.codecademy_url, @student.codecademy_url, target: :blank %>
+      <% unless @student.codecademy_data.nil? %>
+        <p>Score : <%= @student.codecademy_score %></p>
+        <h3>Skills</h3>
+        <ul class="list-unstyled">
+          <% @student.codecademy_skills.each do |skill| %>
+            <li><%= skill.text unless skill.nil? %></li>
+          <% end unless @student.codecademy_skills.nil? %>
+        </ul>
+      <% end %>
+    <% else %>
+      <p>Pas de profil</p>
+    <% end %>
+  </div>
+  <div class="col-md-3">
+    <h3>Pluralsight</h3>
+    <% if @student.pluralsight %>
+      <%= link_to @student.pluralsight_url, @student.pluralsight_url, target: :blank %>
+    <% else %>
+      <p>Pas de profil</p>
+    <% end %>
+  </div>
+  <div class="col-md-3">
+    <h3>Github</h3>
+    <%= link_to @student.github_identifier_url, @student.github_identifier_url, target: :blank %>
+  </div>
+</div>

@@ -26,7 +26,7 @@ class Achievement < ApplicationRecord
   end
 
   def points_by(student)
-    student.note_for_achivement self
+    student.note_for_achievement self
   end
 
   def to_s
