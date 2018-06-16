@@ -94,12 +94,12 @@
           <%= link_to student, [:admin, student] %>
           <%= link_to 'Edit', edit_admin_student_path(student), class: 'btn btn-default btn-xs' %>  
         </td>
-        <td><%= link_to student.codeschool, student.codeschool_url, target: :blank unless student.codeschool_url.nil? %></td>
-        <td><%= link_to student.pluralsight, student.pluralsight_url, target: :blank unless student.pluralsight_url.nil? %></td>
-        <td><%= link_to student.codecademy, student.codecademy_url, target: :blank unless student.codecademy_url.nil? %></td>
-        <td><%= link_to student.github_identifier, student.github_identifier_url, target: :blank unless student.github_identifier_url.nil? %></td>
-        <td><%= link_to student.github_repository, student.github_repository_url, target: :blank unless student.github_repository_url.nil? %></td>
-        <td><%= link_to student.heroku_app, student.heroku_app_url, target: :blank unless student.heroku_app_url.nil? %></td>
+        <td><%= link_to student.codeschool, student.codeschool_url, target: '_blank' unless student.codeschool_url.nil? %></td>
+        <td><%= link_to student.pluralsight, student.pluralsight_url, target: '_blank' unless student.pluralsight_url.nil? %></td>
+        <td><%= link_to student.codecademy, student.codecademy_url, target: '_blank' unless student.codecademy_url.nil? %></td>
+        <td><%= link_to student.github_identifier, student.github_identifier_url, target: '_blank' unless student.github_identifier_url.nil? %></td>
+        <td><%= link_to student.github_repository, student.github_repository_url, target: '_blank' unless student.github_repository_url.nil? %></td>
+        <td><%= link_to student.heroku_app, student.heroku_app_url, target: '_blank' unless student.heroku_app_url.nil? %></td>
       </tr>
     <% end %>
   </tbody>

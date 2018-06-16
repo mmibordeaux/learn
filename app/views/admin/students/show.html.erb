@@ -10,7 +10,7 @@
   <div class="col-md-3">
     <h3>Codeschool</h3>
     <% if @student.codeschool %>
-      <%= link_to @student.codeschool_url, @student.codeschool_url, target: :blank %>
+      <%= link_to @student.codeschool_url, @student.codeschool_url, target: '_blank' %>
 
       <% if @student.codeschool_results? %>
           <p>Score : <%= @student.codeschool_score %></p>
@@ -31,7 +31,7 @@
   <div class="col-md-3">
     <h3>Codecademy</h3>
     <% if @student.codecademy %>
-      <%= link_to @student.codecademy_url, @student.codecademy_url, target: :blank %>
+      <%= link_to @student.codecademy_url, @student.codecademy_url, target: '_blank' %>
       <% unless @student.codecademy_data.nil? %>
         <p>Score : <%= @student.codecademy_score %></p>
         <h3>Skills</h3>
@@ -48,13 +48,13 @@
   <div class="col-md-3">
     <h3>Pluralsight</h3>
     <% if @student.pluralsight %>
-      <%= link_to @student.pluralsight_url, @student.pluralsight_url, target: :blank %>
+      <%= link_to @student.pluralsight_url, @student.pluralsight_url, target: '_blank' %>
     <% else %>
       <p>Pas de profil</p>
     <% end %>
   </div>
   <div class="col-md-3">
     <h3>Github</h3>
-    <%= link_to @student.github_identifier_url, @student.github_identifier_url, target: :blank %>
+    <%= link_to @student.github_identifier_url, @student.github_identifier_url, target: '_blank' %>
   </div>
 </div>
