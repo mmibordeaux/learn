@@ -44,7 +44,8 @@ class Achievement < ApplicationRecord
       note_for_student(student).value
     else
       if student.respond_to? identifier_command
-        student.send(identifier_command, identifier_title) ? achievement.points : 0
+        achievement_validated = student.send(identifier_command, identifier_title)
+        achievement_validated ? points : 0
       else
         0
       end
