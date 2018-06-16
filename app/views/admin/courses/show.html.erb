@@ -43,7 +43,7 @@
 </div>
 
 <h2>Notes des étudiants</h2>
-<table class="table table-striped">
+<table class="table table-bordered table-hover">
   <thead>
     <tr>
       <th width="200">Etudiant</th>
@@ -68,7 +68,7 @@
 
 
 <h2>Profils des étudiants</h2>
-<table class="table table-striped">
+<table class="table table-bordered table-hover">
   <thead>
     <tr>
       <th width="200">Etudiant</th>
@@ -83,6 +83,7 @@
   <tbody>
     <% @course.students.each do |student| %>
       <tr>
+        <td><%= link_to student, [:admin, student] %></td>
         <td><%= link_to student.codeschool, student.codeschool_url, target: :blank unless student.codeschool_url.nil? %></td>
         <td><%= link_to student.pluralsight, student.pluralsight_url, target: :blank unless student.pluralsight_url.nil? %></td>
         <td><%= link_to student.codecademy, student.codecademy_url, target: :blank unless student.codecademy_url.nil? %></td>
