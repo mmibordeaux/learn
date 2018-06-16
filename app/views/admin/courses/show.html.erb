@@ -2,7 +2,7 @@
 <p class="text-center"><%= link_to @course.promotion, [:admin, @course.promotion] %></p>
 <%= link_to 'Modifier', edit_admin_course_path(@course), class: 'btn btn-default' %>
 
-<h2><%= @course.evaluations.count %> evaluations</h2>
+<h2><%= @course.evaluations.count %> évaluations</h2>
 <div class="row">
   <div class="col-md-6">
     <%= render 'evaluations_integer', 
@@ -42,7 +42,7 @@
   </div>
 </div>
 
-<h2>Etudiants</h2>
+<h2>Notes des étudiants</h2>
 <table class="table table-striped">
   <thead>
     <tr>
@@ -61,6 +61,34 @@
           <td><%= student.note_for_achievement achievement %></td>
         <% end %>
         <td><%= student.note_for_course @course %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+<h2>Profils des étudiants</h2>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th width="200">Etudiant</th>
+      <th>Codeschool</th>
+      <th>Pluralsight</th>
+      <th>Codecademy</th>
+      <th>Github</th>
+      <th>Github repo</th>
+      <th>Heroku app</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @course.students.each do |student| %>
+      <tr>
+        <td><%= link_to student.codeschool, student.codeschool_url, target: :blank unless student.codeschool_url.nil? %></td>
+        <td><%= link_to student.pluralsight, student.pluralsight_url, target: :blank unless student.pluralsight_url.nil? %></td>
+        <td><%= link_to student.codecademy, student.codecademy_url, target: :blank unless student.codecademy_url.nil? %></td>
+        <td><%= link_to student.github_identifier, student.github_identifier_url, target: :blank unless student.github_identifier_url.nil? %></td>
+        <td><%= link_to student.github_repository, student.github_repository_url, target: :blank unless student.github_repository_url.nil? %></td>
+        <td><%= link_to student.heroku_app, student.heroku_app_url, target: :blank unless student.heroku_app_url.nil? %></td>
       </tr>
     <% end %>
   </tbody>
