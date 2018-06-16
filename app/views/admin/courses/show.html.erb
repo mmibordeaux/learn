@@ -58,14 +58,21 @@
       <tr>
         <td><%= link_to student, [:admin, student] %></td>
         <% @course.achievements.each do |achievement| %>
-          <td><%= student.note_for_achievement achievement %></td>
+          <td>
+            <% if achievement.kind_note? %>
+              <%= simple_form_for [:admin, achievement.note_for_student(student)], remote: true do |f| %>
+                <%= f.input :value, label: false, input_html: { min: 0, max: achievement.points } %>
+              <% end %>
+            <% else %>
+              <%= achievement.points_earned_by student %>
+            <% end %>            
+          </td>
         <% end %>
         <td><%= student.note_for_course @course %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
 
 <h2>Profils des étudiants</h2>
 <table class="table table-bordered table-hover">

@@ -71,19 +71,9 @@ class Student < ApplicationRecord
   def note_for_course(course)
     note = 0
     course.achievements.each do |achievement|
-      note += note_for_achievement achievement
+      note += achievement.points_earned_by self
     end
     note
-  end
-
-  def note_for_achievement(achievement)
-    service, title = achievement.identifier.split('://')
-    command = "#{service}_validated?"
-    if respond_to? command
-      send(command, title) ? achievement.points : 0
-    else
-      0
-    end
   end
 
   def to_s

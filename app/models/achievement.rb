@@ -13,23 +13,64 @@
 #  created_at :datetime
 #  updated_at :datetime
 #  course_id  :integer
+#  kind       :string
 #
 
 class Achievement < ApplicationRecord
 
+  KIND_NOTE = 'note'
+  KIND_GITHUB = 'github'
+  KIND_HEROKU = 'heroku'
+  KIND_CODECADEMY = 'codecademy'
+  KIND_PLURALSIGHT = 'pluralsight'
+  KINDS = [KIND_NOTE, KIND_GITHUB, KIND_HEROKU, KIND_CODECADEMY, KIND_PLURALSIGHT]
+
+  has_many :notes
   belongs_to :course
 
   default_scope { order(:position) }
 
-  def done_by?(student)
-    points_by(student) > 0
+  def kind_note?
+    kind == Achievement::KIND_NOTE
   end
 
-  def points_by(student)
-    student.note_for_achievement self
+  def done_by?(student)
+    points_earned_by(student) > 0
+  end
+
+  def points_earned_by(student)
+    case kind
+    when KIND_NOTE
+      note_for_student(student).value
+    else
+      if respond_to? identifier_command
+        student.send(identifier_command, identifier_title) ? achievement.points : 0
+      else
+        0
+      end
+    end
+  end
+
+  def note_for_student(student)
+    notes.where(student: student).first_or_create
   end
 
   def to_s
     "#{title}"
   end
+
+  protected
+
+  def identifier_command
+    "#{identifier_service}_validated?"
+  end
+
+  def identifier_service
+    identifier.split('://').first
+  end
+
+  def identifier_title
+    identifier.split('://').last
+  end
+
 end

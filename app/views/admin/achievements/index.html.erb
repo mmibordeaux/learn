@@ -6,6 +6,7 @@
       <tr>
         <th>Course</th>
         <th>Title</th>
+        <th>Kind</th>
         <th>Identifier</th>
         <th></th>
       </tr>
@@ -15,6 +16,7 @@
         <tr>
           <td><%= link_to achievement.course, [:admin, achievement.course] if achievement.course %></td>
           <td><%= link_to achievement.title, [:admin, achievement] %></td>
+          <td><%= achievement.kind %></td>
           <td><%= achievement.identifier %></td>
           <td>
             <%= link_to 'Edit', edit_admin_achievement_path(achievement), class: 'btn btn-default btn-xs' if current_student.admin %>

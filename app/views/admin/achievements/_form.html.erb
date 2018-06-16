@@ -5,6 +5,7 @@
   <%= f.input :text %>
   <%= f.input :position %>
   <%= f.input :points %>
+  <%= f.input :kind, collection: Achievement::KINDS, include_blank: false %>
   <%= f.input :identifier %>
   <%= f.input :why %>
   <%= f.input :how %>

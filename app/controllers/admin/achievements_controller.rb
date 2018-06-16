@@ -39,6 +39,6 @@ class Admin::AchievementsController < Admin::ApplicationController
   end
 
   def achievement_params
-    params.require(:achievement).permit(:title, :text, :position, :points, :identifier, :why, :how, :course_id)
+    params.require(:achievement).permit(:title, :text, :position, :points, :identifier, :why, :how, :kind, :course_id)
   end
 end

@@ -13,6 +13,7 @@
 #  created_at :datetime
 #  updated_at :datetime
 #  course_id  :integer
+#  kind       :string
 #
 
 require 'test_helper'

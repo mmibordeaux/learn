@@ -12,12 +12,12 @@
   <div class="col-md-9">
     <ul class="items list-unstyled">
       <% @course.achievements.each do |achievement| %>
-        <% points = current_student.note_for_achievement achievement %>
+        <% points = achievement.points_earned_by current_student %>
         <li>
           <div class="row achievement">
             <div class="col-md-2 col-xs-12 is-done">
               <div class="checkmark"><i class="fa <%= achievement.done_by?(current_student) ? 'fa-check-circle-o correct' : 'fa-circle-o incorrect' %>"></i></div>
-              <div class="note"><%= achievement.points_by current_student %>/<%= achievement.points %></div>
+              <div class="note"><%= achievement.points_earned_by current_student %>/<%= achievement.points %></div>
             </div>
             <div class="col-md-10 col-xs-12 text">
               <h2><%= achievement.title %></h2>

@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_06_081151) do
+ActiveRecord::Schema.define(version: 2018_06_16_133740) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "achievement_notes", force: :cascade do |t|
+    t.bigint "achievement_id"
+    t.bigint "student_id"
+    t.float "value", default: 0.0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["achievement_id"], name: "index_achievement_notes_on_achievement_id"
+    t.index ["student_id"], name: "index_achievement_notes_on_student_id"
+  end
 
   create_table "achievements", id: :serial, force: :cascade do |t|
     t.string "title", limit: 255
@@ -26,6 +36,7 @@ ActiveRecord::Schema.define(version: 2018_06_06_081151) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer "course_id"
+    t.string "kind"
   end
 
   create_table "courses", force: :cascade do |t|
@@ -115,6 +126,8 @@ ActiveRecord::Schema.define(version: 2018_06_06_081151) do
     t.index ["reset_password_token"], name: "index_students_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "achievement_notes", "achievements"
+  add_foreign_key "achievement_notes", "students"
   add_foreign_key "courses", "promotions"
   add_foreign_key "evaluations", "courses"
   add_foreign_key "evaluations", "students"

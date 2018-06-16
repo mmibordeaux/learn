@@ -24,6 +24,7 @@ Mystudents::Application.routes.draw do
   devise_for :students
   namespace :admin do
     resources :achievements, :courses, :events
+    resources :achievement_notes, only: :update
     resources :students do
       post :sync_profile
     end
