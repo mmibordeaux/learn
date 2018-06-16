@@ -43,7 +43,7 @@ class Achievement < ApplicationRecord
     when KIND_NOTE
       note_for_student(student).value
     else
-      if respond_to? identifier_command
+      if student.respond_to? identifier_command
         student.send(identifier_command, identifier_title) ? achievement.points : 0
       else
         0
