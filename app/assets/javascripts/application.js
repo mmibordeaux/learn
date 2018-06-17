@@ -1,6 +1,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap-sprockets
+//= require star-rating/star-rating.min
+//= require star-rating/locales/fr
 
 
 $(document).ready(function () {

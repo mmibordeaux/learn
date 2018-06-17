@@ -78,6 +78,9 @@ GEM
       railties (>= 3.2, < 6.0)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
+    glyphicons-rails (0.1.2)
+      sass (~> 3.3)
+      sass-rails
     gravtastic (3.2.6)
     i18n (1.0.1)
       concurrent-ruby (~> 1.0)
@@ -207,6 +210,7 @@ DEPENDENCIES
   devise
   devise-i18n
   font-awesome-rails
+  glyphicons-rails
   gravtastic
   jbuilder
   jquery-rails

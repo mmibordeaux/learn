@@ -3,7 +3,7 @@ class Api::ProjectsController < ApplicationController
   before_action :set_default_response_format
 
   def show
-
+    @course = Course.where(teach_project_id: params[:id]).first
   end
 
   private

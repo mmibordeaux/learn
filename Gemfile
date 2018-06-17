@@ -24,6 +24,7 @@ gem 'coffee-rails'
 gem 'jquery-rails'
 gem 'jbuilder'
 gem 'gravtastic'
+gem 'glyphicons-rails'
 # gem 'summernote-rails'
 
 group :production do
