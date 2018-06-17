@@ -1,4 +1,4 @@
-class CreateJoinTableEventsPromotions < ActiveRecord::Migration
+class CreateJoinTableEventsPromotions < ActiveRecord::Migration[4.2]
   def change
     create_join_table :events, :promotions do |t|
       # t.index [:event_id, :promotion_id]

@@ -68,7 +68,7 @@ ActiveRecord::Schema.define(version: 2018_06_16_133740) do
   end
 
   create_table "events", id: :serial, force: :cascade do |t|
-    t.string "name", limit: 255
+    t.string "name"
     t.date "date"
     t.text "description"
     t.datetime "created_at"
@@ -123,6 +123,7 @@ ActiveRecord::Schema.define(version: 2018_06_16_133740) do
     t.text "pluralsight_data"
     t.string "pluralsight_uuid"
     t.text "pluralsight_data_completedcourses"
+    t.index ["email"], name: "index_students_on_email", unique: true
     t.index ["reset_password_token"], name: "index_students_on_reset_password_token", unique: true
   end
 

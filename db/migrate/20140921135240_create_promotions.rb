@@ -1,4 +1,4 @@
-class CreatePromotions < ActiveRecord::Migration
+class CreatePromotions < ActiveRecord::Migration[4.2]
   def change
     create_table :promotions do |t|
       t.string :name
