@@ -2,47 +2,6 @@
 <p class="text-center"><%= link_to @course.promotion, [:admin, @course.promotion] %></p>
 <%= link_to 'Modifier', edit_admin_course_path(@course), class: 'btn btn-default' %>
 
-<%# TODO remove this, it belongs to teach %>
-<h2><%= @course.evaluations.count %> évaluations</h2>
-<div class="row">
-  <div class="col-md-6">
-    <%= render 'evaluations_integer', 
-          title: 'Qualité globale du projet', 
-          course: @course, 
-          kind: :quality %>
-    <%= render 'evaluations_integer', 
-          title: 'Connaissances acquises', 
-          course: @course, 
-          kind: :knowledge_acquired %>
-    <%= render 'evaluations_integer', 
-          title: 'Compétences techniques acquises', 
-          course: @course, 
-          kind: :technical_skills_acquired %>
-    <%= render 'evaluations_integer', 
-          title: 'Compétences relationnelles acquises (soft skills)', 
-          course: @course, 
-          kind: :soft_skills_acquired %>
-  </div>
-  <div class="col-md-6">
-    <%= render 'evaluations_text', 
-          title: 'Contenus pertinents', 
-          course: @course, 
-          kind: :relevant_content %>
-    <%= render 'evaluations_text', 
-          title: 'Contenus à ajouter', 
-          course: @course, 
-          kind: :content_to_add %>
-    <%= render 'evaluations_text', 
-          title: 'Contenus à supprimer', 
-          course: @course, 
-          kind: :content_to_remove %>
-    <%= render 'evaluations_text', 
-          title: 'Commentaire', 
-          course: @course, 
-          kind: :comment %>
-  </div>
-</div>
-
 <h2>Notes des étudiants</h2>
 <p class="text-center">
   Moyenne <strong><%= @course.average_note.round 2 %></strong>, 
