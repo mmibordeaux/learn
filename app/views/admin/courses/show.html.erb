@@ -4,8 +4,8 @@
 
 <h2>Notes des étudiants</h2>
 <p class="text-center">
-  Moyenne <strong><%= @course.average_note.round 2 %></strong>, 
-  médiane <strong><%= @course.median_note.round 2 %></strong>
+  Moyenne <strong><%= @course.average_note.to_f.round 2 %></strong>, 
+  médiane <strong><%= @course.median_note.to_f.round 2 %></strong>
 </p>
 <table class="table table-bordered table-hover">
   <thead>

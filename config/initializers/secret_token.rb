@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Mystudents::Application.config.secret_key_base = ENV['SECRET_TOKEN'] || '741d7d913923822b5703819d3437ca3b6be097f0ffb40a74f0bb32466de87a236676ea56a3cb374a0d53f1609d3da0e2ac9837c4f2d73fbf6bde0bf17c881021'
+Learn::Application.config.secret_key_base = ENV['SECRET_TOKEN'] || '741d7d913923822b5703819d3437ca3b6be097f0ffb40a74f0bb32466de87a236676ea56a3cb374a0d53f1609d3da0e2ac9837c4f2d73fbf6bde0bf17c881021'

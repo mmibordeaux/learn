@@ -45,6 +45,6 @@ class Admin::PromotionsController < Admin::ApplicationController
   end
 
   def promotion_params
-    params.require(:promotion).permit(:name, :year)
+    params.require(:promotion).permit(:name, :year, :students_csv)
   end
 end

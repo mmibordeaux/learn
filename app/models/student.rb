@@ -36,17 +36,14 @@
 
 class Student < ApplicationRecord
   # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+  # :confirmable, :lockable, :timeoutable, :omniauthable, :registerable, :trackable, :validatable
+  devise :database_authenticatable, :recoverable, :rememberable
   belongs_to :promotion
 
   has_many :events
   has_many :evaluations
 
   validates_uniqueness_of :codeschool, :codecademy, :github_identifier, :heroku_app, allow_blank: true, allow_nil: true
-
-  after_save :sync_profile!
 
   scope :admin, -> { where(admin: true) }
 

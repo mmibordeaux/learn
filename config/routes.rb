@@ -20,7 +20,7 @@
 #           root GET    /                              promotions#index
 #
 
-Mystudents::Application.routes.draw do
+Learn::Application.routes.draw do
   devise_for :students
   namespace :admin do
     resources :achievements, :courses, :events

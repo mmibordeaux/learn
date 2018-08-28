@@ -137,11 +137,6 @@ GEM
     rails-i18n (5.1.1)
       i18n (>= 0.7, < 2)
       railties (>= 5.0, < 6)
-    rails_12factor (0.0.3)
-      rails_serve_static_assets
-      rails_stdout_logging
-    rails_serve_static_assets (0.0.5)
-    rails_stdout_logging (0.0.5)
     railties (5.2.0)
       actionpack (= 5.2.0)
       activesupport (= 5.2.0)
@@ -219,14 +214,13 @@ DEPENDENCIES
   puma
   rails (~> 5.1)
   rails-i18n
-  rails_12factor
   sass-rails
   sendgrid-ruby
   simple_form
   uglifier
 
 RUBY VERSION
-   ruby 2.4.2p198
+   ruby 2.5.1p57
 
 BUNDLED WITH
-   1.16.1
+   1.16.3

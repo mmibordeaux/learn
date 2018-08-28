@@ -11,6 +11,7 @@
         <th></th>
         <th>Nom</th>
         <th>Prénom</th>
+        <th>Email</th>
         <th>Pluralsight</th>
         <th>Codecademy</th>
         <th>Github</th>
@@ -22,6 +23,7 @@
           <td><%= link_to fa_icon('refresh'), admin_student_sync_profile_path(student), class: 'sync' %></td>
           <td><%= link_to student.lastname, [:admin, student] %></td>
           <td><%= link_to student.firstname, [:admin, student] %></td>
+          <td><%= link_to student.email, [:admin, student] %></td>
           <td><%= link_to student.pluralsight, student.pluralsight_url, target: '_blank' unless student.pluralsight_url.nil? %></td>
           <td><%= link_to student.codecademy, student.codecademy_url, target: '_blank' unless student.codecademy_url.nil? %></td>
           <td><%= link_to student.github_identifier, student.github_identifier_url, target: '_blank' unless student.github_identifier_url.nil? %></td>

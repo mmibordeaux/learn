@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.4.2'
+ruby '2.5.1'
 
 # Infrastructure
 gem 'pg', '0.21.0'
@@ -27,11 +27,7 @@ gem 'gravtastic'
 gem 'glyphicons-rails'
 # gem 'summernote-rails'
 
-group :production do
-	gem 'rails_12factor'
-end
-
 group :development do
-	gem 'annotate'
-	gem 'byebug'
+  gem 'annotate'
+  gem 'byebug'
 end

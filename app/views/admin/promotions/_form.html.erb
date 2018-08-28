@@ -2,5 +2,6 @@
   <%= f.error_notification %>
   <%= f.input :name %>
   <%= f.input :year %>
+  <%= f.input :students_csv, as: :text, placeholder: 'Prénom;Nom;prenom.nom@mmibordeaux.com;Mot de passe' %>
   <%= f.button :submit, 'Enregistrer' %>
 <% end %>

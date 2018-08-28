@@ -20,6 +20,27 @@ class Promotion < ApplicationRecord
   include Codeschool
   include Codecademy
 
+  def students_csv
+  end
+
+  def students_csv=(value)
+    require 'csv'
+    value = value.gsub(';', ',')
+    CSV.parse(value).each do |row|
+      firstname = row[0]
+      lastname = row[1]
+      email = row[2]
+      password = row[3]
+      unless Student.where(email: email).exists?
+        Student.create( email: email,
+                        firstname: firstname,
+                        lastname: lastname,
+                        password: password,
+                        promotion_id: id)
+      end
+    end
+  end
+
   def average_note
     students.average(:note)
   end
