@@ -48,6 +48,6 @@ class Admin::StudentsController < Admin::ApplicationController
   end
 
   def student_params
-    params.require(:student).permit(:firstname, :lastname, :codeschool, :pluralsight, :codecademy, :promotion_id, :github_identifier, :github_repository, :heroku_app)
+    params.require(:student).permit(:firstname, :lastname, :email, :codeschool, :pluralsight, :codecademy, :promotion_id, :github_identifier, :github_repository, :heroku_app)
   end
 end
