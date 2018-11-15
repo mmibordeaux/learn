@@ -18,6 +18,8 @@ class Course < ApplicationRecord
   has_many :events
   has_many :evaluations
 
+  scope :done, -> { where('starting_at < ?', Date.today)}
+
   default_scope { order(:starting_at) }
 
   delegate :students, to: :promotion

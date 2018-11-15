@@ -1,14 +1,5 @@
-class Api::ProjectsController < ApplicationController
-  skip_before_action :authenticate_student!
-  before_action :set_default_response_format
-
+class Api::ProjectsController < Api::ApplicationController
   def show
-    @course = Course.where(teach_project_id: params[:id]).first
-  end
-
-  private
-  
-  def set_default_response_format
-    request.format = :json
+    @course = Course.find_by teach_project_id: params[:teach_project_id]
   end
 end

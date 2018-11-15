@@ -28,7 +28,7 @@ Learn::Application.routes.draw do
     resources :students do
       post :sync_profile
     end
-    resources :promotions do 
+    resources :promotions do
       post :sync_courses
     end
   end
@@ -38,6 +38,7 @@ Learn::Application.routes.draw do
   end
   get 'me' => 'dashboard#me', as: :me
   patch 'me' => 'dashboard#update_me', as: :update_me
-  get 'api/projects/:id' => 'api/projects#show'
+  get 'api/projects/:teach_project_id' => 'api/projects#show'
+  get 'api/promotions/:year' => 'api/promotions#show'
   root 'dashboard#index'
 end
