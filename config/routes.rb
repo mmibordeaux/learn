@@ -30,6 +30,9 @@ Learn::Application.routes.draw do
     end
     resources :promotions do
       post :sync_courses
+      member do
+        get :evaluations
+      end
     end
   end
   resources :courses, only: :show do

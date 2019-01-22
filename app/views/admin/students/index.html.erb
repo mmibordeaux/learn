@@ -1,32 +1,34 @@
 <%= title 'Etudiants' %>
 <%= link_to 'Nouvel étudiant', new_admin_student_path, class: 'btn btn-default' %>
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>Prénom</th>
-      <th>Nom</th>
-      <th>Email</th>
-      <th>Promotion</th>
-      <th>Codeschool</th>
-      <th>Codecademy</th>
-      <th>Github identifier</th>
-      <th>Github repository</th>
-      <th>Heroku app</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @students.each do |student| %>
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
       <tr>
-        <td><%= link_to student.firstname, [:admin, student] %></td>
-        <td><%= link_to student.lastname, [:admin, student] %></td>
-        <td><%= link_to student.email, [:admin, student] %></td>
-        <td><%= link_to student.promotion, [:admin, student.promotion ]%></td>
-        <td><%= link_to student.codeschool, student.codeschool_url, target: '_blank' unless student.codeschool_url.nil? %></td>
-        <td><%= link_to student.codecademy, student.codecademy_url, target: '_blank' unless student.codecademy_url.nil? %></td>
-        <td><%= link_to student.github_identifier, student.github_identifier_url, target: '_blank' unless student.github_identifier_url.nil? %></td>
-        <td><%= link_to student.github_repository, student.github_repository_url, target: '_blank' unless student.github_repository_url.nil? %></td>
-        <td><%= link_to student.heroku_app, student.heroku_app_url, target: '_blank' unless student.heroku_app_url.nil? %></td>
+        <th>Prénom</th>
+        <th>Nom</th>
+        <th>Email</th>
+        <th>Promotion</th>
+        <th>Codeschool</th>
+        <th>Codecademy</th>
+        <th>Github identifier</th>
+        <th>Github repository</th>
+        <th>Heroku app</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @students.each do |student| %>
+        <tr>
+          <td><%= link_to student.firstname, [:admin, student] %></td>
+          <td><%= link_to student.lastname, [:admin, student] %></td>
+          <td><%= link_to student.email, [:admin, student] %></td>
+          <td><%= link_to student.promotion, [:admin, student.promotion ]%></td>
+          <td><%= link_to student.codeschool, student.codeschool_url, target: '_blank' unless student.codeschool_url.nil? %></td>
+          <td><%= link_to student.codecademy, student.codecademy_url, target: '_blank' unless student.codecademy_url.nil? %></td>
+          <td><%= link_to student.github_identifier, student.github_identifier_url, target: '_blank' unless student.github_identifier_url.nil? %></td>
+          <td><%= link_to student.github_repository, student.github_repository_url, target: '_blank' unless student.github_repository_url.nil? %></td>
+          <td><%= link_to student.heroku_app, student.heroku_app_url, target: '_blank' unless student.heroku_app_url.nil? %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

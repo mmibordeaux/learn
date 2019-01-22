@@ -2,6 +2,7 @@
 <%= link_to 'Modifier', edit_admin_promotion_path(@promotion), class: 'btn btn-default' %>
 <%= link_to 'Actualiser les profils des étudiants', '', class: 'btn btn-default promotion-sync' %>
 <%= link_to 'Synchroniser les cours avec Teach', admin_promotion_sync_courses_path(@promotion), method: :post, class: 'btn btn-default' %>
+<%= link_to 'Evaluations', evaluations_admin_promotion_path(@promotion), class: 'btn btn-default' %>
 
 <h2>Etudiants</h2>
 <div class="table-responsive">

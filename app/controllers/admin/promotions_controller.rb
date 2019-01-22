@@ -22,6 +22,10 @@ class Admin::PromotionsController < Admin::ApplicationController
     redirect_to admin_promotion_path(@promotion)
   end
 
+  def evaluations
+
+  end
+
   def create
     @promotion = Promotion.create promotion_params
     respond_with :admin, @promotion

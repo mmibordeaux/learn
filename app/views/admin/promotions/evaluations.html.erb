@@ -1,0 +1,26 @@
+<p>Les évaluations sont établies sur 10.</p>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Projet</th>
+      <th>Evaluations</th>
+      <th>Connaissances acquises</th>
+      <th>Compétences techniques acquises</th>
+      <th>Compétences relationnelles acquises (soft skills)</th>
+      <th>Qualité globale du projet</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @promotion.courses.each do |course| %>
+      <tr>
+        <td><%= link_to course, [:admin, course] %></td>
+        <td><%= course.evaluations.count %></td>
+        <td><%= course.knowledge_acquired %></td>
+        <td><%= course.technical_skills_acquired %></td>
+        <td><%= course.soft_skills_acquired %></td>
+        <td><%= course.quality %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

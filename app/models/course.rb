@@ -51,7 +51,29 @@ class Course < ApplicationRecord
     Date.today > starting_at + 7.days
   end
 
+  def quality
+    rounded_average :quality
+  end
+
+  def knowledge_acquired
+    rounded_average :knowledge_acquired
+  end
+
+  def technical_skills_acquired
+    rounded_average :technical_skills_acquired
+  end
+
+  def soft_skills_acquired
+    rounded_average :soft_skills_acquired
+  end
+
   def to_s
     "#{name}"
+  end
+
+  protected
+
+  def rounded_average(kind)
+    evaluations.average(kind).to_f.round(2)
   end
 end
