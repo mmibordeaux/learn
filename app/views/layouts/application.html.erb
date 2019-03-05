@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%= content_for?(:title) ? yield(:title) : "Learn" %></title>
     <%= stylesheet_link_tag "application" %>
+    <%= javascript_include_tag "application" %>
     <%= favicon_link_tag 'favicon.png' %>
     <%= csrf_meta_tags %>
   </head>
@@ -69,6 +70,5 @@
         <p><small><a href="https://www.mmibordeaux.com/">MMI Bordeaux</a></small></p>
       </footer>
     </div><!-- /.container -->
-    <%= javascript_include_tag "application" %>
   </body>
 </html>

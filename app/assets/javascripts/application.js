@@ -3,7 +3,8 @@
 //= require bootstrap-sprockets
 //= require star-rating/star-rating.min
 //= require star-rating/locales/fr
-
+//= require Chart.bundle
+//= require chartkick
 
 $(document).ready(function () {
 

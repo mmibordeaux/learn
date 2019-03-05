@@ -26,6 +26,7 @@ gem 'jbuilder'
 gem 'gravtastic'
 gem 'glyphicons-rails'
 # gem 'summernote-rails'
+gem 'chartkick'
 
 group :development do
   gem 'annotate'

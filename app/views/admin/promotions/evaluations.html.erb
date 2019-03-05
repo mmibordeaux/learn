@@ -1,4 +1,19 @@
-<p>Les évaluations sont établies sur 10.</p>
+<p class="text-center"><%= link_to @promotion, [:admin, @promotion] %></p>
+<%= title "Evaluations" %>
+
+<%= line_chart [:knowledge_acquired, :technical_skills_acquired, :soft_skills_acquired, :quality].map { |key|
+    {
+      name: key.to_s.titleize,
+      data: @promotion.courses.map { |course| 
+      [course.name, course.send(key)]
+    },
+    min: 0,
+    max: 10,
+    height: '600px'
+  }
+} %>
+
+<p>Les évaluations sont présentées sur 10.</p>
 
 <table class="table">
   <thead>
