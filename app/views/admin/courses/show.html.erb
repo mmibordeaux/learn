@@ -1,6 +1,7 @@
 <p class="text-center"><%= link_to @course.promotion, [:admin, @course.promotion] %></p>
 <%= title @course %>
 <%= link_to 'Modifier', edit_admin_course_path(@course), class: 'btn btn-default' %>
+<%= link_to 'Evaluations', evaluations_admin_course_path(@course), class: 'btn btn-default' %>
 
 <h2>Notes des étudiants</h2>
 <p class="text-center">

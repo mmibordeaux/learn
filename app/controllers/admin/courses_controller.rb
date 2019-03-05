@@ -1,11 +1,14 @@
 class Admin::CoursesController < Admin::ApplicationController
-  before_action :set_course, only: [:show, :edit, :update, :destroy]
+  before_action :set_course, only: [:show, :evaluations, :edit, :update, :destroy]
 
   def index
     @courses = Course.all
   end
 
   def show
+  end
+
+  def evaluations
   end
 
   def new
