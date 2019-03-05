@@ -5,15 +5,15 @@
     {
       name: key.to_s.titleize,
       data: @promotion.courses.map { |course| 
-      [course.name, course.send(key)]
-    },
-    min: 0,
-    max: 10,
-    height: '600px'
-  }
-} %>
-
-<p>Les évaluations sont présentées sur 10.</p>
+        [course.name, course.send(key)]
+      }
+    }
+  },
+  min: 0,
+  max: 10,
+  legend: 'bottom',
+  height: '600px'
+%>
 
 <table class="table">
   <thead>
@@ -38,4 +38,5 @@
       </tr>
     <% end %>
   </tbody>
-</table>
+</table
+><p>Les évaluations sont présentées sur 10.</p>
