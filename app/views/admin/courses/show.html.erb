@@ -14,7 +14,7 @@
       <% @course.achievements.each do |achievement| %>
         <th><%= achievement %> (<%= achievement.points %>)</th>
       <% end %>
-      <th>Note (<%= @course.total_points %>)</th>
+      <th>Note (<%= @course.points_total %>)</th>
     </tr>
   </thead>
   <tbody>
@@ -29,7 +29,7 @@
               <% end %>
             <% else %>
               <%= achievement.points_earned_by student %>
-            <% end %>            
+            <% end %>
           </td>
         <% end %>
         <td><%= student.note_for_course @course %></td>
