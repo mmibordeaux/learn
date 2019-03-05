@@ -34,7 +34,7 @@
     </ul>
   </div>
   <div class="col-md-3">
-    <div class="big-note"><%= current_student.note_for_course @course %>/<%= Achievement.sum :points %></div>
+    <div class="big-note"><%= current_student.note_for_course @course %>/<%= @course.points_total %></div>
   </div>
 </div>
 

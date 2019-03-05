@@ -42,6 +42,10 @@ class Course < ApplicationRecord
     @student_notes ||= promotion.students.map { |student| student.note_for_course(self) }
   end
 
+  def points_total
+    achievements.sum :points
+  end
+
   def current?
     # TODO avant le cours suivant
     Date.today >= starting_at && Date.today < starting_at + 7.days
