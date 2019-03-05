@@ -12,7 +12,7 @@
     <tr>
       <th width="200">Etudiant</th>
       <% @course.achievements.each do |achievement| %>
-        <th><%= achievement %></th>
+        <th><%= achievement %> (<%= achievement.points %>)</th>
       <% end %>
       <th>Note</th>
     </tr>
