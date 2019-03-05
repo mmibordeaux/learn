@@ -1,5 +1,5 @@
-<%= title @course %>
 <p class="text-center"><%= link_to @course.promotion, [:admin, @course.promotion] %></p>
+<%= title @course %>
 <%= link_to 'Modifier', edit_admin_course_path(@course), class: 'btn btn-default' %>
 
 <h2>Notes des étudiants</h2>
@@ -14,7 +14,7 @@
       <% @course.achievements.each do |achievement| %>
         <th><%= achievement %> (<%= achievement.points %>)</th>
       <% end %>
-      <th>Note</th>
+      <th>Note (<%= @course.total_points %>)</th>
     </tr>
   </thead>
   <tbody>
