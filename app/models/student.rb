@@ -55,7 +55,7 @@ class Student < ApplicationRecord
 
   include Codeschool
   include Codecademy
-  include Pluralsight
+  # include Pluralsight
   include Github
   include Heroku
 
