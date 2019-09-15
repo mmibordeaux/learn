@@ -34,7 +34,9 @@
     </ul>
   </div>
   <div class="col-md-3">
-    <div class="big-note"><%= current_student.note_for_course @course %>/<%= @course.points_total %></div>
+    <% if @course.points_total.to_i > 0 %>
+      <div class="big-note"><%= current_student.note_for_course @course %>/<%= @course.points_total %></div>
+    <% end %>
   </div>
 </div>
 
