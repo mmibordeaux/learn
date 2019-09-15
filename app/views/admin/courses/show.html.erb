@@ -39,3 +39,10 @@
   </tbody>
 </table>
 
+<h2>Synthèse</h2>
+
+<pre>
+<% @course.students.each do |student| %>
+<%= student %>&Tab;<%= student.note_for_course @course %>
+<% end %>
+</pre>
