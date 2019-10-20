@@ -1,11 +1,16 @@
 class CoursesController < ApplicationController
   def show
     @course = Course.find params[:id]
+    @title = @course.to_s
+    add_breadcrumb @course
   end
 
   def evaluate
     @course = Course.find params[:course_id]
     @evaluation = Evaluation.where(student: current_student, course: @course).first_or_create
+    @title = "Evaluation de \"#{@course}\""
+    add_breadcrumb @course, @course
+    add_breadcrumb 'Evaluation'
   end
 
   def update_evaluation

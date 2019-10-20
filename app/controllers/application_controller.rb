@@ -4,6 +4,8 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_student!
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+  add_breadcrumb 'Learn', :root_path
+
   protected
 
   def configure_permitted_parameters

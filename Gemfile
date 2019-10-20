@@ -13,6 +13,8 @@ gem 'nokogiri'
 gem 'simple_form'
 gem 'devise'
 gem 'devise-i18n'
+gem 'devise-bootstrap-views'
+gem 'breadcrumbs_on_rails'
 
 # Front
 gem 'bootstrap-sass'

@@ -1,43 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%= content_for?(:title) ? yield(:title) : "Learn" %></title>
-    <%= stylesheet_link_tag "application" %>
-    <%= favicon_link_tag 'favicon-bolt.ico' %>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= @title.nil? ? 'MMI Teach' : @title %></title>
     <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag "application", :media => "all" %>
+    <%= favicon_link_tag 'favicon.png', :rel => 'shortcut icon' %>
+    <%= javascript_include_tag "application" %>
   </head>
-  <body>
-    <div class="navbar navbar-static-top" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
-          <a class="navbar-brand" href="<%= root_path %>"><%= fa_icon :bolt %> Learn</a>
-        </div>
-      </div>
+  <body class="devise">
+    <div class="logo logo-black">
+      <%= link_to root_path do %>
+        <%= image_tag 'mmi-bordeaux.png' %>
+        <p>Teach</p>
+      <% end %>
     </div>
     <div class="container">
       <div class="row">
-        <div class="col-md-4 col-md-offset-4">
-          <% unless notice.nil? %>
-            <p class="alert alert-success">
-              <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-              <%= notice %>
-            </p>
-          <% end %>
-          <% unless alert.nil? %>
-            <p class="alert alert-warning">
-              <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-              <%= alert %>
-            </p>
-          <% end %>
-          <div>
-            <%= yield %>
-          </div>
+        <div class="col-md-6 col-md-offset-3">
+          <%= yield %>
+          <%= render 'application/notice' %>
         </div>
       </div>
-    </div><!-- /.container -->
-    <footer></footer>
-    <%= javascript_include_tag "application" %>
+    </div>
   </body>
 </html>

@@ -1,10 +1,4 @@
-<% title = "#{@student}" %>
-<% content_for :title do title end %>
-
-<%= image_tag @student.gravatar_url, class: 'img-circle img-responsive center-block' %><br/>
-
-<h1><%= title %></h1>
-<p class="text-center"><%= @student.promotion %></p>
+<% content_for :title, @title %>
 
 <h2>Projets</h2>
 
@@ -24,4 +18,3 @@
   <% end %>
   </tbody>
 </table>
-
