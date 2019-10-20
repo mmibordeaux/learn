@@ -14,6 +14,9 @@ body
   background-image: asset-url('background.png')
   background-position: center
 
+main
+  min-height: 600px
+
 ul
   list-style-type: none
   list-style-position: inside
@@ -164,3 +167,40 @@ body.discuss
     font-weight: 200
   #disqus_thread
     margin-top: 120px
+
+.big-note
+  font-size: 60px
+  text-align: right
+
+tr.done, tr.done a
+  color: #ccc
+  text-decoration: line-through
+tr.current
+  background: black
+  color: white
+  a
+    color: white
+
+.large-number
+  font-size: 60px
+  line-height: 100%
+
+.achievement
+  margin-top: 40px
+  .is-done
+    font-size: 40px
+    .note
+      margin-top: 14px
+      font-size: 20px
+    .checkmark
+      margin-right: 10px
+      float: left
+  .text h2
+    margin-top: 0
+
+.correct
+  color: green
+
+.past
+  text-decoration: line-through
+  opacity: 0.5
