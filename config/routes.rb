@@ -26,7 +26,7 @@ Learn::Application.routes.draw do
     resources :achievements, :events
     resources :achievement_notes, only: :update
     resources :courses do
-      member do 
+      member do
         get :evaluations
       end
     end
@@ -39,6 +39,7 @@ Learn::Application.routes.draw do
         get :evaluations
       end
     end
+    root to: 'students#index'
   end
   resources :courses, only: :show do
     get :evaluate

@@ -1,11 +1,16 @@
-<p class="text-center"><%= link_to @promotion, [:admin, @promotion] %></p>
-<%= title "Evaluations" %>
-
-<%= line_chart [:knowledge_acquired, :technical_skills_acquired, :soft_skills_acquired, :quality].map { |key|
+<%= line_chart [
+    :knowledge_acquired,
+    :technical_skills_acquired,
+    :soft_skills_acquired,
+    :quality
+  ].map { |key|
     {
       name: key.to_s.titleize,
-      data: @promotion.courses.map { |course| 
-        [course.name, course.send(key)]
+      data: @promotion.courses.map { |course|
+        [
+          "#{course.name} ##{course.teach_project_id}",
+          course.send(key)
+        ]
       }
     }
   },

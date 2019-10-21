@@ -1,20 +1,31 @@
 class Admin::StudentsController < Admin::ApplicationController
   before_action :set_student
 
+  add_breadcrumb 'Etudiants', :admin_students_path
+
   respond_to :html
 
   def index
     @students = Student.all
+    @title = 'Etudiants'
   end
 
   def show
+    @title = @student.to_s
+    @subtitle = @student.promotion.to_s
+    add_breadcrumb @title
   end
 
   def new
     @student = Student.new
+    @title = 'Nouvel étudiant'
+    add_breadcrumb @title
   end
 
   def edit
+    @title = "#{@student} - Modifier"
+    add_breadcrumb @student.to_s, admin_student_path(@student)
+    add_breadcrumb 'Modifier'
   end
 
   def create

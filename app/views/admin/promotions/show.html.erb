@@ -1,8 +1,7 @@
-<%= title @promotion %>
-<%= link_to 'Modifier', edit_admin_promotion_path(@promotion), class: 'btn btn-default' %>
-<%= link_to 'Actualiser les profils des étudiants', '', class: 'btn btn-default promotion-sync' %>
-<%= link_to 'Synchroniser les cours avec Teach', admin_promotion_sync_courses_path(@promotion), method: :post, class: 'btn btn-default' %>
-<%= link_to 'Evaluations', evaluations_admin_promotion_path(@promotion), class: 'btn btn-default' %>
+<%= link_to 'Modifier', edit_admin_promotion_path(@promotion), class: 'btn btn-primary' %>
+<%= link_to 'Actualiser les profils des étudiants', '', class: 'btn btn-primary promotion-sync' %>
+<%= link_to 'Synchroniser les cours avec Teach', admin_promotion_sync_courses_path(@promotion), method: :post, class: 'btn btn-primary' %>
+<%= link_to 'Evaluations', evaluations_admin_promotion_path(@promotion), class: 'btn btn-primary' %>
 
 <h2>Etudiants</h2>
 <div class="table-responsive">
@@ -24,7 +23,7 @@
           <td><%= link_to fa_icon('refresh'), admin_student_sync_profile_path(student), class: 'sync' %></td>
           <td>
             <%= link_to student, [:admin, student] %>
-            <%= link_to 'Edit', edit_admin_student_path(student), class: 'btn btn-default btn-xs' %>  
+            <%= link_to 'Edit', edit_admin_student_path(student), class: 'btn btn-primary btn-xs' %>
           </td>
           <td><%= link_to student.pluralsight, student.pluralsight_url, target: '_blank' unless student.pluralsight_url.nil? %></td>
           <td><%= link_to student.codecademy, student.codecademy_url, target: '_blank' unless student.codecademy_url.nil? %></td>

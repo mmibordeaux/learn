@@ -2,15 +2,15 @@ module Codecademy
   extend ActiveSupport::Concern
 
   def codecademy_url
-    "https://www.codecademy.com/fr/#{codecademy}" unless codecademy.nil?
+    "https://www.codecademy.com/profiles/#{codecademy}" unless codecademy.nil?
   end
 
   def codecademy_badges_url
-    "https://www.codecademy.com/fr/users/#{codecademy}/achievements"
+    "https://www.codecademy.com/users/#{codecademy}/achievements"
   end
 
   def codecademy_html
-    Nokogiri::HTML(codecademy_data) 
+    Nokogiri::HTML(codecademy_data)
   end
 
   def codecademy_badges_html
@@ -18,8 +18,8 @@ module Codecademy
   end
 
   def codecademy_validated?(title)
-    return false if codecademy_skills.nil? or codecademy_skills.empty?
-    codecademy_skills.each do |node|
+    return false if codecademy_courses.nil? or codecademy_courses.empty?
+    codecademy_courses.each do |node|
       return true if node.content == title
     end
     return false
@@ -39,15 +39,15 @@ module Codecademy
       end
     elsif is_a? Promotion
       score = 0
-      students.each do |s| 
+      students.each do |s|
         score += s.codecademy_score
       end
       score
     end
   end
 
-  def codecademy_skills
-    codecademy_html.css('#completed h5') unless codecademy_data.nil?
+  def codecademy_courses
+    codecademy_html.css('h6') unless codecademy_data.nil?
   end
 
   # TODO rename the db field badges_data
@@ -64,5 +64,5 @@ module Codecademy
     rescue
     end
   end
-  
+
 end

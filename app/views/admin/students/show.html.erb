@@ -1,10 +1,10 @@
-<%= image_tag @student.gravatar_url, class: 'img-circle img-responsive center-block' %><br/>
-
-<%= title @student%>
-<p class="text-center"><%= link_to @student.promotion, [:admin, @student.promotion] %></p>
-<%= link_to 'Modifier', edit_admin_student_path(@student), class: 'btn btn-default' %>
-
-<%= link_to 'Rafraîchir les données', admin_student_sync_profile_path(@student), method: :post, class: 'btn btn-default' %>
+<%= link_to 'Modifier',
+            edit_admin_student_path(@student),
+            class: 'btn btn-primary' %>
+<%= link_to 'Rafraîchir les données',
+            admin_student_sync_profile_path(@student),
+            method: :post,
+            class: 'btn btn-primary' %>
 
 <div class="row">
   <div class="col-md-3">
@@ -34,11 +34,11 @@
       <%= link_to @student.codecademy_url, @student.codecademy_url, target: '_blank' %>
       <% unless @student.codecademy_data.nil? %>
         <p>Score : <%= @student.codecademy_score %></p>
-        <h3>Skills</h3>
+        <h3>Completed courses</h3>
         <ul class="list-unstyled">
-          <% @student.codecademy_skills.each do |skill| %>
+          <% @student.codecademy_courses.each do |skill| %>
             <li><%= skill.text unless skill.nil? %></li>
-          <% end unless @student.codecademy_skills.nil? %>
+          <% end unless @student.codecademy_courses.nil? %>
         </ul>
       <% end %>
     <% else %>

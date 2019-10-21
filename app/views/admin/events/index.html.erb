@@ -1,5 +1,5 @@
 <%= title 'Événements' %>
-<%= link_to 'Nouvel événement', new_admin_event_path, class: 'btn btn-default' %>
+<%= link_to 'Nouvel événement', new_admin_event_path, class: 'btn btn-primary' %>
 <div class="table-responsive">
   <table class="table table-striped">
     <thead>
@@ -17,7 +17,7 @@
           <td><%= event.date %></td>
           <td><%= event.description %></td>
           <td>
-            <%= link_to 'Edit', edit_admin_event_path(event), class: 'btn btn-default btn-xs' %>
+            <%= link_to 'Edit', edit_admin_event_path(event), class: 'btn btn-primary btn-xs' %>
             <%= link_to 'Destroy', [:admin, event], method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-xs' %>
           </td>
         </tr>

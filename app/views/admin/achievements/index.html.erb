@@ -1,5 +1,5 @@
 <%= title 'Réalisations' %>
-<%= link_to 'Nouvelle réalisation', new_admin_achievement_path, class: 'btn btn-default' %>
+<%= link_to 'Nouvelle réalisation', new_admin_achievement_path, class: 'btn btn-primary' %>
 <div class="table-responsive">
   <table class="table table-striped">
     <thead>
@@ -19,7 +19,7 @@
           <td><%= achievement.kind %></td>
           <td><%= achievement.identifier %></td>
           <td>
-            <%= link_to 'Edit', edit_admin_achievement_path(achievement), class: 'btn btn-default btn-xs' if current_student.admin %>
+            <%= link_to 'Edit', edit_admin_achievement_path(achievement), class: 'btn btn-primary btn-xs' if current_student.admin %>
             <%= link_to 'Destroy', [:admin, achievement], method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-xs' %>
           </td>
         </tr>
