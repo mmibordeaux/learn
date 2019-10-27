@@ -1,37 +1,39 @@
 <h4>Evaluation du projet par les étudiants</h4>
 <small><%= @evaluations.count %> évaluations</small>
-<table class="table table-bordered">
-  <tbody>
-    <tr>
-      <td><h3>Qualité globale du projet</h3></td>
-      <td><%= render  'admin/courses/evaluation_stars',
-                      value: @quality,
-                      size: 'lg' %></td>
-      <td><h3><%= (@quality.to_f / 2.0).round(1) %></h3></td>
-    </tr>
-    <tr>
-      <td>Connaissances acquises</td>
-      <td><%= render  'admin/courses/evaluation_stars',
-                      value: @knowledge_acquired,
-                      size: 'xs' %></td>
-      <td><%= (@knowledge_acquired.to_f / 2.0).round(1) %></td>
-    </tr>
-    <tr>
-      <td>Compétences techniques acquises</td>
-      <td><%= render  'admin/courses/evaluation_stars',
-                      value: @technical_skills_acquired,
-                      size: 'xs' %></td>
-      <td><%= (@technical_skills_acquired.to_f / 2.0).round(1) %></td>
-    </tr>
-    <tr>
-      <td>Compétences relationnelles acquises (soft skills)</td>
-      <td><%= render  'admin/courses/evaluation_stars',
-                      value: @soft_skills_acquired,
-                      size: 'xs' %></td>
-      <td><%= (@soft_skills_acquired.to_f / 2.0).round(1) %></td>
-    </tr>
-  </tbody>
-</table>
+<div class="table-responsive">
+  <table class="table table-bordered">
+    <tbody>
+      <tr>
+        <td><h3>Qualité globale du projet</h3></td>
+        <td><%= render  'admin/courses/evaluation_stars',
+                        value: @quality,
+                        size: 'lg' %></td>
+        <td><h3><%= (@quality.to_f / 2.0).round(1) %></h3></td>
+      </tr>
+      <tr>
+        <td>Connaissances acquises</td>
+        <td><%= render  'admin/courses/evaluation_stars',
+                        value: @knowledge_acquired,
+                        size: 'xs' %></td>
+        <td><%= (@knowledge_acquired.to_f / 2.0).round(1) %></td>
+      </tr>
+      <tr>
+        <td>Compétences techniques acquises</td>
+        <td><%= render  'admin/courses/evaluation_stars',
+                        value: @technical_skills_acquired,
+                        size: 'xs' %></td>
+        <td><%= (@technical_skills_acquired.to_f / 2.0).round(1) %></td>
+      </tr>
+      <tr>
+        <td>Compétences relationnelles acquises (soft skills)</td>
+        <td><%= render  'admin/courses/evaluation_stars',
+                        value: @soft_skills_acquired,
+                        size: 'xs' %></td>
+        <td><%= (@soft_skills_acquired.to_f / 2.0).round(1) %></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
 <div class="row">
   <div class="col-md-3">
