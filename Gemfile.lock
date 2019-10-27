@@ -49,9 +49,13 @@ GEM
     autoprefixer-rails (9.6.5)
       execjs
     bcrypt (3.1.13)
-    bootstrap-sass (3.4.1)
-      autoprefixer-rails (>= 5.2.1)
-      sassc (>= 2.0.0)
+    bootstrap (4.3.1)
+      autoprefixer-rails (>= 9.1.0)
+      popper_js (>= 1.14.3, < 2)
+      sassc-rails (>= 2.0.0)
+    bootstrap-glyphicons (0.0.1)
+      railties (>= 3.0)
+      sass (>= 3.2)
     breadcrumbs_on_rails (3.0.1)
     builder (3.2.3)
     byebug (11.0.1)
@@ -81,9 +85,6 @@ GEM
       railties (>= 3.2, < 6.1)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
-    glyphicons-rails (0.1.2)
-      sass (~> 3.3)
-      sass-rails
     gravtastic (3.2.6)
     i18n (1.7.0)
       concurrent-ruby (~> 1.0)
@@ -110,6 +111,7 @@ GEM
       mini_portile2 (~> 2.4.0)
     orm_adapter (0.5.0)
     pg (0.21.0)
+    popper_js (1.14.5)
     puma (4.2.1)
       nio4r (~> 2.0)
     rack (2.0.7)
@@ -196,7 +198,8 @@ PLATFORMS
 DEPENDENCIES
   annotate
   autoprefixer-rails
-  bootstrap-sass
+  bootstrap
+  bootstrap-glyphicons
   breadcrumbs_on_rails
   byebug
   chartkick
@@ -205,7 +208,6 @@ DEPENDENCIES
   devise-bootstrap-views
   devise-i18n
   font-awesome-rails
-  glyphicons-rails
   gravtastic
   jbuilder
   jquery-rails

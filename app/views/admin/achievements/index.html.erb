@@ -19,8 +19,8 @@
           <td><%= achievement.kind %></td>
           <td><%= achievement.identifier %></td>
           <td>
-            <%= link_to 'Edit', edit_admin_achievement_path(achievement), class: 'btn btn-primary btn-xs' if current_student.admin %>
-            <%= link_to 'Destroy', [:admin, achievement], method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-xs' %>
+            <%= link_to 'Edit', edit_admin_achievement_path(achievement), class: 'btn btn-primary btn-sm' if current_student.admin %>
+            <%= link_to 'Destroy', [:admin, achievement], method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm' %>
           </td>
         </tr>
       <% end %>

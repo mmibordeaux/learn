@@ -17,7 +17,7 @@ gem 'devise-bootstrap-views'
 gem 'breadcrumbs_on_rails'
 
 # Front
-gem 'bootstrap-sass'
+gem 'bootstrap'
 gem 'sass-rails'
 gem 'autoprefixer-rails'
 gem 'font-awesome-rails'
@@ -26,8 +26,8 @@ gem 'coffee-rails'
 gem 'jquery-rails'
 gem 'jbuilder'
 gem 'gravtastic'
-gem 'glyphicons-rails'
-# gem 'summernote-rails'
+gem 'bootstrap-glyphicons'
+# gem 'glyphicons-rails'
 gem 'chartkick'
 
 group :development do

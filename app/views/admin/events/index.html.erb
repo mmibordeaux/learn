@@ -17,8 +17,8 @@
           <td><%= event.date %></td>
           <td><%= event.description %></td>
           <td>
-            <%= link_to 'Edit', edit_admin_event_path(event), class: 'btn btn-primary btn-xs' %>
-            <%= link_to 'Destroy', [:admin, event], method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-xs' %>
+            <%= link_to 'Edit', edit_admin_event_path(event), class: 'btn btn-primary btn-sm' %>
+            <%= link_to 'Destroy', [:admin, event], method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm' %>
           </td>
         </tr>
       <% end %>
