@@ -5,6 +5,7 @@
     <tr>
       <th>Projet</th>
       <th>Début</th>
+      <th>Evaluation</th>
     </tr>
   </thead>
   <tbody>
@@ -12,6 +13,15 @@
     <tr class="<%= 'done' if course.done? %><%= 'current' if course.current? %>">
       <td><%= link_to course, course %></td>
       <td><%= course.starting_at.strftime '%d/%m/%Y' %></td>
+      <td>
+        <% if current_student.evaluated?(course) %>
+          <%= fa_icon :check %>
+        <% else %>
+          <%= link_to 'Evaluer ce projet',
+                      course_evaluate_path(course_id: course.id),
+                      class: 'btn btn-primary btn-sm' %>
+        <% end %>
+      </td>
     </tr>
   <% end %>
   </tbody>

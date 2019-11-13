@@ -20,4 +20,8 @@
 class Evaluation < ApplicationRecord
   belongs_to :student
   belongs_to :course
+  validates :quality, numericality: { other_than: 0 }
+  validates :knowledge_acquired, numericality: { other_than: 0 }
+  validates :technical_skills_acquired, numericality: { other_than: 0 }
+  validates :soft_skills_acquired, numericality: { other_than: 0 }
 end

@@ -16,8 +16,11 @@ class CoursesController < ApplicationController
   def update_evaluation
     @course = Course.find params[:course_id]
     @evaluation = Evaluation.where(student: current_student, course: @course).first
-    @evaluation.update evaluation_params
-    redirect_to @course, notice: 'Evaluation mise à jour.'
+    if @evaluation.update evaluation_params
+      redirect_to @course, notice: 'Evaluation mise à jour.'
+    else
+      render :evaluate
+    end
   end
 
   protected

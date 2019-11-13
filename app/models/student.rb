@@ -59,6 +59,10 @@ class Student < ApplicationRecord
   include Github
   include Heroku
 
+  def evaluated?(course)
+    evaluations.where(course: course).exists?
+  end
+
   def sync_profile!
     codecademy_sync!
     codeschool_sync!
