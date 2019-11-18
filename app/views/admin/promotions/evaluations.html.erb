@@ -20,15 +20,25 @@
   height: '600px'
 %>
 
+<h2 class="mt-5">Nombre d'évaluations</h2>
+<%= column_chart @promotion.courses.map { |course|
+    [
+      "#{course.name} ##{course.teach_project_id}",
+      course.evaluations.count
+    ]
+   }
+%>
+
+<h2 class="mt-5">Détails</h2>
 <table class="table">
   <thead>
     <tr>
       <th>Projet</th>
-      <th>Evaluations</th>
-      <th>Connaissances acquises</th>
-      <th>Compétences techniques acquises</th>
-      <th>Compétences relationnelles acquises (soft skills)</th>
-      <th>Qualité globale du projet</th>
+      <th class="small">Evaluations</th>
+      <th class="small">Connaissances acquises</th>
+      <th class="small">Compétences techniques acquises</th>
+      <th class="small">Compétences relationnelles acquises (soft skills)</th>
+      <th class="small">Qualité globale du projet</th>
     </tr>
   </thead>
   <tbody>
