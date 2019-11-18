@@ -14,6 +14,7 @@ class Promotion < ApplicationRecord
   validates :name, presence: true
   has_and_belongs_to_many :events
   has_many :courses
+  has_many :evaluations, through: :students
 
   default_scope { order :name }
 
