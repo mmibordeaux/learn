@@ -7,7 +7,7 @@ class CoursesController < ApplicationController
 
   def evaluate
     @course = Course.find params[:course_id]
-    @evaluation = Evaluation.where(student: current_student, course: @course).first_or_create
+    @evaluation = Evaluation.where(student: current_student, course: @course).first_or_initialize
     @title = "Evaluation de \"#{@course}\""
     add_breadcrumb @course, @course
     add_breadcrumb 'Evaluation'
@@ -15,7 +15,7 @@ class CoursesController < ApplicationController
 
   def update_evaluation
     @course = Course.find params[:course_id]
-    @evaluation = Evaluation.where(student: current_student, course: @course).first
+    @evaluation = Evaluation.where(student: current_student, course: @course).first_or_initialize
     if @evaluation.update evaluation_params
       redirect_to @course, notice: 'Evaluation mise à jour.'
     else

@@ -44,6 +44,7 @@ Learn::Application.routes.draw do
   resources :courses, only: :show do
     get :evaluate
     patch 'evaluate' => 'courses#update_evaluation'
+    post 'evaluate' => 'courses#update_evaluation'
   end
   get 'me' => 'dashboard#me', as: :me
   patch 'me' => 'dashboard#update_me', as: :update_me
