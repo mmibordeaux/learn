@@ -5,6 +5,37 @@
             evaluations_admin_course_path(@course),
             class: 'btn btn-primary' %>
 
+<h2 class="mt-5">Achievements</h2>
+
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Points</th>
+        <th>Kind</th>
+        <th>Identifier</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @course.achievements.each do |achievement| %>
+        <tr>
+          <td><%= link_to achievement.title, [:admin, achievement] %></td>
+          <td><%= achievement.points %></td>
+          <td><%= achievement.kind %></td>
+          <td><%= achievement.identifier %></td>
+          <td>
+            <%= link_to 'Edit', edit_admin_achievement_path(achievement), class: 'btn btn-primary btn-sm' if current_student.admin %>
+            <%= link_to 'Destroy', [:admin, achievement], method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm' %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+
 <h2>Notes des étudiants</h2>
 <p class="text-center">
   Moyenne <strong><%= @course.average_note.to_f.round 2 %></strong>,

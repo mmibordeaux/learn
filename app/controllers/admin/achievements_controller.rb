@@ -3,11 +3,15 @@ class Admin::AchievementsController < Admin::ApplicationController
 
   respond_to :html
 
+  add_breadcrumb 'Projets', :admin_courses_path
+
   def index
     @achievements = Achievement.all
   end
 
   def show
+    add_breadcrumb @achievement.course, [:admin, @achievement.course]
+    add_breadcrumb @achievement
   end
 
   def new
@@ -15,6 +19,9 @@ class Admin::AchievementsController < Admin::ApplicationController
   end
 
   def edit
+    add_breadcrumb @achievement.course, [:admin, @achievement.course]
+    add_breadcrumb @achievement, [:admin, @achievement]
+    add_breadcrumb 'Modifier'
   end
 
   def create

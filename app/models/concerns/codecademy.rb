@@ -47,7 +47,7 @@ module Codecademy
   end
 
   def codecademy_courses
-    codecademy_html.css('h6') unless codecademy_data.nil?
+    codecademy_html.css('h3') unless codecademy_data.nil?
   end
 
   # TODO rename the db field badges_data
