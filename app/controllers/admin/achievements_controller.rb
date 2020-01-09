@@ -26,12 +26,12 @@ class Admin::AchievementsController < Admin::ApplicationController
 
   def create
     @achievement = Achievement.create achievement_params
-    respond_with :admin, @achievement
+    respond_with :admin, @achievement.course
   end
 
   def update
     @achievement.update achievement_params
-    respond_with :admin, @achievement
+    respond_with :admin, @achievement.course
   end
 
   def destroy
