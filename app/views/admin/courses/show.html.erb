@@ -46,7 +46,7 @@
     <tr>
       <th width="200">Etudiant</th>
       <% @course.achievements.each do |achievement| %>
-        <th><%= achievement %> (<%= achievement.points %>)</th>
+        <th class="small"><%= achievement %> (<%= achievement.points %>)</th>
       <% end %>
       <th>Note (<%= @course.points_total %>)</th>
     </tr>
@@ -64,6 +64,22 @@
             <% else %>
               <%= achievement.points_earned_by student %>
             <% end %>
+            <div class="small">
+              <% case achievement.kind %>
+              <% when Achievement::KIND_NOTE %>
+              <% when Achievement::KIND_GITHUB %>
+                <% case achievement.identifier %>
+                <% when 'github://account_created' %>
+                  <%= link_to student.github_identifier, student.github_identifier_url, target: '_blank' unless student.github_identifier_url.nil? %>
+                <% when 'github://rails_repository_created' %>
+                  <%= link_to student.github_repository, student.github_repository_url, target: '_blank' unless student.github_repository_url.nil? %>
+                <% end %>
+              <% when Achievement::KIND_HEROKU %>
+                <%= link_to student.heroku_app, student.heroku_app_url, target: '_blank' unless student.heroku_app_url.nil? %>
+              <% when Achievement::KIND_CODECADEMY %>
+              <% when Achievement::KIND_PLURALSIGHT %>
+              <% end %>
+            </div>
           </td>
         <% end %>
         <td><%= student.note_for_course @course %></td>
