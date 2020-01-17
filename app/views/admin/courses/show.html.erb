@@ -92,6 +92,6 @@
 
 <pre>
 <% @course.students.each do |student| %>
-<%= student %>&Tab;<%= student.note_for_course @course %>
+<%= student %>&Tab;<%= student.note_for_course(@course).to_s.gsub('.', ',') %>
 <% end %>
 </pre>
