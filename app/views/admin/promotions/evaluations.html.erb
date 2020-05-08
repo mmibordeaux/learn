@@ -30,26 +30,27 @@
 %>
 
 <h2 class="mt-5">Détails</h2>
-<table class="table">
+<table class="table table-striped">
   <thead>
     <tr>
       <th>Projet</th>
-      <th class="small">Evaluations</th>
+      <th class="small">Qualité globale du projet</th>
       <th class="small">Connaissances acquises</th>
       <th class="small">Compétences techniques acquises</th>
       <th class="small">Compétences relationnelles acquises (soft skills)</th>
-      <th class="small">Qualité globale du projet</th>
     </tr>
   </thead>
   <tbody>
     <% @promotion.courses.each do |course| %>
       <tr>
-        <td><%= link_to course, [:admin, course] %></td>
-        <td><%= course.evaluations.count %></td>
+        <td>
+          <%= link_to course, evaluations_admin_course_path(course) %>
+          <span class="badge badge-light"><%= course.evaluations.count %> évaluations</span>
+        </td>
+        <td><%= course.quality %></td>
         <td><%= course.knowledge_acquired %></td>
         <td><%= course.technical_skills_acquired %></td>
         <td><%= course.soft_skills_acquired %></td>
-        <td><%= course.quality %></td>
       </tr>
     <% end %>
   </tbody>
