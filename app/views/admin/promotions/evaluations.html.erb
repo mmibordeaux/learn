@@ -29,7 +29,26 @@
    }
 %>
 
+<h2 class="mt-5">Répartition par qualité</h2>
+
+<div class="row">
+  <% Course::QUALITY.each do |quality| %>
+  <div class="col-md-3">
+    <h5>
+      <%= quality[:title] %>
+      <span class="small">(<%= quality[:from].round %> - <%= quality[:to].round %>)</span>
+    </h5>
+    <ul>
+      <% Course.for_promotion_with_quality(@promotion, quality).each do |course| %>
+        <li class="mb-2 small"><%= link_to course, evaluations_admin_course_path(course) %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
+</div>
+
 <h2 class="mt-5">Détails</h2>
+<p class="small">Les évaluations sont présentées sur 10.</p>
 <table class="table table-striped">
   <thead>
     <tr>
@@ -54,5 +73,4 @@
       </tr>
     <% end %>
   </tbody>
-</table
-><p>Les évaluations sont présentées sur 10.</p>
+</table>

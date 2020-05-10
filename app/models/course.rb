@@ -18,11 +18,25 @@ class Course < ApplicationRecord
   has_many :events
   has_many :evaluations
 
-  scope :done, -> { where('starting_at < ?', Date.today)}
+  QUALITY = [
+    { title: 'Désastreux', from: 0, to: 4 },
+    { title: 'Mauvais', from: 4, to: 6 },
+    { title: 'Correct', from: 6, to: 8 },
+    { title: 'Excellent', from: 8, to: 10.1 }
+  ]
 
+  scope :done, -> { where('starting_at < ?', Date.today)}
   default_scope { order(:starting_at) }
 
   delegate :students, to: :promotion
+
+  def self.for_promotion_with_quality(promotion, quality)
+    list = []
+    promotion.courses.each do |course|
+      list << course if course.quality > quality[:from] && course.quality < quality[:to]
+    end
+    list
+  end
 
   def name_with_promotion
     "#{promotion} / #{to_s}"
