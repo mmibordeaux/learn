@@ -60,7 +60,7 @@ GEM
       rails (>= 5.0)
     builder (3.2.4)
     byebug (11.1.1)
-    chartkick (3.3.1)
+    chartkick (3.4.0)
     coffee-rails (5.0.0)
       coffee-script (>= 2.2.0)
       railties (>= 5.2.0)
