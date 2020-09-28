@@ -28,17 +28,12 @@ class Promotion < ApplicationRecord
     require 'csv'
     value = value.gsub(';', ',')
     CSV.parse(value).each do |row|
-      firstname = row[0]
-      lastname = row[1]
-      email = row[2]
-      password = row[3]
-      unless Student.where(email: email).exists?
-        Student.create( email: email,
-                        firstname: firstname,
-                        lastname: lastname,
-                        password: password,
-                        promotion_id: id)
-      end
+      student = Student.where(email: row[2]).first_or_create
+      student.firstname = row[0]
+      student.lastname = row[1]
+      student.password = row[3]
+      student.promotion_id = id
+      student.save
     end
   end
 
