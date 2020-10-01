@@ -3,7 +3,7 @@
     <h4><%= t('.sign_in', default: 'Sign in') %></h4>
   </div>
   <div class="panel-body">
-    <p>Utilisez votre email prenom.nom@mmibordeaux.com pour vous connecter. Pour votre première connexion, cliquez sur "Mot de passe oublié", entrez votre email prenom.nom@mmibordeaux.com, cliquez sur le lien dans l'email reçu et définissez votre mot de passe.</p>
+    <p class="small">Utilisez votre email prenom.nom@mmibordeaux.com pour vous connecter. Pour votre première connexion, cliquez sur "Mot de passe oublié", entrez votre email prenom.nom@mmibordeaux.com, cliquez sur le lien dans l'email reçu et définissez votre mot de passe.</p>
     <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { role: 'form' }) do |f| %>
       <div class="form-group">
         <%= f.label :email %>

@@ -11,7 +11,7 @@
     <%= javascript_include_tag "application" %>
   </head>
   <body class="devise">
-    <div class="logo logo-black">
+    <div class="logo">
       <%= link_to root_path do %>
         <%= image_tag 'mmi-bordeaux.png' %>
         <p>Learn</p>
@@ -19,7 +19,7 @@
     </div>
     <div class="container-fluid">
       <div class="row">
-        <div class="col-md-5">
+        <div class="col-md-4">
           <%= yield %>
           <%= render 'application/notice' %>
         </div>
