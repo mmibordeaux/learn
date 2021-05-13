@@ -9,46 +9,46 @@
 
 $(document).ready(function () {
 
-	var currentStudentIndex = -1;
-	var students = $('.sync');
+  var currentStudentIndex = -1;
+  var students = $('.sync');
 
-	function sync(student, onEnd) {
-		var url = $(student).attr('href');
-		var spinner = $(student).find('.fa');
-		spinner.addClass('fa-spin');
-		$.ajax({
-			url: url,
+  function sync(student, onEnd) {
+    var url = $(student).attr('href');
+    var spinner = $(student).find('.fa');
+    spinner.addClass('fa-spin');
+    $.ajax({
+      url: url,
             method: 'post',
-			success: function() {
-				spinner.removeClass('fa-spin');
-				if (onEnd) {
-					onEnd();
-				}
-			}
-		});
-	}
+      success: function() {
+        spinner.removeClass('fa-spin');
+        if (onEnd) {
+          onEnd();
+        }
+      }
+    });
+  }
 
-	function syncNextStudent() {
-		currentStudentIndex++;
-		var currentStudent = students[currentStudentIndex];
-		if (currentStudent) {
-			sync(currentStudent, syncNextStudent);
-		} else {
-			$('.promotion-sync .fa').removeClass('fa-spin');
-		}
-	}
+  function syncNextStudent() {
+    currentStudentIndex++;
+    var currentStudent = students[currentStudentIndex];
+    if (currentStudent) {
+      sync(currentStudent, syncNextStudent);
+    } else {
+      $('.promotion-sync .fa').removeClass('fa-spin');
+    }
+  }
 
-	$('.sync').click(function(e){
-		e.preventDefault();
-		sync(this);
-	})
+  $('.sync').click(function(e){
+    e.preventDefault();
+    sync(this);
+  })
 
-	$('.promotion-sync').click(function(e) {
-		e.preventDefault();
-		var spinner = $(this).find('.fa');
-		spinner.addClass('fa-spin');
-		currentStudentIndex = -1;
-		syncNextStudent();
-	});
+  $('.promotion-sync').click(function(e) {
+    e.preventDefault();
+    var spinner = $(this).find('.fa');
+    spinner.addClass('fa-spin');
+    currentStudentIndex = -1;
+    syncNextStudent();
+  });
 
 });
