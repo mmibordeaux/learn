@@ -11,19 +11,15 @@
     <%= javascript_include_tag "application" %>
   </head>
   <body class="devise">
-    <div class="logo logo-black">
-      <%= link_to root_path do %>
-        <%= image_tag 'mmi-bordeaux.png' %>
-        <p>Learn</p>
-      <% end %>
-    </div>
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-md-4">
-          <%= yield %>
-          <%= render 'application/notice' %>
-        </div>
+    <div class="devise__panel">
+      <div class="logo logo-black">
+        <%= link_to root_path do %>
+          <%= image_tag 'mmi-bordeaux.png' %>
+          <p>Learn</p>
+        <% end %>
       </div>
+      <%= yield %>
+      <%= render 'application/notice' %>
     </div>
   </body>
 </html>
