@@ -4,8 +4,8 @@
 <table class="table">
   <thead>
     <tr>
-      <th>Promotion</th>
       <th>Title</th>
+      <th>Promotion</th>
       <th>Date</th>
       <th>Evaluations</th>
     </tr>
@@ -13,8 +13,8 @@
   <tbody>
     <% @courses.each do |course| %>
       <tr>
-        <td><%= link_to course.promotion, [:admin, course.promotion] %></td>
         <td><%= link_to course, [:admin, course] %></td>
+        <td><%= link_to course.promotion, [:admin, course.promotion] %></td>
         <td><%= l course.starting_at %></td>
         <td><%= course.evaluations.count %></td>
       </tr>

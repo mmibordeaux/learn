@@ -18,7 +18,6 @@ gem 'breadcrumbs_on_rails'
 
 # Front
 gem 'bootstrap'
-gem 'sass-rails'
 gem 'autoprefixer-rails'
 gem 'font-awesome-rails'
 gem 'uglifier'

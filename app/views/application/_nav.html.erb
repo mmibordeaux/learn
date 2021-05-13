@@ -1,42 +1,42 @@
-<nav class="navbar navbar-expand-lg navbar-dark">
-  <%= link_to root_path, class:'navbar-brand logo' do %>
-    <%= image_tag 'mmi-bordeaux.png' %>
-    <p>Learn</p>
-  <% end %>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-    <ul class="navbar-nav">
-      <% if student_signed_in? %>
-        <li class="nav-item">
-          <%= link_to 'Accueil', root_path, class: 'nav-link' %>
-        </li>
-        <% if current_student.admin %>
-          <li class="nav-item dropdown">
-            <a  class="nav-link dropdown-toggle"
-                href="#"
-                id="navbarDropdown"
-                role="button"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false">
-              Admin
-            </a>
-            <div class="dropdown-menu">
-              <%= link_to 'Etudiants', admin_students_path, class: 'dropdown-item' %>
-              <%= link_to 'Promotions', admin_promotions_path, class: 'dropdown-item' %>
-              <%= link_to 'Projets', admin_courses_path, class: 'dropdown-item' %>
-              <%= link_to 'Réalisations', admin_achievements_path, class: 'dropdown-item' %>
-              <%= link_to 'Evénements', admin_events_path, class: 'dropdown-item' %>
-            </div>
+<nav class="navbar navbar-expand-lg navbar-dark bg-transparent">
+  <div class="container-fluid">
+    <%= link_to root_path, class:'navbar-brand logo' do %>
+      <%= image_tag 'mmi-bordeaux.png' %>
+      <p>Learn</p>
+    <% end %>
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ms-auto">
+        <% if student_signed_in? %>
+          <li class="nav-item">
+            <%= link_to 'Accueil', root_path, class: 'nav-link' %>
+          </li>
+          <% if current_student.admin %>
+            <li class="nav-item dropdown">
+              <a  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="navbarDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false">
+                Admin
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <%= link_to 'Etudiants', admin_students_path, class: 'dropdown-item' %>
+                <%= link_to 'Promotions', admin_promotions_path, class: 'dropdown-item' %>
+                <%= link_to 'Projets', admin_courses_path, class: 'dropdown-item' %>
+                <%= link_to 'Réalisations', admin_achievements_path, class: 'dropdown-item' %>
+                <%= link_to 'Evénements', admin_events_path, class: 'dropdown-item' %>
+              </ul>
+            </li>
+          <% end %>
+          <li class="nav-item">
+            <%= link_to 'Mon profil', me_path, class: 'nav-link' %>
           </li>
         <% end %>
-        <li class="nav-item">
-          <%= link_to 'Mon profil', me_path, class: 'nav-link' %>
-        </li>
-      <% end %>
-    </ul>
+      </ul>
+    </div>
   </div>
 </nav>

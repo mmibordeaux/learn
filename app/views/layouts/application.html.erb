@@ -10,13 +10,13 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
-    <%= render 'application/nav' %>
-    <%= render 'application/jumbotron' %>
+    <%= render 'nav' %>
+    <%= render 'jumbotron' %>
     <main class="container-fluid">
-      <%= render 'application/breadcrumb' %>
-      <%= render 'application/notice' %>
+      <%= render 'breadcrumb' %>
+      <%= render 'notice' %>
       <%= yield %>
     </main>
-    <%= render 'application/footer' %>
+    <%= render 'footer' %>
   </body>
 </html>

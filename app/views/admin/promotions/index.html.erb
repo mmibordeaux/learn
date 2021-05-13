@@ -6,13 +6,17 @@
     <tr>
       <th>Nom</th>
       <th>Etudiants</th>
+      <th>Evaluations</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
     <% @promotions.each do |promotion| %>
       <tr>
-        <td><%= link_to promotion, [:admin, promotion] %></td>
+        <td><%= promotion %></td>
         <td><%= promotion.students.count %></td>
+        <td><%= promotion.evaluations.count %></td>
+        <td class="text-end"><%= link_to 'Voir', [:admin, promotion], class: 'btn btn-primary btn-sm' %></td>
       </tr>
     <% end %>
   </tbody>

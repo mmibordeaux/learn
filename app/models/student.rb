@@ -64,9 +64,9 @@ class Student < ApplicationRecord
   end
 
   def sync_profile!
-    codecademy_sync!
-    codeschool_sync!
-    pluralsight_sync!
+    # codecademy_sync!
+    # codeschool_sync!
+    # pluralsight_sync!
   end
 
   def note_for_course(course)

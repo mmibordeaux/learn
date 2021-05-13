@@ -4,7 +4,7 @@ class Admin::CoursesController < Admin::ApplicationController
   add_breadcrumb 'Projets', :admin_courses_path
 
   def index
-    @courses = Course.all.order(:starting_at)
+    @courses = Course.unscoped.order(starting_at: :desc)
     @title = 'Projets'
   end
 

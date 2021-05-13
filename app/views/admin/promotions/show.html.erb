@@ -3,52 +3,68 @@
 <%= link_to 'Synchroniser les cours avec Teach', admin_promotion_sync_courses_path(@promotion), method: :post, class: 'btn btn-primary' %>
 <%= link_to 'Evaluations', evaluations_admin_promotion_path(@promotion), class: 'btn btn-primary' %>
 
-<h2 class="mt-5">Etudiants</h2>
-<div class="table-responsive">
-  <table class="table table-striped table-hover">
-    <thead>
-      <tr>
-        <th></th>
-        <th width="300">Etudiant</th>
-        <th class="small">Codecademy</th>
-        <th class="small">Github</th>
-        <th class="small">Github repo</th>
-        <th class="small">Heroku app</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @promotion.students.each do |student| %>
-        <tr>
-          <td><%= link_to fa_icon('refresh'), admin_student_sync_profile_path(student), class: 'sync' %></td>
-          <td><%= link_to student, [:admin, student] %></td>
-          <td class="small"><%= link_to student.codecademy, student.codecademy_url, target: '_blank' unless student.codecademy_url.nil? %></td>
-          <td class="small"><%= link_to student.github_identifier, student.github_identifier_url, target: '_blank' unless student.github_identifier_url.nil? %></td>
-          <td class="small"><%= link_to student.github_repository, student.github_repository_url, target: '_blank' unless student.github_repository_url.nil? %></td>
-          <td class="small"><%= link_to student.heroku_app, student.heroku_app_url, target: '_blank' unless student.heroku_app_url.nil? %></td>
-          <td><%= link_to 'Edit', edit_admin_student_path(student), class: 'btn btn-primary btn-sm' %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-</div>
-
-<h2 class="mt-5">Projets</h2>
-<div class="table-responsive">
-  <table class="table table-striped">
-    <thead>
-      <tr>
-      <th>Projet</th>
-      <th>Début</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @promotion.courses.each do |course| %>
-        <tr class="<%= 'done' if course.done? %><%= 'current' if course.current? %>">
-          <td><%= link_to course, [:admin, course] %></td>
-          <td><%= course.starting_at.strftime '%d/%m/%Y' %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+<div class="row">
+  <div class="col-md-6">
+    <h2 class="mt-5">Etudiants</h2>
+    <div class="table-responsive">
+      <table class="table table-striped table-hover">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Etudiant</th>
+            <!--
+            <th class="small">Codecademy</th>
+            <th class="small">Github</th>
+            <th class="small">Github repo</th>
+            <th class="small">Heroku app</th>
+            -->
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @promotion.students.each do |student| %>
+            <tr>
+              <td><%= link_to fa_icon('refresh'), admin_student_sync_profile_path(student), class: 'sync' %></td>
+              <td><%= student %></td>
+              <!--
+              <td class="small"><%= link_to student.codecademy, student.codecademy_url, target: '_blank' unless student.codecademy_url.nil? %></td>
+              <td class="small"><%= link_to student.github_identifier, student.github_identifier_url, target: '_blank' unless student.github_identifier_url.nil? %></td>
+              <td class="small"><%= link_to student.github_repository, student.github_repository_url, target: '_blank' unless student.github_repository_url.nil? %></td>
+              <td class="small"><%= link_to student.heroku_app, student.heroku_app_url, target: '_blank' unless student.heroku_app_url.nil? %></td>
+              -->
+              <td class="text-end">
+                <%= link_to 'Voir', admin_student_path(student), class: 'btn btn-primary btn-sm' %>
+                <%= link_to 'Modifier', edit_admin_student_path(student), class: 'btn btn-primary btn-sm' %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <h2 class="mt-5">Projets</h2>
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Début</th>
+            <th>Projet</th>
+            <th>Evaluations</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @promotion.courses.each do |course| %>
+            <tr class="<%= 'done' if course.done? %><%= 'current' if course.current? %>">
+              <td><%= course.starting_at.strftime '%d/%m/%Y' %></td>
+              <td><%= course %></td>
+              <td><%= course.evaluations.count %></td>
+              <td class="text-end"><%= link_to 'Voir', [:admin, course], class: 'btn btn-primary btn-sm' %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>

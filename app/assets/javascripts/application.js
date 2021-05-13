@@ -1,5 +1,6 @@
-//= require jquery
+//= require jquery3
 //= require jquery_ujs
+//= require popper
 //= require bootstrap-sprockets
 //= require star-rating/star-rating.min
 //= require star-rating/locales/fr
