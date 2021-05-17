@@ -33,10 +33,10 @@
 
 <div class="row">
   <% Course::QUALITY.each do |quality| %>
-  <div class="col-md-3">
+  <div class="col-md-2">
     <h5>
       <%= quality[:title] %>
-      <span class="small">(<%= quality[:from].round %> - <%= quality[:to].round %>)</span>
+      <span class="small">(<= <%= quality[:to].round %>)</span>
     </h5>
     <ul>
       <% Course.for_promotion_with_quality(@promotion, quality).each do |course| %>

@@ -16,7 +16,10 @@
         <td><%= promotion %></td>
         <td><%= promotion.students.count %></td>
         <td><%= promotion.evaluations.count %></td>
-        <td class="text-end"><%= link_to 'Voir', [:admin, promotion], class: 'btn btn-primary btn-sm' %></td>
+        <td class="text-end">
+          <%= link_to 'Voir', [:admin, promotion], class: 'btn btn-primary btn-sm' %>
+          <%= link_to 'Evaluations', evaluations_admin_promotion_path(promotion), class: 'btn btn-primary btn-sm' %>
+        </td>
       </tr>
     <% end %>
   </tbody>

@@ -19,10 +19,12 @@ class Course < ApplicationRecord
   has_many :evaluations
 
   QUALITY = [
-    { title: 'Désastreux', from: 0, to: 4 },
-    { title: 'Mauvais', from: 4, to: 6 },
-    { title: 'Correct', from: 6, to: 8 },
-    { title: 'Excellent', from: 8, to: 10.1 }
+    { title: '0-5', from: 0, to: 5 },
+    { title: '5', from: 5, to: 6 },
+    { title: '6', from: 6, to: 7 },
+    { title: '7', from: 7, to: 8 },
+    { title: '8', from: 8, to: 9 },
+    { title: '9', from: 9, to: 10 }
   ]
 
   scope :done, -> { where('starting_at < ?', Date.today)}
@@ -33,7 +35,7 @@ class Course < ApplicationRecord
   def self.for_promotion_with_quality(promotion, quality)
     list = []
     promotion.courses.each do |course|
-      list << course if course.quality > quality[:from] && course.quality < quality[:to]
+      list << course if course.quality > quality[:from] && course.quality <= quality[:to]
     end
     list
   end
