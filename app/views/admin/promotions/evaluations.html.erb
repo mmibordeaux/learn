@@ -53,6 +53,7 @@
   <thead>
     <tr>
       <th>Projet</th>
+      <th>Evaluations</th>
       <th class="small">Qualité globale du projet</th>
       <th class="small">Connaissances acquises</th>
       <th class="small">Compétences techniques acquises</th>
@@ -62,10 +63,8 @@
   <tbody>
     <% @promotion.courses.each do |course| %>
       <tr>
-        <td>
-          <%= link_to course, evaluations_admin_course_path(course) %>
-          <span class="badge badge-light"><%= course.evaluations.count %> évaluations</span>
-        </td>
+        <td><%= link_to course, evaluations_admin_course_path(course) %></td>
+        <td><%= course.evaluations.count %></td>
         <td><%= course.quality %></td>
         <td><%= course.knowledge_acquired %></td>
         <td><%= course.technical_skills_acquired %></td>
