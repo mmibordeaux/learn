@@ -8,7 +8,7 @@
       name: key.to_s.titleize,
       data: @promotion.courses.map { |course|
         [
-          "#{course.name} ##{course.teach_project_id}",
+          "##{course.teach_project_id} #{course.name}",
           course.send(key)
         ]
       }
