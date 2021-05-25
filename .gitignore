@@ -32,3 +32,5 @@ bower.json
 .byebug_history
 .DS_Store
 latest.dump
+# Ignore application configuration
+/config/application.yml

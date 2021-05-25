@@ -32,4 +32,5 @@ gem 'chartkick'
 group :development do
   gem 'annotate'
   gem 'byebug'
+  gem 'figaro'
 end
