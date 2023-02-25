@@ -126,7 +126,7 @@ GEM
       mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
     orm_adapter (0.5.0)
-    pg (0.21.0)
+    pg (1.4.5)
     popper_js (2.11.6)
     puma (6.1.0)
       nio4r (~> 2.0)
@@ -229,7 +229,7 @@ DEPENDENCIES
   jbuilder
   jquery-rails
   nokogiri
-  pg (= 0.21.0)
+  pg
   puma
   rails (~> 5)
   rails-i18n
