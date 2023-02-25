@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.7.2'
+ruby '2.7.7'
 
 # Infrastructure
 gem 'pg', '0.21.0'
