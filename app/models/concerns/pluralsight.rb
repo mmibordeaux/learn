@@ -21,12 +21,12 @@ module Pluralsight
   protected
 
   def pluralsight_data
-    open(pluralsight_url).read
+    URI.open(pluralsight_url).read
   rescue
   end
 
   def pluralsight_data_completedcourses
-    open(pluralsight_courses_url).read
+    URI.open(pluralsight_courses_url).read
   rescue
   end
 
@@ -42,5 +42,7 @@ module Pluralsight
     encoded = pluralsight_data.split("window.detailsPayload = '").last.split("';").first
     decoded = Base64.decode64 encoded
     JSON.parse decoded
+  rescue
+    {}
   end
 end
