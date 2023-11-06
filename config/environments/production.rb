@@ -86,6 +86,7 @@ Learn::Application.configure do
   config.logger = ActiveSupport::TaggedLogging.new(logger)
 
   config.action_mailer.default_url_options = { host: 'learn.mmibordeaux.com' }
+  config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     address: ENV['SMTP_SERVER'],
     user_name: ENV['SMTP_USERNAME'],
