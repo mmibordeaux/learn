@@ -5,7 +5,7 @@ ruby '2.7.8'
 # Infrastructure
 gem 'pg'
 gem 'puma'
-gem 'sendgrid-ruby'
+# gem 'sib-api-v3-sdk'
 
 # Back
 gem 'rails', '~> 5'
