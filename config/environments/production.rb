@@ -83,10 +83,11 @@ Learn::Application.configure do
   config.action_mailer.default_url_options = { host: 'learn.mmibordeaux.com' }
   config.action_mailer.smtp_settings = {
     address: ENV['SMTP_SERVER'],
-    port: '587',
-    authentication: :plain,
+    port: 587,
+    domain: 'mmibordeaux.com',
     user_name: ENV['SMTP_USERNAME'],
     password: ENV['SMTP_PASSWORD'],
+    authentication: :plain,
     enable_starttls_auto: true
   }
 
