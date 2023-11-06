@@ -88,13 +88,11 @@ Learn::Application.configure do
   config.action_mailer.default_url_options = { host: 'learn.mmibordeaux.com' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    address: ENV['SMTP_SERVER'],
+    address: "smtp-relay.brevo.com",
+    port: 587,
     user_name: ENV['SMTP_USERNAME'],
     password: ENV['SMTP_PASSWORD'],
-    domain: ENV['SMTP_DOMAIN'],
-    port: ENV['SMTP_PORT'],
-    authentication: :plain,
-    enable_starttls_auto: true
+    authentication: :plain
   }
 
 end
