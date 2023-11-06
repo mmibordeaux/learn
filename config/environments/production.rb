@@ -71,7 +71,7 @@ Learn::Application.configure do
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     address: "smtp-relay.brevo.com",
-    port: 587,
+    port: 465,
     user_name: ENV['SMTP_USERNAME'],
     password: ENV['SMTP_PASSWORD'],
     authentication: :plain
