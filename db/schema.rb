@@ -26,11 +26,11 @@ ActiveRecord::Schema.define(version: 2018_06_16_133740) do
   end
 
   create_table "achievements", id: :serial, force: :cascade do |t|
-    t.string "title", limit: 255
+    t.string "title"
     t.text "text"
     t.integer "position"
     t.integer "points"
-    t.string "identifier", limit: 255
+    t.string "identifier"
     t.text "why"
     t.text "how"
     t.datetime "created_at"
@@ -68,7 +68,7 @@ ActiveRecord::Schema.define(version: 2018_06_16_133740) do
   end
 
   create_table "events", id: :serial, force: :cascade do |t|
-    t.string "name", limit: 255
+    t.string "name"
     t.date "date"
     t.text "description"
     t.datetime "created_at"
@@ -87,17 +87,17 @@ ActiveRecord::Schema.define(version: 2018_06_16_133740) do
   end
 
   create_table "promotions", id: :serial, force: :cascade do |t|
-    t.string "name", limit: 255
+    t.string "name"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer "year"
   end
 
   create_table "students", id: :serial, force: :cascade do |t|
-    t.string "firstname", limit: 255
-    t.string "lastname", limit: 255
-    t.string "codeschool", limit: 255
-    t.string "codecademy", limit: 255
+    t.string "firstname"
+    t.string "lastname"
+    t.string "codeschool"
+    t.string "codecademy"
     t.integer "promotion_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -105,19 +105,19 @@ ActiveRecord::Schema.define(version: 2018_06_16_133740) do
     t.text "codecademy_data"
     t.text "codecademy_badges"
     t.float "note"
-    t.string "email", limit: 255, default: "", null: false
-    t.string "encrypted_password", limit: 255, default: "", null: false
-    t.string "reset_password_token", limit: 255
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.integer "sign_in_count", default: 0, null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string "current_sign_in_ip", limit: 255
-    t.string "last_sign_in_ip", limit: 255
-    t.string "github_identifier", limit: 255
-    t.string "github_repository", limit: 255
-    t.string "heroku_app", limit: 255
+    t.string "current_sign_in_ip"
+    t.string "last_sign_in_ip"
+    t.string "github_identifier"
+    t.string "github_repository"
+    t.string "heroku_app"
     t.boolean "admin", default: false
     t.string "pluralsight"
     t.text "pluralsight_data"
