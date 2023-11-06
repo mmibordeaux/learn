@@ -67,16 +67,17 @@ Learn::Application.configure do
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.default_url_options = { host: 'learn.mmibordeaux.com' }
+  config.action_mailer.default_url_options = { 
+    host: 'learn.mmibordeaux.com' 
+  }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    address: "smtp-relay.brevo.com",
-    port: 465,
-    user_name: ENV['SMTP_USERNAME'],
-    password: ENV['SMTP_PASSWORD'],
-    authentication: :plain
+      address: "smtp-relay.brevo.com",
+      port: 587,
+      user_name: ENV['SMTP_USER'],
+      password: ENV['SMTP_PASSWORD'],
+      authentication: :plain
   }
-
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation can not be found).
