@@ -8,6 +8,7 @@
 #  updated_at :datetime
 #  year       :integer
 #
+require 'net/http'
 
 class Promotion < ApplicationRecord
   has_many :students
