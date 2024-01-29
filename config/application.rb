@@ -20,5 +20,15 @@ module Learn
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     config.i18n.default_locale = :fr
+
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = {
+        address: "smtp-relay.brevo.com",
+        port: 587,
+        user_name: ENV['SMTP_USER'],
+        password: ENV['SMTP_PASSWORD'],
+        authentication: 'login',
+        enable_starttls_auto: true
+    }
   end
 end
