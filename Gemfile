@@ -16,6 +16,7 @@ gem 'devise'
 gem 'devise-i18n'
 gem 'devise-bootstrap-views'
 gem 'breadcrumbs_on_rails'
+gem 'ostruct', '~> 0.6.0'
 
 # Front
 gem 'sprockets-rails'
