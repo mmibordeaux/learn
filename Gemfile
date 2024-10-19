@@ -1,13 +1,14 @@
 source 'https://rubygems.org'
 
-ruby '2.7.8'
+ruby '3.3.5'
 
 # Infrastructure
 gem 'pg'
 gem 'puma'
+gem 'bootsnap', require: false
 
 # Back
-gem 'rails', '~> 5'
+gem 'rails', '~> 7.2.0'
 gem 'rails-i18n'
 gem 'nokogiri'
 gem 'simple_form'
@@ -17,6 +18,7 @@ gem 'devise-bootstrap-views'
 gem 'breadcrumbs_on_rails'
 
 # Front
+gem 'sprockets-rails'
 gem 'bootstrap'
 gem 'sassc-rails'
 gem 'autoprefixer-rails'
@@ -27,7 +29,6 @@ gem 'jquery-rails'
 gem 'jbuilder'
 gem 'gravtastic'
 gem 'bootstrap-glyphicons'
-# gem 'glyphicons-rails'
 gem 'chartkick'
 
 group :development do
